@@ -6,22 +6,23 @@
 \usepackage{setspace}           % required for `\doublespace'
 \usepackage{natbib}
 \usepackage{ascmac}
+\usepackage[margin=30truemm, left=40truemm, right=40truemm]{geometry}
 %
-\setlength{\textwidth}{\fullwidth}
-\setlength{\textheight}{40\baselineskip}
-\addtolength{\textheight}{\topskip}
-\setlength{\voffset}{-0.2in}
-\setlength{\topmargin}{0pt}
-\setlength{\headheight}{0pt}
-\setlength{\headsep}{0pt}
+% \setlength{\textwidth}{\fullwidth}
+% \setlength{\textheight}{39\baselineskip}
+% \addtolength{\textheight}{\topskip}
+% \setlength{\voffset}{-0.5in}
+% \setlength{\topmargin}{0pt}
+% \setlength{\headheight}{0pt}
+% \setlength{\headsep}{0.3in}
 
-
+\setlength{\parskip}{3mm} %段落間にスペースを入れる
 
 
 %\input{/Users/junotk/Library/Mobile Documents/com~apple~CloudDocs/settings/my_macros.tex}
 
-\pagestyle{myheadings}
-\markright{\footnotesize \sf 2022秋期「哲学者のための数学」授業資料（大塚淳） \ \ 配布禁止}
+% \pagestyle{myheadings}
+% \markright{\footnotesize \sf 2022秋期「哲学者のための数学」授業資料（大塚淳） \ \ 配布禁止}
 \begin{document}
 
 
@@ -30,7 +31,75 @@
 \date{ver. \today}
 \maketitle
 
+\section{集合の定義}
+% 集合の定義
+集合(set)とは，その名の通りモノの集まりである．
+集合の中に入っているモノをその元ないし要素(element)と呼ぶ．
+つまり集合は元の集まりである．
 
+集合を定義するには二つのやり方がある．\emph{外延的}(extensive)な定義では，元を並べることによって集合を定義する：
+\[
+ A := \{\text{John, Paul, George, Ringo}\}.
+\]
+ちなみに「$:=$」は左辺を右辺で定義する，という意味で使われる.
+ここで$A$は4つの元を持つ集合として定義されている．
+同じことを\emph{内包的}(intensive)に表すこともできる
+\[
+ A := \{x | x \text{ is a member of the Beatles}\}.
+\]
+「a member of the Beatles」であるような$x$をすべて集めてきた集合，というように理解すると良い．
+内包的定義はいちいち元を明示しなくて良いので便利である．例えば
+\[
+ \mathbb{N} := \{x | x \text{ is a natural number}\}
+\]
+は無限個の元を持つ集合だが，これを外延的に記述するのは不可能だろう．
+ただし，内包的定義に用いる述語は曖昧でなく，それが成り立つかどうかが明確に決まるものでなければならない．例えば，
+\[
+ T := \{x | x \text{ は背が高い}\}
+\]
+は，何センチ以上なら「背が高い」とされるかが明示的に決められていない限り，集合の定義として機能しない．
+逆に言うと，適用基準が明確な述語であれば対応する集合を考えることができる（ただ後で見るように，内包的定義を無制約に用いると重大なパラドクスを生んでしまうこともある）．
+また以下のように方程式の解を集合で表すこともある：
+\[
+ \{ x | x^2 = 4\} = \{ -2, 2 \}.
+\]
+
+
+
+集合の本質はそれが持っている元によって完全に規定される．
+その際，元の個数や並び方は考慮しない．なので例えば
+\[
+ A = \{\text{Ringo, Paul, John, George}\} = \{\text{Ringo, Ringo, Paul, John, George, John}\}.
+\]
+
+集合は元として集合をとることもできる．なので以下も集合である
+\[
+\{ \{\text{John, Paul, George, Ringo}\}, \{ \text{Jackie, Tito, Jermaine, Marlon, Michael}\}, \text{James} \}.
+\]
+これは二つのグループ（人の集合）と一人の歌手からなる集合である．
+元と集合をしっかりと区別すること．例えば
+\[
+\{\text{John, Paul, George, Ringo}\} \neq \{ \{\text{John, Paul, George, Ringo}\} \},
+\]
+特に
+\[
+\{\text{James}\} \neq \{ \{\text{James}\} \}  
+\]
+であることに注意．
+
+\subsection{要素関係と部分関係}
+
+あるモノ$a$が集合$A$に入っているとき，$a$を$A$の元ないし要素(element)といい，以下のように書く：
+\[
+ a \in A.
+\]
+この要素関係$\in$が集合論における唯一にして究極の関係である．
+つまり集合論のすべての話は，結局のところ，その集合に何が入っているか，という話に行き着かせることができる．
+
+
+
+%
+% 種は集合として定義できるだろうか
 
 
 \bibliographystyle{apalike}
