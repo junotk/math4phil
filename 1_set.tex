@@ -31,11 +31,13 @@
 \date{ver. \today}
 \maketitle
 
-\section{集合の定義}
+\section{集合の基礎}
 % 集合の定義
 集合(set)とは，その名の通りモノの集まりである．
 集合の中に入っているモノをその元ないし要素(element)と呼ぶ．
 つまり集合は元の集まりである．
+
+\subsection{集合の定義}
 
 集合を定義するには二つのやり方がある．\emph{外延的}(extensive)な定義では，元を並べることによって集合を定義する：
 \[
@@ -65,13 +67,6 @@
 \]
 
 
-
-集合の本質はそれが持っている元によって完全に規定される．
-その際，元の個数や並び方は考慮しない．なので例えば
-\[
- A = \{\text{Ringo, Paul, John, George}\} = \{\text{Ringo, Ringo, Paul, John, George, John}\}.
-\]
-
 集合は元として集合をとることもできる．なので以下も集合である
 \[
 \{ \{\text{John, Paul, George, Ringo}\}, \{ \text{Jackie, Tito, Jermaine, Marlon, Michael}\}, \text{James} \}.
@@ -85,16 +80,91 @@
 \[
 \{\text{James}\} \neq \{ \{\text{James}\} \}  
 \]
-であることに注意．
+であることに注意（なぜそうなのか，説明してみよう）．
+
 
 \subsection{要素関係と部分関係}
-
-あるモノ$a$が集合$A$に入っているとき，$a$を$A$の元ないし要素(element)といい，以下のように書く：
+集合において我々が問うべきことは唯一つ，それがしかじかのものを元として含むか否か，ということだけである．
+実際，集合論におけるすべての問題は，最終的には，その集合に何が入っているかという話に行き着く．
+ある対象$a$が集合$A$の要素であることを以下のように書く：
 \[
  a \in A.
 \]
-この要素関係$\in$が集合論における唯一にして究極の関係である．
-つまり集合論のすべての話は，結局のところ，その集合に何が入っているか，という話に行き着かせることができる．
+なので例えば
+\begin{align*}
+\text{Michael} &\in \{ \text{Jackie, Tito, Jermaine, Marlon, Michael}\}  \\
+3 &\in \mathbb{N} \\
+\{ \text{Michael} \} &\not\in \{ \text{Jackie, Tito, Jermaine, Marlon, Michael}\}  \\
+\end{align*}
+である．
+特に最初と最後の違いに気をつけよう．
+Michael JacksonはJackson 5のメンバーであるが，Michael個人からなる集合はそうではない．
+
+要素関係$\in$は要素と集合の間に成り立つ関係だった．
+一方，集合と集合の間の関係を考えることができる．
+2つの集合$A, B$があったとき，$A$が$B$の\emph{部分集合}(subset)であるとは，$A$の元がすべて$B$に含まれるとき，すなわち
+\[
+ \forall x (x \in A \Rightarrow x \in B)
+\]
+が成立するときである．これを$A \subset B$と書く．
+図的には，これは$A$の集合の範囲がすっぽり$B$の範囲に含まれている事態に相当する．
+
+2つの集合$A,B$が\emph{等しい}とは，両者が互いの部分集合であるとき，つまり
+\begin{align*}
+ A = B &\iff A \subset B \wedge B \subset A \\
+&\iff \forall x (x \in A \iff x \in B)
+\end{align*}
+ が成立することである．
+このとき，$A$の範囲はぴったり$B$と一致する．
+上の同一性の定義から，{元の個数や並び方は集合の同一性に影響しない}ということが帰結する．
+なので例えば
+\begin{align*}
+ \{\text{John, Paul, George, Ringo}\} 
+ &= \{\text{Ringo, Paul, John, George}\} \\
+ &= \{\text{Ringo, Ringo, Paul, John, George, John}\}
+\end{align*}
+である（上の同一性の定義から確認せよ）．
+つまり，集合の「本質」を決めるのはそこに何が入っているかであって，何個／どの順で入っているか，ということは全く考慮されない．
+
+$A \subset B$であるが$A \neq B$であるとき，$A$は$B$の\emph{真部分集合}(proper/strict subset)であるといい，これを$A \subsetneq B$と書くこともある（が本講義ではあまり使わない）．
+きちんと書き下せばこれはつまり
+\[
+A \subsetneq B \iff \forall x (x \in A \Rightarrow x \in B) \wedge \exists x (x \not\in A \wedge x \in B)
+\]
+ということ，つまり$A$の元はすべて$B$に含まれるが，$A$になくて$B$にはある元が少なくとも1つはある，ということである．
+
+% empty set
+いかなる元も持たない集合を\emph{空集合}(empty set)といい，これを$\{\}$または$\emptyset$で表す．
+いかなるものも空集合の元ではないので，
+\[
+\forall x (x \not\in \emptyset)
+\]
+が成り立つ．また空集合は任意の集合の部分集合である，なぜなら任意の集合$A$について．
+\[
+\forall x (x \in \emptyset \Rightarrow x \in A)
+\]
+は，どんな$x$に対してもカッコ内の前件が偽($x \not\in \emptyset$)であるがゆえに常に成立するからだ．
+
+% 空集合を内包的に定義してみよ．
+
+% 注意
+要素関係$\in$と部分集合関係$\subset$を混同しないように！
+前者は要素と集合の間の関係，後者は集合と集合の間の関係である．
+だから例えば
+\[
+\text{Michael} \subset \{ \text{Jackie, Tito, Jermaine, Marlon, Michael}\}  
+\]
+という式は文法的に正しい形ではない．
+では次の式はどうだろうか，
+\begin{align*}
+\{ \text{Michael} \} &\subset \{ \text{Jackie, Tito, Jermaine, Marlon, Michael}\}  \\
+\{ \text{Michael} \} &\in \{ \text{Jackie, Tito, Jermaine, Marlon, Michael}\}  \\
+\{  \} &\in \{ \text{Jackie, Tito, Jermaine, Marlon, Michael}\}  
+\end{align*}
+それぞれ真／偽／文法的に不正かどうか考えてみよう．
+
+
+
 
 
 
