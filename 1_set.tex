@@ -7,19 +7,13 @@
 \usepackage{natbib}
 \usepackage{ascmac}
 \usepackage[margin=30truemm, left=40truemm, right=40truemm]{geometry}
-%
-% \setlength{\textwidth}{\fullwidth}
-% \setlength{\textheight}{39\baselineskip}
-% \addtolength{\textheight}{\topskip}
-% \setlength{\voffset}{-0.5in}
-% \setlength{\topmargin}{0pt}
-% \setlength{\headheight}{0pt}
-% \setlength{\headsep}{0.3in}
 
+\usepackage[theorems]{tcolorbox}
+\newtcbtheorem[number within=section]{exercise}{練習問題}{fonttitle=\bfseries}{ex}
+%
 \setlength{\parskip}{3mm} %段落間にスペースを入れる
 
-
-%\input{/Users/junotk/Library/Mobile Documents/com~apple~CloudDocs/settings/my_macros.tex}
+%\input{settings.tex}
 
 % \pagestyle{myheadings}
 % \markright{\footnotesize \sf 2022秋期「哲学者のための数学」授業資料（大塚淳） \ \ 配布禁止}
@@ -37,15 +31,18 @@
 集合の中に入っているモノをその元ないし要素(element)と呼ぶ．
 つまり集合は元の集まりである．
 
+
+
+
 \subsection{集合の定義}
 
-集合を定義するには二つのやり方がある．\emph{外延的}(extensive)な定義では，元を並べることによって集合を定義する：
+集合を定義するには二つのやり方がある．\emph{外延的}(extensive)な定義では，集合に含まれる元を明示的に並べることで定義する：
 \[
  A := \{\text{John, Paul, George, Ringo}\}.
 \]
 ちなみに「$:=$」は左辺を右辺で定義する，という意味で使われる.
 ここで$A$は4つの元を持つ集合として定義されている．
-同じことを\emph{内包的}(intensive)に表すこともできる
+一方、なにか特定の共通性質を満たすものの集合の場合は，その性質によって集合を\emph{内包的}(intensive)に表すこともできる
 \[
  A := \{x | x \text{ is a member of the Beatles}\}.
 \]
@@ -71,16 +68,18 @@
 \[
 \{ \{\text{John, Paul, George, Ringo}\}, \{ \text{Jackie, Tito, Jermaine, Marlon, Michael}\}, \text{James} \}.
 \]
-これは二つのグループ（人の集合）と一人の歌手からなる集合である．
+これは二つのグループ（人の集合）と一人の人からなる集合である．
 元と集合をしっかりと区別すること．例えば
 \[
-\{\text{John, Paul, George, Ringo}\} \neq \{ \{\text{John, Paul, George, Ringo}\} \},
+\{\text{John, Paul, George, Ringo}\} \text{ と } \{ \{\text{John, Paul, George, Ringo}\} \},
 \]
-特に
+また
 \[
-\{\text{James}\} \neq \{ \{\text{James}\} \}  
+\{\text{James}\} \text{ と } \{ \{\text{James}\} \}  
 \]
-であることに注意（なぜそうなのか，説明してみよう）．
+は集合としてはそれぞれ別物であることに注意（なぜそうなのか，説明してみよう）．
+
+
 
 
 \subsection{要素関係と部分関係}
@@ -98,7 +97,7 @@
 \end{align*}
 である．
 特に最初と最後の違いに気をつけよう．
-Michael JacksonはJackson 5のメンバーであるが，Michael個人からなる集合はそうではない．
+マイケル・ジャクソンはJackson 5のメンバーであるが，マイケル個人からなる集合はそうではない（集合は歌って踊らない）．
 
 要素関係$\in$は要素と集合の間に成り立つ関係だった．
 一方，集合と集合の間の関係を考えることができる．
@@ -133,8 +132,13 @@ A \subsetneq B \iff \forall x (x \in A \Rightarrow x \in B) \wedge \exists x (x 
 \]
 ということ，つまり$A$の元はすべて$B$に含まれるが，$A$になくて$B$にはある元が少なくとも1つはある，ということである．
 
-% empty set
-いかなる元も持たない集合を\emph{空集合}(empty set)といい，これを$\{\}$または$\emptyset$で表す．
+% 全体集合と空集合
+考えている対象すべてを含む集合を\emph{全体集合}(total set)といい，$\Omega$で表す．つまり
+\[
+\forall x (x \in \Omega)
+\]
+であり，どんな集合$A$を持ってきても$A \subset \Omega$である．
+逆にいかる元も持たない集合を\emph{空集合}(empty set)といい，これを$\{\}$または$\emptyset$で表す．
 いかなるものも空集合の元ではないので，
 \[
 \forall x (x \not\in \emptyset)
@@ -147,14 +151,22 @@ A \subsetneq B \iff \forall x (x \in A \Rightarrow x \in B) \wedge \exists x (x 
 
 % 空集合を内包的に定義してみよ．
 
+\paragraph{問題}
+全体集合と空集合を内包的に定義してみよ．つまり
+\[
+\Omega := \{ x | \cdots \}  \hspace{3em} \emptyset := \{ x | \cdots \}
+\]
+の「$\cdots$」のところにそれぞれどんな条件を入れたら良いだろうか．
+
 % 注意
+\paragraph{注意}
 要素関係$\in$と部分集合関係$\subset$を混同しないように！
 前者は要素と集合の間の関係，後者は集合と集合の間の関係である．
 だから例えば
 \[
 \text{Michael} \subset \{ \text{Jackie, Tito, Jermaine, Marlon, Michael}\}  
 \]
-という式は文法的に正しい形ではない．
+という式は文法的に正しい形ではない（左辺が集合ではないから）．
 では次の式はどうだろうか，
 \begin{align*}
 \{ \text{Michael} \} &\subset \{ \text{Jackie, Tito, Jermaine, Marlon, Michael}\}  \\
@@ -164,7 +176,61 @@ A \subsetneq B \iff \forall x (x \in A \Rightarrow x \in B) \wedge \exists x (x 
 それぞれ真／偽／文法的に不正かどうか考えてみよう．
 
 
+\subsection{集合の演算}
+我々は小学校の算数で，数と数を足し合わせる（あるいは引く／掛ける）ことで別の数になるということを習った．
+例えば自然数2と3を足すと別の自然数5になる．
+同じように集合にも演算があって，これら演算は2つの集合から別の集合を作り出す．
 
+\emph{合併}ないし\emph{和}(union)はその名の通り，2つの集合の要素をあわせた集合を作る．
+\[
+ A \cup B = \{ x | x \in A \vee x \in B\}
+\]
+3個以上の複数の集合の合併をとるときは以下のように書くこともある
+\[
+ \bigcup_i A_i = \{ x | x \in A_1 \vee x \in A_2 \cdots \}
+\]
+つまりたくさんある$A_i$のうち，どれか一つにでも入っていればその元は$\bigcup_i A_i$にも入っている．
+
+\emph{共通部分}ないし\emph{交わり}(intersection)は，2つの集合に共通する要素だけを持つ集合を作る．
+\[
+ A \cap B = \{ x | x \in A \wedge x \in B\}
+\]
+同様にたくさんの集合の共通部分は以下のように書ける
+\[
+ \bigcap_i A_i = \{ x | x \in A_1 \wedge x \in A_2 \cdots \}
+\]
+このとき，$\bigcap_i A_i$の元はすべての$A_i$に含まれていなければならない．
+$A \cap B = \emptyset$，つまり交わりがない場合，$A$と$B$は互いに\emph{素}(disjoint)であるという．
+
+$A$の元であるが$B$の元ではないもの全体の集合を$A$と$B$の\emph{差}(difference)といい，次のように表す
+\[
+ A \setminus B = \{ x | x \in A \wedge x \not\in B\}.
+\]
+特に全体集合からの差を$\Omega \setminus B$を\emph{補集合}(complement)といい，$B^c$と書く．
+
+なお和と交わりは，足し算や掛け算同様，順序に依存しないし，また前後を入れ替えてもよい．
+和で示すと，
+\begin{align*}
+ (A \cup B) \cup C & = A \cup (B \cup C) \\
+ A \cup B & = B \cup A
+\end{align*}
+同様のことが$\cap$にも成り立つ．前者を結合性(associativity)，後者を可換性(commutativity)という．
+または和と交わりは結合律とか可換律を満たす，などといったりもする．
+
+\paragraph{問題}
+差は結合律と可換律を満たさないことを確認せよ．
+
+
+集合の演算について，以下が成り立つ．これらはすべて上の定義から証明できる．
+\begin{align}
+(A \cup B) \cap C &= (A \cap C) \cup (B \cap C) \\
+A \cup (B \cap C) &= (A \cup B) \cap (A \cup C) \\
+A \cap (B \setminus C) &= (A \cap B) \setminus (A \cap C) \\
+(A \cap B) \setminus C &= (A \setminus C) \cap (B \setminus C) 
+\end{align}
+
+\paragraph{問題}
+以上の等式をヴェン図で表してみよう．
 
 
 
