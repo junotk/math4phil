@@ -22,7 +22,7 @@
 \date{ver. \today}
 \maketitle
 
-\section{集合の基礎}
+
 % 集合の定義
 集合(set)とは，その名の通りモノの集まりである．
 集合の中に入っているモノをその元ないし要素(element)と呼ぶ．
@@ -31,7 +31,7 @@
 
 
 
-\subsection{集合の定義}
+\section{集合の定義}
 
 集合を定義するには二つのやり方がある．\emph{外延的}(extensive)な定義では，集合に含まれる元を明示的に並べることで定義する：
 \[
@@ -81,7 +81,7 @@
 
 
 
-\subsection{要素関係と部分関係}
+\section{要素関係と部分関係}
 集合において我々が問うべきことは唯一つ，それがしかじかのものを元として含むか否か，ということだけである．
 実際，集合論におけるすべての問題は，最終的には，その集合に何が入っているかという話に行き着く．
 ある対象$a$が集合$A$の要素であることを以下のように書く：
@@ -150,7 +150,7 @@ A \subsetneq B \iff \forall x (x \in A \Rightarrow x \in B) \wedge \exists x (x 
 それぞれ真／偽／文法的に不正かどうか考えてみよう．
 \end{attn}
 
-\subsection{全体集合，空集合，冪集合}
+\section{全体集合，空集合，冪集合}
 % 全体集合と空集合
 考えている対象すべてを含む集合を\emph{全体集合}(total set)といい，$\Omega$で表す．つまり
 \[
@@ -197,7 +197,7 @@ $\emptyset \in \mcalP(A)$であることを忘れないように．
 
 
 
-\subsection{集合の演算}
+\section{集合の演算}
 \label{sec:setoperation}
 我々は小学校の算数で，数と数を足し合わせる（あるいは引く／掛ける）ことで別の数になるということを習った．
 例えば自然数2と3を足すと別の自然数5になる．
@@ -258,7 +258,7 @@ A \cap (B \setminus C) &= (A \cap B) \setminus (A \cap C) \\
 \end{exercise}
 
 
-\subsection{順序対*}
+\section{順序対*}
 我々は上で，集合には順序が関係ないということを述べた．なので $\{\text{Alice, Bob}\}$も$\{\text{Bob, Alice}\}$も集合としては区別がつかない．
 よってあえて順序を区別したいときは，少し工夫をしなければならない．そこで$a, b \in A$に対し，\emph{順序対}(ordered pair)を次のように作る
 \begin{align*}
@@ -286,7 +286,7 @@ $(a,b,c,d)$ および $(d,c,b,a)$ を書き下せ．
 \end{exercise} 
 
  
-\subsection{デカルト積}
+\section{デカルト積}
 \ref{sec:setoperation}節では，和や交わりなどの集合演算を見た．
 そこでは扱わなかった，もう1つの集合演算が，集合の\emph{デカルト積}(Cartesian product)ないし\emph{積}である．
 集合$A, B$のデカルト積$A \times B$は，$A$の要素と$B$の要素の順序対をすべて含んだもの，つまり
