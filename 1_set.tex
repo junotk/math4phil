@@ -7,12 +7,6 @@
 \usepackage{natbib}
 \usepackage{ascmac}
 \usepackage[margin=30truemm, left=40truemm, right=40truemm]{geometry}
-
-
-\newtheorem{exercise}{練習問題}[section]
-\newtheorem{example}{事例}[section]
-\newtheorem{attn}{注意}[section]
-\renewcommand{\theattn}{}
 %
 \setlength{\parskip}{3mm} %段落間にスペースを入れる
 
@@ -41,13 +35,15 @@
 
 集合を定義するには二つのやり方がある．\emph{外延的}(extensive)な定義では，集合に含まれる元を明示的に並べることで定義する：
 \[
- A := \{\text{John, Paul, George, Ringo}\}.
+ B := \{\text{John, Paul, George, Ringo}\}.
 \]
 ちなみに「$:=$」は左辺を右辺で定義する，という意味で使われる.
-ここで$A$は4つの元を持つ集合として定義されている．
+ここで$B$は4つの元を持つ集合として定義されている．
+集合の中身をその\emph{外延}(extension)ということもある．
+
 一方、なにか特定の共通性質を満たすものの集合の場合は，その性質によって集合を\emph{内包的}(intensive)に表すこともできる
 \[
- A := \{x | x \text{ is a member of the Beatles}\}.
+ B := \{x | x \text{ is a member of the Beatles}\}.
 \]
 「a member of the Beatles」であるような$x$をすべて集めてきた集合，というように理解すると良い．
 内包的定義はいちいち元を明示しなくて良いので便利である．例えば
