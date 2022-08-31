@@ -16,7 +16,7 @@
 %
 \setlength{\parskip}{3mm} %段落間にスペースを入れる
 
-%\input{settings.tex}
+\input{my_macros.tex}
 
 % \pagestyle{myheadings}
 % \markright{\footnotesize \sf 2022秋期「哲学者のための数学」授業資料（大塚淳） \ \ 配布禁止}
@@ -135,32 +135,6 @@ A \subsetneq B \iff \forall x (x \in A \Rightarrow x \in B) \wedge \exists x (x 
 \]
 ということ，つまり$A$の元はすべて$B$に含まれるが，$A$になくて$B$にはある元が少なくとも1つはある，ということである．
 
-% 全体集合と空集合
-考えている対象すべてを含む集合を\emph{全体集合}(total set)といい，$\Omega$で表す．つまり
-\[
-\forall x (x \in \Omega)
-\]
-であり，どんな集合$A$を持ってきても$A \subset \Omega$である．
-逆にいかる元も持たない集合を\emph{空集合}(empty set)といい，これを$\{\}$または$\emptyset$で表す．
-いかなるものも空集合の元ではないので，
-\[
-\forall x (x \not\in \emptyset)
-\]
-が成り立つ．また空集合は任意の集合の部分集合である，なぜなら任意の集合$A$について．
-\[
-\forall x (x \in \emptyset \Rightarrow x \in A)
-\]
-は，どんな$x$に対してもカッコ内の前件が偽($x \not\in \emptyset$)であるがゆえに常に成立するからだ．
-
-% 空集合を内包的に定義してみよ．
-
-\begin{exercise}
-全体集合と空集合を内包的に定義してみよ．つまり
-\[
-\Omega := \{ x | \cdots \}  \hspace{3em} \emptyset := \{ x | \cdots \}
-\]
-の「$\cdots$」のところにそれぞれどんな条件を入れたら良いだろうか． 
-\end{exercise}
 
 % 注意
 \begin{attn}
@@ -179,6 +153,53 @@ A \subsetneq B \iff \forall x (x \in A \Rightarrow x \in B) \wedge \exists x (x 
 \end{align*}
 それぞれ真／偽／文法的に不正かどうか考えてみよう．
 \end{attn}
+
+\subsection{全体集合，空集合，冪集合}
+% 全体集合と空集合
+考えている対象すべてを含む集合を\emph{全体集合}(total set)といい，$\Omega$で表す．つまり
+\[
+\forall x (x \in \Omega)
+\]
+であり，どんな集合$A$を持ってきても$A \subset \Omega$である．
+
+逆にいかる元も持たない集合を\emph{空集合}(empty set)といい，これを$\{\}$または$\emptyset$で表す．
+いかなるものも空集合の元ではないので，
+\[
+\forall x (x \not\in \emptyset)
+\]
+が成り立つ．
+また空集合はあらゆる集合の部分集合，つまり任意の集合$A$について$\emptyset \subset A$である．
+なぜなら．
+\[
+\forall x (x \in \emptyset \Rightarrow x \in A)
+\]
+は，どんな$x$に対してもカッコ内の前件が偽($x \not\in \emptyset$)であるがゆえに常に成立するからだ．
+
+ある集合$A$があったとき，その部分集合の全体のなす集合を$A$の\emph{冪集合}(power set)といい，$\mcalP(A)$と書く．
+つまり
+\[
+ \mcalP(A) = \{ X| X \subset A \}.
+\]
+（ここで$X$は集合であることに注意）．
+例えば$A = \{1, 2, 3\}$とすると，その冪集合$\mcalP(A)$は
+\[
+ \mcalP(A) = \{ \emptyset, \{1\}, \{2\}, \{3\}, \{1,2\}, \{2,3\}, \{1,3\}, \{1,2,3\} \}
+\]
+の計8つの集合からなる集合である．一般に，$n$個の要素を持つ有限集合の冪集合は，$2^n$個の集合を要素として持つ．
+$\emptyset \in \mcalP(A)$であることを忘れないように．
+また$A \in \mcalP(A)$だが$A \subset \mcalP(A)$ではないことに注意．
+
+
+
+\begin{exercise}
+全体集合と空集合を内包的に定義してみよ．つまり
+\[
+\Omega := \{ x | \cdots \}  \hspace{3em} \emptyset := \{ x | \cdots \}
+\]
+の「$\cdots$」のところにそれぞれどんな条件を入れたら良いだろうか． 
+\end{exercise}
+
+
 
 \subsection{集合の演算}
 我々は小学校の算数で，数と数を足し合わせる（あるいは引く／掛ける）ことで別の数になるということを習った．
@@ -238,6 +259,9 @@ A \cap (B \setminus C) &= (A \cap B) \setminus (A \cap C) \\
 \begin{exercise}
 等式(1)-(4)をヴェン図で表してみよう．
 \end{exercise}
+
+
+\subsection{順序*}
 
 
 %
