@@ -8,8 +8,11 @@
 \usepackage{ascmac}
 \usepackage[margin=30truemm, left=40truemm, right=40truemm]{geometry}
 
-\usepackage[theorems]{tcolorbox}
-\newtcbtheorem[number within=section]{exercise}{練習問題}{fonttitle=\bfseries}{ex}
+
+\newtheorem{exercise}{練習問題}[section]
+\newtheorem{example}{事例}[section]
+\newtheorem{attn}{注意}[section]
+\renewcommand{\theattn}{}
 %
 \setlength{\parskip}{3mm} %段落間にスペースを入れる
 
@@ -151,15 +154,16 @@ A \subsetneq B \iff \forall x (x \in A \Rightarrow x \in B) \wedge \exists x (x 
 
 % 空集合を内包的に定義してみよ．
 
-\paragraph{問題}
+\begin{exercise}
 全体集合と空集合を内包的に定義してみよ．つまり
 \[
 \Omega := \{ x | \cdots \}  \hspace{3em} \emptyset := \{ x | \cdots \}
 \]
-の「$\cdots$」のところにそれぞれどんな条件を入れたら良いだろうか．
+の「$\cdots$」のところにそれぞれどんな条件を入れたら良いだろうか． 
+\end{exercise}
 
 % 注意
-\paragraph{注意}
+\begin{attn}
 要素関係$\in$と部分集合関係$\subset$を混同しないように！
 前者は要素と集合の間の関係，後者は集合と集合の間の関係である．
 だから例えば
@@ -174,7 +178,7 @@ A \subsetneq B \iff \forall x (x \in A \Rightarrow x \in B) \wedge \exists x (x 
 \{  \} &\in \{ \text{Jackie, Tito, Jermaine, Marlon, Michael}\}  
 \end{align*}
 それぞれ真／偽／文法的に不正かどうか考えてみよう．
-
+\end{attn}
 
 \subsection{集合の演算}
 我々は小学校の算数で，数と数を足し合わせる（あるいは引く／掛ける）ことで別の数になるということを習った．
@@ -217,11 +221,7 @@ $A$の元であるが$B$の元ではないもの全体の集合を$A$と$B$の\e
 同様のことが$\cap$にも成り立つ．前者を結合性(associativity)，後者を可換性(commutativity)という．
 または和と交わりは結合律とか可換律を満たす，などといったりもする．
 
-\paragraph{問題}
-差は結合律と可換律を満たさないことを確認せよ．
-
-
-集合の演算について，以下が成り立つ．これらはすべて上の定義から証明できる．
+また集合の演算について，以下が成り立つ．これらはすべて上の定義から証明できる．
 \begin{align}
 (A \cup B) \cap C &= (A \cap C) \cup (B \cap C) \\
 A \cup (B \cap C) &= (A \cup B) \cap (A \cup C) \\
@@ -229,9 +229,15 @@ A \cap (B \setminus C) &= (A \cap B) \setminus (A \cap C) \\
 (A \cap B) \setminus C &= (A \setminus C) \cap (B \setminus C) 
 \end{align}
 
-\paragraph{問題}
-以上の等式をヴェン図で表してみよう．
 
+\begin{exercise}
+差は結合律と可換律を満たさないことを確認せよ．
+\end{exercise}
+
+
+\begin{exercise}
+等式(1)-(4)をヴェン図で表してみよう．
+\end{exercise}
 
 
 %
