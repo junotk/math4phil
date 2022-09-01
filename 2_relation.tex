@@ -4,6 +4,7 @@
 \usepackage{bm}
 \usepackage[dvipdfmx]{graphicx}	% required for `\includegraphics' (yatex added)
 \usepackage{setspace}           % required for `\doublespace'
+\usepackage{tikz}
 \usepackage{natbib}
 \usepackage{ascmac}
 \usepackage[margin=30truemm, left=40truemm, right=40truemm]{geometry}
@@ -33,10 +34,10 @@
 \begin{table}[h]
 \centering
 \begin{tabular}{cccc} \hline
-  & 清水寺 & 金閣寺 & 銀閣寺 \\ \hline 
-Alice & \checkmark & & \checkmark \\
-Bob & & \checkmark & \checkmark \\
-Chris & \checkmark  & & \\ \hline
+  & Alice & Bob & Chris \\ \hline 
+清水寺 & \checkmark & & \checkmark \\
+金閣寺 & & \checkmark &  \\
+銀閣寺 & \checkmark  & \checkmark & \\ \hline
 \end{tabular} 
 \end{table}
 この表はそのまま，$A \times B$のデカルト積を表しており，チェックマークがついているところはその部分集合を構成していると考えることができる．
@@ -51,6 +52,7 @@ Chris & \checkmark  & & \\ \hline
 \]
 となる．「Bobは銀閣寺に行ったことがある」という事実は$(\text{Bob, 銀閣寺}) \in R$によって表される．
 ちなみに$a$が$b$に対し$R$という関係を持つ，とわざわざ書くのは長いので，短く$aRb$と表すことにする．
+また関係$R$に対応する部分集合を，$R$のグラフとよぶこともある．
 
 また自然数について「〜は...以下である」という関係$\leq$は，
 \[
@@ -178,5 +180,47 @@ $R$が同値関係であるとき，$aRb$を特に$a\sim_R b$ないし誤解の�
  現在の生物学において主要な種概念である\emph{生物学的種概念}によれば，ある個体$a$と$b$が同じ種であるのは，両者が繁殖可能であるとき，そのときに限るとされる．これは同値類による分類だとみなしてよいだろうか．もし問題があるとしたら，それはなんだろうか．
 \end{example}
 % 生物学的種概念
+
+
+\section{関数}
+以下では関係の中でも非常に重要な，\emph{関数}(functions)を取り上げる．
+集合$X$から$Y$への関数とは，$X$の各要素$x$に対して必ず一つの要素$y$を対応させるような関係である．
+これを
+\[
+ f : X \to Y
+\]
+と書く．
+$X$を横，$Y$を縦に並べた表（グラフ）で関数を考えると，各列が必ず一個だけチェックマークを含んでいることになる．
+$f$が要素$x \in X$に対して$y \in Y$を対応させることを，$f(x)=y$あるいは$f::x \mapsto y$と書いたりする．
+
+% \begin{exercise}
+%  関数を内包的に定義してみよ．（ヒント：関係なので積集合の部分集合$\{ (x,y) \in X \times Y | \dots \}$という形になる．「$\dots$」のところには(1)すべての$x \in X$に対してその関係を満たすような$y \in Y$が存在する，(2)そのような$y$は一意である，つまりもし$x$に対し2つの$y, y'$が関係を満たすなら，$y=y'$である，という条件を入れればよい．）
+% \end{exercise}
+
+例えば「〜は...国で生まれた」という関係は，人の集合から国の集合への関数になる．
+\begin{table}[h]
+\centering
+\begin{tabular}{cccc} \hline
+  & Alice & Bob & Chris \\ \hline 
+日本 &  & \checkmark &  \\
+アメリカ & \checkmark &  &  \\
+フランス &   &  & \checkmark \\ \hline
+\end{tabular} 
+\end{table}
+
+この関数は，それぞれの人に対し一つ，そして一つだけ出生地を割り当てている．
+関数というと，例えば$y = x^3-2x$のようなものを思い浮かべるかもしれない：
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[scale=1]
+\draw[->,>=stealth,semithick](-2,0)--(2,0)node[above]{$x$};%x軸
+\draw[->,>=stealth,semithick](0,-1.5)--(0,1.5)node[right]{$y$};%y軸
+\draw[thick,domain=-1.5:1.5] plot(\x,{pow(\x,3)-2*\x});
+\end{tikzpicture} 
+\end{figure}
+
+実際これは，$X, Y$を実数の集合$\bbR$としたときの関数$f:X \to Y$になっている．
+グラフは各$x \in X$に対して唯一の$y = f(x) \in Y$を割り当てているし，また上の曲線は$\bbR \times \bbR$の部分集合になっていることを確認しよう．
+
 
 \end{document}
