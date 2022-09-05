@@ -224,7 +224,22 @@ $f$が要素$x \in X$に対して$y \in Y$を対応させることを，$f(x)=y$
 グラフは各$x \in X$に対して唯一の$f(x) \in Y$を割り当てているし，また上の曲線は$\bbR \times \bbR$の部分集合になっていることを確認しよう．
 
 
-\subsection{像と逆像}
+\begin{example}
+ただ2つの元からなる集合$\mathbf{2} := \{0, 1\}$を考える．
+$X$を任意の集合とし，関数$f:X \to \mathbf{2}$を考えると，この関数$f$は各元$x \in X$に対し0か1を割り当てることによって，$X$の部分集合$A \subset X$と同一視できる．
+なぜなら，$f(x)=0$ならこの部分集合に入れ，$f(x)=1$なら入れない，というように，$f$は$A$の選択基準を与えるからだ．
+こうした$f$は特性関数(characteristic function)と呼ばれ，$X$からの特性関数全体の集合を$\mathbf{2}^X$と書く，つまり
+\[
+ \mathbf{2}^X := \{ f|f:X \to \mathbf{2}\}.
+\]
+一般に，$X$からの特性関数を一つ決めると$X$の部分集合が一つ定まり，逆もまたしかり．
+よって，$\mathbf{2}^X$と$\mcalP(X)$は同一視できる．
+\end{example}
+
+\section{写像の合成}
+
+
+\section{像と逆像}
 
 関数$f:X \to Y$は$X$の元を$Y$の元に「飛ばす」が，これを$X$の複数の元に対して行えば，同時に$X$の部分集合に対して$Y$の部分集合を対応させることになる．
 関数$f$が$A \subset X$を$Y$に飛ばした先の$Y$の部分集合を，$f$による$A$の\emph{像}(image)とよび，以下のように書く
@@ -247,6 +262,18 @@ f^{-1}(y) := \{ x \in X | f(x) = y\}.
 \begin{exercise}
  上の出生地表で，各国の逆像を求めよ．
 \end{exercise}
+
+
+\begin{example}
+関数による同値類
+\end{example}
+
+\begin{example}
+本質による分類
+\end{example}
+
+
+
 
 
 \section{全射と単射}
@@ -283,5 +310,6 @@ $f:X \to Y$が全単射であるとき，$Y$のすべての元$y$に対して，
 \end{exercise}
 
 
+\section{集合の濃度}
 
 \end{document}
