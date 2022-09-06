@@ -82,10 +82,56 @@ $\langle X, \preceq \rangle$を半順序集合，$A \subset X$としたとき：
 
 次に紹介するのは，\emph{束}(lattice)である．
 
-
 \begin{dfn}[束]
- 束とは半順序
+束とは半順序集合$\langle X, \preceq \rangle$であり，どの2元$x, y \in X$に対しても，上限および下限が存在するものである．
+$x, y$の上限を\emph{結び}(join)といい，$x \vee y$で表す．またその下限を\emph{交わり}(meet)といい，$x \wedge y$で表す．
 \end{dfn}
+
+つまり束は特殊な半順序集合と定義される．
+束を特徴づける性質は，すべてのペアが結びと交わりを持っている，ということである．
+$x,y$の結び$x \vee y$は$x$や$y$よりも「大き」く，なおかつそうしたものの中で最小のものとして定義される（交わりはその逆）．
+
+\begin{exercise}
+ $\langle \mcalP(X), \subset \rangle$は束である．$X$の2つの部分集合$A, B \in \mcalP(X)$の結びと交わりはなんだろうか．
+\end{exercise}
+
+結びと交わりは，$X$の2つの元$x,y$を別の元$x \vee y, x \wedge y$に対応させる「演算」だとみなすこともできる（ちょうど足し算が2つの数に別の数を対応させるように）．
+この演算は足し算や掛け算のように結合的かつ可換である．
+つまり交わりについてだけ見れば，$x, x', x'' \in X$に対し
+\begin{itemize}
+ \item $(x \wedge x') \wedge x'' = x \wedge (x' \wedge x'')$
+ \item $x \wedge x' = x' \wedge x$
+\end{itemize}
+が成立する（気になる人は確認してみてほしい）．
+
+一般に束は，最大元や最小元を持つかもしれないし，持たないかもしれない．
+もし持つ場合，束の最小限を0，最大限を1と書く．
+つまりすべての$x \in X$について，$0 \preceq x \preceq 1$が成り立つ．
+イメージ的には，0,1を持つ束は，上と下がきゅっと縛られたダイアモンド型($\lozenge$)をしている．
+
+（0,1を持つ）束では次が成り立つ（すべての$x, y \in X$に対し）
+\begin{align}
+ x \wedge x = x, \ \ \ x \vee x = x \\
+ 1 \wedge x = x, \ \ \ 0 \vee x = x \\
+ x \wedge (y \vee x) = x = (x \wedge y) \vee x .
+\end{align}
+
+\begin{exercise}
+ $\langle \mcalP(X), \subset \rangle$で0,1に対応するのはなにか．またそこで上の(1)-(3)が成立することを確かめよ．
+\end{exercise}
+
+\begin{example}
+束は，抽象的概念の間の階層構造を表すためにしばしば用いられてきた．
+$C$を概念の集合，$a \preceq b$を「$a$は$b$の事例（インスタンス）である」という関係だとしよう．
+すると例えば human $\preceq$ animal であり，human $\vee$ dog = mammal だといえる．
+また rational $\wedge$ animal = human かもしれない．
+つまり結びは複数の事例を抽象して共通概念を得る操作，交わりは複数の概念を兼ね備える具体例を作り出す操作だと考えることができる．
+このように，概念間の抽象構造（しばしば「アリストテレス的抽象主義」）は束によってモデル化できる．
+\end{example}
+
+\begin{exercise}
+概念の束$\langle C, \preceq \rangle$において，0,1に対応する概念はあるだろうか．
+\end{exercise}
 
 
 \section{ブール代数}
