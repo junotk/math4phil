@@ -155,17 +155,74 @@ $C$を概念の集合，$a \preceq b$を「$a$は$b$の事例（インスタン�
 
 \section{ハイティング代数}
 
-束にさらに条件を加えて，パワーアップさせてみよう．
+有限束にさらに公理を加えて，パワーアップさせてみよう．
 
 \begin{dfn}[ハイティング代数]
-\emph{ハイティング代数}とは，0と1を持つ束 $\langle X, \preceq \rangle$であり，かつ結びと交わりが以下の\emph{分配則}(distributive law)を満たすものである：すべての$x, y, z \in X$に対し，
+（有限）\emph{ハイティング代数}とは，0と1を持つ束 $\langle X, \preceq \rangle$であり，かつ結びと交わりが以下の\emph{分配則}(distributive law)を満たすものである：すべての$x, y, z \in X$に対し，
 \begin{align}
  x \wedge (y \vee z) = (x \wedge y) \vee (x \wedge z) \\
  x \vee (y \wedge z) = (x \vee y) \wedge (x \vee z) .
 \end{align}
 \end{dfn}
 
+結びと交わりを$+$と$\times$に置き換えれば，これは小学校で習った分配則と全く同じ形をしている\footnote{実際，圏論的な観点からいえば，結びと足し算は余積(co-product)，交わりと掛け算は積(product)という一般的な構造の例である．}．
+ハイティング代数とは，この分配則が成り立つ完備束である．
 
+ハイティングは直観論理(intuitionistic logic)で知られるオランダの数学者．
+実際，ハイティング代数は直観論理（排中律が成り立たない）のモデルとして提唱された．
+また後の章で見るように，位相空間とも密接に対応している．
+
+上で，束には2つの演算$\vee, \wedge$が備わっていることを見た．
+ハイティング代数では更に，\emph{含意}(implication)と呼ばれる次の演算$\Rightarrow$が定義できる．
+\[
+ z \preceq (x \Rightarrow y) \iff z \wedge x \preceq y
+\]
+これはどう読めばよいのだろう．
+まず左辺は，$x, y$という2つの元に「含意」演算を施して得られる元$x \Rightarrow y$が他のある元$z$よりも上にある，という事態を表している．
+そして右辺と合わせた条件式全体は，こうした事態が成立するのは，$z \wedge x$が$y$より下にあるとき，そのときのみであるということをいっている．
+このようにしてこの式は，「含意」演算を施して得られた元$x \Rightarrow y$が束上で占める位置を右辺によって定めることにより，演算を定義している．
+
+具体的には，$x \Rightarrow y$は$z \wedge x \preceq y$を満たすような$z$たちの上限になっている．
+$y$自身は$y \wedge x \preceq y$を満たすので，$y \preceq (x \Rightarrow y)$，つまり$x \Rightarrow y$は$y$の上にある．
+しかし同時に，$x \Rightarrow y$と$x$の交わりは$y$より下，つまり$(x \Rightarrow y) \wedge x = y \wedge x$でなければならない．
+$x \Rightarrow y$はそのような条件を満たす元の中で一番上にある元である．
+
+さて，ハイティング代数には$0$があるので，任意の$x \in X$について$x \Rightarrow 0$が存在する．
+これを\emph{擬補元}(pseudo-complement)と呼び，$\neg x$で表す．
+これは$x$をとって$x \Rightarrow 0$を返す演算
+\[
+ \neg:: x \mapsto \neg x = x \Rightarrow 0
+\]
+と考えることもできる．
+
+ハイティング代数で新たに加わった演算についても，様々な定理が成立する．
+例えば$\Rightarrow$については
+\begin{align}
+ x \Rightarrow x &= 1 \\
+((x \wedge (x \Rightarrow y)) \Rightarrow y) &= 1 \label{eqn:md}\\
+(x \vee y ) \Rightarrow z &= (x \Rightarrow z) \vee (y \Rightarrow z) \\
+x \Rightarrow (y \wedge z ) &= (x \Rightarrow y) \wedge (x \Rightarrow z) 
+\end{align}
+などが任意の$x, y, z \in X$について成立する．また$\neg$に関しては
+\begin{align}
+ x & \preceq \neg \neg x \\
+ \neg (x \vee y) &= \neg x \wedge \neg y
+\end{align}
+などが成立する．
+
+\begin{example}
+上述したように，ハイティング代数は直観主義論理のモデルを与える．
+それを見るには，$\vee, \wedge, \Rightarrow, \neg$をそれぞれ論理和（または），論理積（かつ），実質含意（ならば），否定（〜でない）に読み替え，各元を命題記号と考えれば良い．
+この観点からは，例えば(8)と(9)はそれぞれ同一律およびmodus ponensが常にトートロジーであること，(10)と(11)は「ならば」の分配則に対応していることがわかる．
+一方(13)はド・モルガン法則の一方を示す（もう片方はすぐ後で見るブール代数のみで成り立つ）．
+また(12)において，$x$の二重否定が$x$と一致しないのにも注意せよ．これは直観主義論理において二重否定が除去できないことに対応する．
+\end{example}
+
+
+\begin{example}
+概念の束$\langle C, \preceq \rangle$はハイティング代数だろうか．
+そうだとしたらその含意と擬補元はどう解釈できるだろうか．
+\end{example}
 
 
 \section{ブール代数}
