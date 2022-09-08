@@ -161,7 +161,7 @@ $C$を概念の集合，$a \preceq b$を「$a$は$b$の事例（インスタン�
 有限束にさらに公理を加えて，パワーアップさせてみよう．
 
 \begin{dfn}[ハイティング代数]
-（有限）\emph{ハイティング代数}とは，0と1を持つ束 $\langle X, \preceq \rangle$であり，かつ結びと交わりが以下の\emph{分配則}(distributive law)を満たすものである：すべての$x, y, z \in X$に対し，
+（有限）\emph{ハイティング代数}(Heyting algebra)とは，0と1を持つ束 $\langle X, \preceq \rangle$であり，かつ結びと交わりが以下の\emph{分配則}(distributive law)を満たすものである：すべての$x, y, z \in X$に対し，
 \begin{align}
  x \wedge (y \vee z) = (x \wedge y) \vee (x \wedge z) \\
  x \vee (y \wedge z) = (x \vee y) \wedge (x \vee z) .
@@ -217,7 +217,7 @@ x \Rightarrow (y \wedge z ) &= (x \Rightarrow y) \wedge (x \Rightarrow z)
 上述したように，ハイティング代数は直観主義論理のモデルを与える．
 それを見るには，$\vee, \wedge, \Rightarrow, \neg$をそれぞれ論理和（または），論理積（かつ），実質含意（ならば），否定（〜でない）に読み替え，各元を命題記号と考えれば良い．
 この観点からは，例えば(8)と(9)はそれぞれ同一律およびmodus ponensが常にトートロジーであること，(10)と(11)は「ならば」の分配則に対応していることがわかる．
-一方(13)はド・モルガン法則の一方を示す（もう片方はすぐ後で見るブール代数のみで成り立つ）．
+一方(13)はド・モルガン法の一方を示す（もう片方はすぐ後で見るブール代数のみで成り立つ）．
 また(12)において，$x$の二重否定が$x$と一致しないのにも注意せよ．これは直観主義論理において二重否定が除去できないことに対応する．
 \end{example}
 
@@ -232,7 +232,7 @@ x \Rightarrow (y \wedge z ) &= (x \Rightarrow y) \wedge (x \Rightarrow z)
 ここでの取り扱いはすべて有限束を前提としている．
 無限束の場合は，ハイティング代数であるためには完備性と\emph{無限分配束}を満たさなければならない．
 前節で触れたように，完備性とは任意の（無限でも良い）部分集合に上限と下限が存在すること．
-そして無限分配束とは，任意の（無限でも良い）部分集合$Y \subset X$について，$x \wedge (\bigvee_{y \in Y} y) = \bigvee_{y \in Y}(x \wedge y)$が成立する（交わりも同様）ことである．
+そして無限分配則とは，任意の（無限でも良い）部分集合$Y \subset X$について，$x \wedge (\bigvee_{y \in Y} y) = \bigvee_{y \in Y}(x \wedge y)$が成立する（交わりも同様）ことである．
 完備性のときと同様，無限束においては，分配則が満たされていても無限分配則は満たされないことがありうる．
 
 こうした無限・有限の区別を避けるために，教科書によっては，ハイティング代数を「任意の2元が含意を持つ完備束」と定義することもある．
@@ -241,7 +241,32 @@ x \Rightarrow (y \wedge z ) &= (x \Rightarrow y) \wedge (x \Rightarrow z)
 \end{develop}
 
 \section{ブール代数}
+最後に，ハイティング代数に更に公理をもう一つ付け加えて，\emph{ブール代数}(Boolean algebra)を作ろう．
 
+\begin{dfn}[ブール代数]
+ ブール代数とは，ハイティング代数$\langle X, \preceq \rangle$であって，各元$x \in X$の擬補元$\neg x$が次を満たすものである：
+\begin{equation}
+ x \vee \neg x = 1, \ \ \ x \wedge \neg x = 0
+\label{eqn:excluded_middle}
+\end{equation}
+ブール代数の擬補元$\neg x$は補元(complement)と呼ばれる．
+\end{dfn}
+ブール代数を特徴付けるこの公理(\ref{eqn:excluded_middle})は，\emph{排中律}(law of excluded middle)とよばれる．
+つまりブール代数とは排中律が成り立つハイティング代数である．
+このおかげで，ブール代数ではド・モルガン則のもう一方が成立する
+\begin{equation}
+ \neg (x \wedge y) = \neg x \vee \neg y.
+\end{equation}
+ 
+ブール代数は，命題論理の構造を表すものとしてよく知られている．
+ハイティングのときと同様，演算子は論理演算子として解釈できる．
+上の(\ref{eqn:excluded_middle})は，まさに命題論理における排中律と矛盾律そのものだ．
+
+
+\begin{exercise}
+ $\langle \mcalP(X), \subset \rangle$もまた，ブール代数としての構造を持つ．
+ $X = \{a,b,c\}$として，その束構造を図示してみよ．
+\end{exercise}
 
 
 \end{document}
