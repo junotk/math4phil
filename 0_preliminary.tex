@@ -1,0 +1,64 @@
+\documentclass[11pt,a4paper]{jsarticle}
+\input{m4p_preamble.tex}
+
+\begin{document}
+
+
+\title{0. 論理記法についての準備}
+\author{2022秋期「哲学者のための数学」授業資料（大塚淳）}
+\date{ver. \today}
+\maketitle
+
+このテキストで使用する論理記号についての最低限の説明を行う．
+
+\section{論理記号}
+\begin{itemize}
+ \item $\neg P$ 「$P$でない」
+ \item $P \vee Q$ 「$P$もしくは$Q$」
+ \item $P \wedge Q$ 「$P$かつ$Q$」
+ \item $P \Rightarrow Q$ 「$P$ならば$Q$」
+ \item $P \iff Q$ 「$P$のとき，その時に限り$Q$」
+\end{itemize}
+
+それぞれの真理値は以下の通り
+
+\begin{table}[h]
+\centering
+\begin{tabular}{cc|ccccc} \hline
+ $P$ & $Q$ & $\neg P$ & $P \vee Q$ & $P \wedge Q$ & $P \Rightarrow Q$ & $P \iff Q$ \\ \hline 
+ T  & T & F & T & T & T & T \\
+ T  & F & F & T & F & F & F \\
+ F  & T & T & T & F & T & F \\
+ F  & F & T & F & F & T & T \\ \hline
+\end{tabular} 
+\end{table}
+
+\begin{attn}
+「ならば」は，前件が偽になるとき常に真になることに気をつけよう．
+\end{attn}
+
+
+\section{全称記号と存在記号}
+\begin{itemize}
+ \item $a, b, \dots$：個体定項
+ \item $x, y, \dots$：個体変項
+ \item $P, R \dots$：述語
+ \item $\forall x (Rx)$ 「すべての$x$について述語$R$が成り立つ」
+ \item $\exists x (Rx)$ 「ある$x$について述語$R$が成り立つ」
+\end{itemize}
+
+また$\forall x \in \bbN$のように，$x$が属するドメインを明示して制約することもある（ここでの$\bbN$は自然数全体の集合を表す）．例えば$\forall x \in \bbN, \exists y \in \bbN (x \leq y)$は，「すべての自然数についてそれより大きい自然数がある」ということを述べている．
+
+
+\begin{exercise}
+ 次の命題の意味を明らかにし，その真偽を確定せよ．
+\begin{enumerate}
+ \item $\forall x \in \bbN, \exists y \in \bbN (y = 0 - x)$
+ \item $\exists e \in \bbN, \forall x \in \bbN (n \cdot e = n)$
+ \item $\forall x > 10 (\sqrt{x} > 3)$
+\end{enumerate}
+
+\end{exercise}
+
+
+\end{document}
