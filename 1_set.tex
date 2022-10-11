@@ -201,26 +201,30 @@ $\emptyset \in \mcalP(A)$であることを忘れないように．
 例えば自然数2と3を足すと別の自然数5になる．
 同じように集合にも演算があって，これら演算は2つの集合から別の集合を作り出す．
 
-\emph{合併}ないし\emph{和}(union)はその名の通り，2つの集合の要素をあわせた集合を作る．
+\emph{合併}ないし\emph{和}(union)はその名の通り，2つの集合の要素をあわせた集合を作る
 \[
- A \cup B = \{ x | x \in A \vee x \in B\}
+ A \cup B = \{ x | x \in A \vee x \in B\} .
 \]
-3個以上の複数の集合の合併をとるときは以下のように書くこともある
-\[
- \bigcup_i A_i = \{ x | x \in A_1 \vee x \in A_2 \cdots \}
-\]
-つまりたくさんある$A_i$のうち，どれか一つにでも入っていればその元は$\bigcup_i A_i$にも入っている．
+% 和は3個以上の集合についても重ねてとることができる．その際，順番は影響しない
+% \[
+%  (A \cup B) \cup C = A \cup (B \cup C) = \{ x | x \in A \vee x \in B \vee x \in C \}.
+% \]
 
-\emph{共通部分}ないし\emph{交わり}(intersection)は，2つの集合に共通する要素だけを持つ集合を作る．
+
+\emph{共通部分}ないし\emph{交わり}(intersection)は，2つの集合に共通する要素だけを持つ集合を作る
 \[
- A \cap B = \{ x | x \in A \wedge x \in B\}
+ A \cap B = \{ x | x \in A \wedge x \in B\}.
 \]
-同様にたくさんの集合の共通部分は以下のように書ける
-\[
- \bigcap_i A_i = \{ x | x \in A_1 \wedge x \in A_2 \cdots \}
-\]
-このとき，$\bigcap_i A_i$の元はすべての$A_i$に含まれていなければならない．
+% 同じように，3個以上の集合の共通部分を考えることもできる．
+% \[
+%  (A \cap B) \cap C = A \cap (B \cap C) = \{ x | x \in A \wedge x \in B \wedge x \in C \}.
+% \]
 $A \cap B = \emptyset$，つまり交わりがない場合，$A$と$B$は互いに\emph{素}(disjoint)であるという．
+
+\begin{attn}
+ 2つの集合の合併や共通部分は，常に別の集合を生み出すわけではない．$A \cup B = A$あるいは$A \cap B = A$になるのはどのようなときか，考えてみよう．
+\end{attn}
+
 
 $A$の元であるが$B$の元ではないもの全体の集合を$A$と$B$の\emph{差}(difference)といい，次のように表す
 \[
@@ -228,7 +232,8 @@ $A$の元であるが$B$の元ではないもの全体の集合を$A$と$B$の\e
 \]
 特に全体集合からの差を$\Omega \setminus B$を\emph{補集合}(complement)といい，$B^c$と書く．
 
-なお和と交わりは，足し算や掛け算同様，順序に依存しないし，また前後を入れ替えてもよい．
+足し算や掛け算同様，和と交わりを繰り返し適用することで，3つ以上の集合の合併や共通部分をとることができる．
+その結果は順序に依存しないし，また前後を入れ替えてもよい．
 和で示すと，
 \begin{align*}
  (A \cup B) \cup C & = A \cup (B \cup C) \\
@@ -241,9 +246,11 @@ $A$の元であるが$B$の元ではないもの全体の集合を$A$と$B$の\e
 \begin{align}
 (A \cup B) \cap C &= (A \cap C) \cup (B \cap C) \\
 A \cup (B \cap C) &= (A \cup B) \cap (A \cup C) \\
-A \cap (B \setminus C) &= (A \cap B) \setminus (A \cap C) \\
-(A \cap B) \setminus C &= (A \setminus C) \cap (B \setminus C) 
+(A \cup B)^c &= A^c \cap B^c \\
+(A \cap B)^c &= A^c \cup B^c
 \end{align}
+(1)，(2)を分配則，(3)，(4)をド・モルガン則とよぶ．
+$\cup$を$\vee$，$\cap$を$\wedge$，$^c$を$\neg$と読み替えると，それぞれが論理学の分配則，ド・モルガン則に対応することが見えやすいだろう．
 
 
 \begin{exercise}
@@ -254,6 +261,45 @@ A \cap (B \setminus C) &= (A \cap B) \setminus (A \cap C) \\
 \begin{exercise}
 等式(1)-(4)をヴェン図で表してみよう．
 \end{exercise}
+
+
+
+\section{集合族}
+集合がたくさん（例えば$n$個）あることを表したいときは，例えば添字を使って$A_1, A_2, \dots, A_n$と表せる．
+添字の範囲を無限にすることで，無限個の集合の集まりを表すこともできる．
+添字の集合を$I$として，各添字を$i \in I$としたとき，$(A_i)_{i\in I}$を\emph{集合族}(family of sets)とよぶ．
+これは$I = \{1, 2,  \dots\}$としたら，$A_1, A_2, \dots$という集合からなる集合である．
+$I$が有限のとき有限集合族，無限のときは無限集合族という．
+
+上で定義した合併と共通部分は，集合族についても適用できる．
+集合族$(A_i)_{i\in I}$に対し，その合併は
+\[
+ \bigcup_{i \in I} A_i = \{ x | \exists i \in I (x \in A_i) \}
+\]
+（つまりいずれかの$A_i$に入っているような元$x$をすべて集めた集合）であり，共通部分は
+\[
+ \bigcap_{i \in I} A_i = \{ x | \forall i \in I (x \in A_i) \}
+\]
+（つまりすべての$A_i$に入っているような元$x$を集めた集合）である．
+
+5節であげた集合演算の規則(1)-(4)はそのまま集合族にも拡張できる．
+分配束は
+\[
+ \left( \bigcup_{i \in I} A_i \right) \cap B = \left( \bigcup_{i \in I} A_i  \cap B \right) , \ \ \ 
+ \left( \bigcap_{i \in I} A_i \right) \cup B = \left( \bigcap_{i \in I} A_i  \cup B \right). 
+\]
+ド・モルガン則は
+\[
+ \left( \bigcup_{i \in I} A_i \right)^c = \bigcap_{i \in I} A_i^c, \ \ \ 
+ \left( \bigcap_{i \in I} A_i \right)^c = \bigcup_{i \in I} A_i^c
+\]
+となる．
+
+\begin{exercise}
+集合族の分配則とド・モルガン則をヴェン図で表してみよう．
+\end{exercise} 
+
+
 
 
 \section{順序対*}
