@@ -23,7 +23,7 @@
 こうした見方は，20世紀フランスの数学者集団ブルバキが，数学の様々な分野を集合論という土台の上に再構築することで，更に強められた．
 現在では，集合論的な見方に替わって圏論(category theory)的な見方を採用する数学者も増えてきたとはいえ，集合論に根ざした数学観はいぜん根強い．
 いずれにせよ，20世紀の哲学において主要な数学的インスピレーションの多くは集合論に拠っており，その意味でも集合論は現代哲学の基礎的素養となっている．
-無限の問題やそれが内包するパラドクスなど，集合論それ自体も哲学的考察の対象になってきた．
+また無限の問題やそれが内包するパラドクスなど，集合論それ自体も哲学的考察の対象になってきた．
 なので本講義でもまず，こうした現代数学の土台としての集合論の「さわり」を概観することにしよう．
 
 
@@ -153,7 +153,7 @@ A \subsetneq B \iff \forall x (x \in A \Rightarrow x \in B) \wedge \exists x (x 
 \begin{align*}
 \{ \text{Michael} \} &\subset \{ \text{Jackie, Tito, Jermaine, Marlon, Michael}\}  \\
 \{ \text{Michael} \} &\in \{ \text{Jackie, Tito, Jermaine, Marlon, Michael}\}  \\
-\{  \} &\in \{ \text{Jackie, Tito, Jermaine, Marlon, Michael}\}  
+\{ \text{Michael} \} &\subset \{ \text{Michael}\}  
 \end{align*}
 それぞれ真／偽／文法的に不正かどうか考えてみよう．
 \end{attn}
@@ -174,7 +174,7 @@ A \subsetneq B \iff \forall x (x \in A \Rightarrow x \in B) \wedge \exists x (x 
 \]
 であり，どんな集合$A$を持ってきても$A \subset \Omega$である．
 
-逆にいかる元も持たない集合を\emph{空集合}(empty set)といい，これを$\{\}$または$\emptyset$で表す．
+逆にいかなる元も持たない集合を\emph{空集合}(empty set)といい，これを$\{\}$または$\emptyset$で表す．
 いかなるものも空集合の元ではないので，
 \[
 \forall x (x \not\in \emptyset)
@@ -228,7 +228,7 @@ Quineはこれを逆に利用して，架空の事物について，その存在
 こうして「ペガサスがいない」というときに，我々はペガサスの存在を前提とする必要がなくなる，つまりペガサスに対応する個体を含む存在論にコミットする必要がなくなる．
 \end{example}
 
-
+p
 \section{集合の演算}
 \label{sec:setoperation}
 我々は小学校の算数で，数と数を足し合わせる（あるいは引く／掛ける）ことで別の数になるということを習った．
@@ -274,7 +274,7 @@ $A$の元であるが$B$の元ではないもの全体の集合を$A$と$B$の\e
  A \cup B & = B \cup A
 \end{align*}
 同様のことが$\cap$にも成り立つ．前者を結合性(associativity)，後者を可換性(commutativity)という．
-または和と交わりは結合律とか可換律を満たす，などといったりもする．
+または和と交わりは結合律と可換律を満たす，などといったりもする．
 
 また集合の演算について，以下が成り立つ．これらはすべて上の定義から証明できる．
 \begin{align}
@@ -316,7 +316,7 @@ $I$が有限のとき有限集合族，無限のときは無限集合族とい�
 （つまりすべての$A_i$に入っているような元$x$を集めた集合）である．
 
 5節であげた集合演算の規則(1)-(4)はそのまま集合族にも拡張できる．
-分配束は
+分配則は
 \[
  \left( \bigcup_{i \in I} A_i \right) \cap B = \left( \bigcup_{i \in I} A_i  \cap B \right) , \ \ \ 
  \left( \bigcap_{i \in I} A_i \right) \cup B = \left( \bigcap_{i \in I} A_i  \cup B \right). 
@@ -337,7 +337,7 @@ $I$が有限のとき有限集合族，無限のときは無限集合族とい�
 
 \section{順序対*}
 我々は上で，集合には順序が関係ないということを述べた．なので $\{\text{Alice, Bob}\}$も$\{\text{Bob, Alice}\}$も集合としては区別がつかない．
-よってあえて順序を区別したいときは，少し工夫をしなければならない．そこで$a, b \in A$に対し，\emph{順序対}(ordered pair)を次のように作る
+あえて順序を区別したいときは，少し工夫をしなければならない．そこで$a, b \in A$に対し，\emph{順序対}(ordered pair)を次のように作る
 \begin{align*}
  (a, b) &:= \{ \{a\}, \{a, b\} \} \\
  (b, a) &:= \{ \{b\}, \{a, b\} \} 
