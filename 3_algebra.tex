@@ -140,10 +140,6 @@ x \wedge y &= y \wedge x
 \end{exercise}
 
 
-\begin{exercise}
- $\langle \mcalP(X), \subset \rangle$で0,1に対応するのはなにか．またそこで上の(3)-(5)が成立することを確かめよ．
-\end{exercise}
-
 \begin{example}
 束は，抽象的概念の間の階層構造を表すためにしばしば用いられてきた．
 $C$を概念の集合，$a \preceq b$を「$a$は$b$の事例（インスタンス）である」という関係だとしよう．
@@ -193,6 +189,21 @@ $y$自身は$y \wedge x \preceq y$を満たすので，$y \preceq (x \Rightarrow
 しかし同時に，$x \Rightarrow y$と$x$の交わりは$y$より下，つまり$(x \Rightarrow y) \wedge x = y \wedge x$でなければならない．
 $x \Rightarrow y$はそのような条件を満たす元の中で一番上にある元である．
 
+\begin{example}
+含意の定義はややこしい．しかし論理学を知っていると少しそのややこしさは和らぐかもしれない．
+その名前から推察されるように，含意$x \Rightarrow y$は命題論理における実質含意を念頭においている．
+そしてその記号から推察されるように，結び$\vee$と交わり$\wedge$はそれぞれ「または」と「かつ」に対応している．
+では順序$\preceq$は何に対応しているかというと，帰結関係$\vdash$である．
+例えば$x \wedge y \preceq z$は，$x \wedge y \vdash z$，つまり$x$かつ$y$なら$x$が成り立つ，という論理的真理を表している（同様のことを$\vee$でも確かめよ）．
+これを念頭に上で定義した含意を論理式に翻訳すると，
+\[
+ z \vdash (x \Rightarrow y) \iff z \wedge x \vdash y
+\]
+となる．これは，$z$から「$x$ならば$y$」が帰結するならば，「$z$かつ$x$」から$y$が帰結するし，また逆もしかり，という\emph{演繹定理}(deduction theorem)を表している．
+こう考えると，上で述べたように$x \Rightarrow y$が$y$の上にあるのも納得できるし（$y$が成り立っていれば$x \Rightarrow y$は必ず成り立つ），$(x \Rightarrow y) \wedge x = y \wedge x$も真理表から確認できる．
+\end{example}
+
+
 さて，ハイティング代数には$0$があるので，任意の$x \in X$について$x \Rightarrow 0$が存在する．
 これを\emph{擬補元}(pseudo-complement)と呼び，$\neg x$で表す．
 これは$x$をとって$x \Rightarrow 0$を返す演算
@@ -223,6 +234,10 @@ x \Rightarrow (y \wedge z ) &= (x \Rightarrow y) \wedge (x \Rightarrow z)
 一方(13)はド・モルガン法の一方を示す（もう片方はすぐ後で見るブール代数のみで成り立つ）．
 また(12)において，$x$の二重否定が$x$と一致しないのにも注意せよ．これは直観主義論理において二重否定が除去できないことに対応する．
 \end{example}
+
+\begin{exercise}
+ハイティング代数を（直観主義）論理として解釈した際，$0$と$1$はそれぞれ何を表すだろうか．
+\end{exercise}
 
 
 \begin{example}
@@ -271,5 +286,29 @@ x \Rightarrow (y \wedge z ) &= (x \Rightarrow y) \wedge (x \Rightarrow z)
  $X = \{a,b,c\}$として，その束構造を図示してみよ．
 \end{exercise}
 
+
+\begin{exercise}
+\label{q:logic}
+2つの命題変項$P, Q$のみを持つ命題論理の体系に対応するブール代数を図示せよ（ヒント：ブール代数の一番真ん中の層の要素は$P, Q, \neg P, \neg Q$の4つであり，それらのペアの$\vee, \wedge$を上下に書き込んでいけば良い）．
+\end{exercise}
+
+\begin{exercise}
+\label{q:set}
+$A, B \subset X$としたとき， $\langle \{ A, B, A^c, B^c \}, \subset \rangle$はブール代数となる（これは問い5.1の部分になっている）．このブール代数を図示せよ．
+\end{exercise}
+
+\begin{develop}
+問題\ref{q:logic}と\ref{q:set}は，命題論理の理論と部分集合の体系が，ブール代数として見ると同じ構造を持っている，ということを（非常にシンプルなケースで）示している．
+しばしばいわれるように，命題論理というのは記号の間に成り立つ統語論的な関係であり，集合はその意味論を与える（例えば命題$P$に対して$P$が成り立つ可能世界の集合が対応する）．
+するとこの対応は，統語論（論理）と意味論（集合）との対応だといえる．
+では，こうした関係は一般に成り立つのだろうか．
+答えはYesであって，任意の命題論理の体系は，何らかの集合の体系と一対一に対応する，ということが証明できる．
+しかしそのためには，どのような集合の体系であれば命題論理との体系と対応するのか，ということを定める必要がある（というのも，明らかに任意の集合を命題論理の意味論を与えるものとして解釈することはできないからだ）．
+具体的には，そのためには位相構造（次章参照）を集合に入れてやる必要がある．
+その上で，命題論理の体系は，そうした特定の位相構造を持つ集合の系，具体的には\emph{ストーン空間}(stone space)と呼ばれる位相空間と同型であることが示せる．
+この命題論理の統語論と意味論を結びつける結果は，\emph{ストーンの表現定理}(Stone's representation theorem)と呼ばれている．
+これは非常に重要な定理であり，あとで扱う位相や圏論とも関連が深いのだが，この授業内では扱うことができない．
+関心がある向きは，Hans Halvorson, \textit{The Logic in Philosophy of Science}などを参照されたい（ただしちょっとむずかしい）．
+\end{develop}
 
 \end{document}
