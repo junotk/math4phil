@@ -318,10 +318,10 @@ $I$が有限のとき有限集合族，無限のときは無限集合族とい�
 5節であげた集合演算の規則(1)-(4)はそのまま集合族にも拡張できる．
 分配則は
 \[
- \left( \bigcup_{i \in I} A_i \right) \cap B = \left( \bigcup_{i \in I} A_i  \cap B \right) , \ \ \ 
- \left( \bigcap_{i \in I} A_i \right) \cup B = \left( \bigcap_{i \in I} A_i  \cup B \right). 
+ \left( \bigcup_{i \in I} A_i \right) \cap B = \bigcup_{i \in I} \left( A_i  \cap B \right) , \ \ \ 
+ \left( \bigcap_{i \in I} A_i \right) \cup B = \bigcap_{i \in I} \left( A_i  \cup B \right). 
 \]
-ド・モルガン則は
+ド・モルガン則
 \[
  \left( \bigcup_{i \in I} A_i \right)^c = \bigcap_{i \in I} A_i^c, \ \ \ 
  \left( \bigcap_{i \in I} A_i \right)^c = \bigcup_{i \in I} A_i^c
@@ -418,13 +418,13 @@ $A \times B$ は $B \times A$と等しいだろうか．
 実はどちらだと考えても，矛盾してしまう．まず，$R$は$R$に含まれない，と仮定してみよう．
 \begin{itemize}
  \item[(a)] 仮定：$R \not\in R$.
- \item[(b)] これは定義より，「$R$が自分自身を要素として含む」ということを意味する．つまり$R \in R$.
+ \item[(b)] するとこれは$R$の定義の条件を満たすので，$R$は$R$に含まれる，つまり$R \in R$.
  \item[(c)] これは仮定(a)と矛盾するので，背理法より(a)の反対，つまり$R \in R$が導かれる．
 \end{itemize}
 次に，$R$は$R$に含まれる，と仮定してみる．
 \begin{itemize}
  \item[(a')] 仮定：$R \in R$.
- \item[(b')] これは定義より，「$R$が自分自身を要素として含まない」ということを意味する．つまり$R \not\in R$.
+ \item[(b')] するとこれは$R$の定義の条件を満たさないので，$R$は$R$に含まれない，つまり$R \not\in R$.
  \item[(c')] これは仮定(a')と矛盾するので，背理法より(a')の反対，つまり$R \not\in R$が導かれる．
 \end{itemize}
 つまり，$R \in R$かつ$R \not\in R$ということが導かれてしまう．
