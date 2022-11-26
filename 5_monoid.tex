@@ -1,5 +1,8 @@
-\documentclass[11pt,a4paper]{jsarticle}
+\documentclass[11pt,a4paper,uplatex]{jsarticle}
 \input{m4p_preamble.tex}
+
+\usepackage{tikz}
+\usetikzlibrary{intersections, calc, arrows, positioning, arrows.meta}
 
 \begin{document}
 
@@ -60,7 +63,25 @@
 （負の部分はどうなるのか，と思うかもしれないが，これはあとで群を定義するときに見る．）
 \end{example}
 
+モノイドの演算が具体的にどうなっているのかは，それぞれの元のペアの演算結果を明示することによって表示できる．
+例えば，お馴染みの「九九の表」は，自然数の掛け算モノイドの演算を表で表したものだ：
+\[
+\begin{array}{c|cccccc}
+       & 1 & 2 & 3 & \dots & m & \dots \\ \hline
+     1 & 1 & 2 & 3 & \dots & n & \dots \\ 
+     2 & 2 & 4 & 6 & \dots & 2n & \dots \\ 
+     3 & 3 & 6 & 9 & \dots & 9n & \dots \\ 
+     \vdots & \vdots & \vdots & \vdots & & \vdots & \\
+     m & m & m2 & m3 & \cdots & mn & \cdots \\
+     \vdots & \vdots & \vdots & \vdots & & \vdots & \\
+\end{array}
+\]
+九九表の各マスは，モノイド$(\bbN, \times, 1)$の1から9までの各元（一番左の列）が，それぞれ1から9までの元（一番上の行）をどの自然数に対応させるかを表している．
+すべてのモノイド演算は，原理的にこうした表（「積表」という）によって表すことができる．
+つまり我々は小学生のころからモノイドを知っていたのである！
 
+
+\begin{develop}
 我々は今まで，（非負）実数$\bbR$を様々な数学的構造として見てきた．
 集合として見ると（2章），それは$\aleph_1$の濃度を持つ不可算無限集合なのだった．
 3章ではその要素の間に大小関係$\leq, \geq$を入れた全順序集合として見た．
@@ -69,7 +90,6 @@
 このように，同じ「実数の集合」でも様々な顔を持ち，それらの顔はすでに見たような公理によって構成される．
 我々が普段何気なく使う実数は，実はこうした顔全てをあわせもつ存在なのである．
 
-\begin{develop}
  もちろん，実数の特徴づけはこれで終わりなわけではない．
  まず引き算と割り算の導入がまだであるし（これは以下で群のところで見る），またここで導入した足し算と掛け算が互いにどう関係し合うのか（例えば分配法則$a(b+c) = ab + ac$が満たされるか）などは，別個の公理によって定めなければならない．
  このためにはさらに\emph{環}(ring)，\emph{体}(field)といった概念を導入しなければならいのだが，本授業ではそこまでは扱わない．
@@ -100,18 +120,43 @@ $M$を$X$への作用とみなすということは，それぞれのモノイ�
 \begin{example}
  3つの状態$X := \{H(appy), C(alm), S(ad)\}$をとり得るロボットを考える．
  このロボットに対する可能な入力として$M := \{\text{ほめる}, \text{しかる}, \text{放置}\}$の3つの選択肢があるとする．
- ロボットの状態は，その時の状態と入力に応じて，次のように変わる：
-\begin{center}
-\begin{tabular}{ccc}
-$(H, \text{ほめる}) \mapsto C$, & $(H, \text{しかる}) \mapsto S$, & $(H, \text{放置}) \mapsto H$,\\
-$(C, \text{ほめる}) \mapsto H$, & $(C, \text{しかる}) \mapsto S$, & $(C, \text{放置}) \mapsto C$,\\
-$(S, \text{ほめる}) \mapsto C$, & $(S, \text{しかる}) \mapsto S$, & $(S, \text{放置}) \mapsto S$.\\
-\end{tabular} 
-\end{center}
-このとき，入力$M$はロボットの状態$X$へのモノイド作用を与える．
-この演算は，図XXのような\emph{状態遷移図}(state transition diagram)によっても表すことができる．
+ ロボットの状態は，その時の状態と入力に応じて以下のように変化するとする：
+ \[
+\begin{array}{c|ccc}
+       & S & C & H \\ \hline
+     \text{ほめる}　& C & H & H \\
+     \text{しかる}　& S & S & S \\ 
+     \text{放置}　  & S & C & H\\
+\end{array}
+\]
+この表の各マスは，ロボットが上端の行で示される各状態にあるとき，左端列の入力を与えるとどう変化するかを表している（例えば左上は，状態$S$(Sad)のときに「ほめる」と状態が$C$(Calm)になることを表す）．
+これは以前見た積表と同様にモノイド演算を表しており，入力$M$はロボットの状態$X$へのモノイド作用を与える（単位元は「放置」）．
+
+ 
+ちなみに同様の演算は，図\ref{robot}のような\emph{状態遷移図}(state transition diagram)によっても表すことができる．
 状態集合を持ち，その間の状態遷移関係が定まっているような機械を，\emph{オートマトン}(automaton)という．
 オートマトンは，状態集合へのモノイド作用として考えることができる．
+
+\begin{figure}
+    \begin{center}
+        \begin{tikzpicture}[node/.style={draw, circle, inner sep=6pt}]
+          \node[node] (s) {$S$};
+          \node[node, right = 2cm of s] (c) {$C$};
+          \node[node, right = 2cm of c] (h) {$H$};
+    
+          \path[->, >=stealth]
+            (s) edge[loop above, in=60, out=120, looseness=6] node{しかる, 放置} (s)
+            (s) edge[above, bend left = 20] node{ほめる} (c)
+            (c) edge[loop above, in=60, out=120, looseness=6] node{放置} (c)
+            (c) edge[below, bend left = 20] node{しかる} (s)
+            (c) edge[above, bend left = 20] node{ほめる} (h)
+            (h) edge[loop above, in=60, out=120, looseness=6] node{ほめる, 放置} (h)
+            (h) edge[below, bend left = 40] node{しかる} (s); 
+        \end{tikzpicture}
+      \end{center}
+      \caption{3状態ロボットの状態遷移図．}
+      \label{robot}
+\end{figure}
 \end{example}
 
 このように考えると，モノイド作用の射程は極めて広く，時間発展する系一般を記述することができる．
@@ -243,8 +288,7 @@ $(S, \text{ほめる}) \mapsto C$, & $(S, \text{しかる}) \mapsto S$, & $(S, \
     機能主義は，心的状態の物理的状態への付随説（2章事例7.1）と密接に関連する．
     ある（心的）状態の集合$S_M$が（物的）状態の集合$S_P$に付随(supervene)するとは，2つの心的状態$s, s' \in S_M$が異なるなら対応する物理状態$f(s), f(s') \in S_P$も異なる，つまる$f$が単射であるということであった．
     しかしこれは時間スライスごとの静的な対応を見ているだけで，本章で見たような時間発展を考慮していない．では通時的な心的・物的モノイド$M, P$を考えた場合，共時的に付随説が成立する条件はなんだろうか？
-
-    （この問題は様々な粒度で考えることができるが，しっかりと扱うためには，モノイド作用についての正式な定式化が必要になる．）
+%    （この問題は様々な粒度で考えることができるが，しっかりと扱うためには，モノイド作用についての正式な定式化が必要になる．）
 \end{exercise}
 
 
@@ -284,10 +328,23 @@ $(S, \text{ほめる}) \mapsto C$, & $(S, \text{しかる}) \mapsto S$, & $(S, \
 \begin{exercise}
     掛け算の場合の逆元はなんだろうか．$(\bbZ, \times, 1)$は二項演算$\times$について群となるだろうか．有理数$\bbQ$や実数$\bbR$だったらどうだろうか．
 \end{exercise}
-
  
 
-しばしば，群は対象の\emph{対称性}(symmetry)を示すものだといわれる．これはどういうことだろうか．
-下のような星型図形を考えよう．1
+\section{群と対称性(symmetry)}
+
+数学において，\emph{対称性}(symmetry)とは，対象をそのままに保つような変換群である．
+%しばしば，群はモノの\emph{対称性}(symmetry)を示すものだといわれる．これはどういうことだろうか．
+これはどのようなことか，下のような正三角形で考えてみよう．
+
+この三角形の持つ対称性，つまりこの幾何学的対象を「そのままに保つ」ような変換とはなんだろうか．
+例えばいまあなたに目を閉じてもらっている間に，私が三角形の中心を軸に$120\times n$度回転させても，目を開けたあなたは以前との違いに何も気が付かないだろう．
+その意味で，$120\times n$度回転は正三角形をそのままに保つ変換＝対称性である．
+それ以外にも，それぞれの頂点から対辺の中間地点へとおろした軸に沿って線対称をとっても，図形は変わらない．
+よってこうした鏡映反転も対称性である．
+今，120度，240度度回転をそれぞれ$c_1, c_2$と表し，3つの点を通る軸に沿った鏡映反転を$\sigma_1, \sigma_2, \sigma_3$と表す．
+これに「何もしない」変換（これはもちろん三角形をそのままに保つ）$i$を加えると，$\{i, c_1, c_2, \sigma_1, \sigma_2, \sigma_3\}$は群をなす．
+実際，この群の演算は表XXのように表すことができる．
+
+
 
 \end{document}
