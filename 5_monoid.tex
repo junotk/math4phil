@@ -1,4 +1,4 @@
-\documentclass[11pt,a4paper]{jsarticle}
+\documentclass[11pt,a4paper, uplatex]{jsarticle}
 \input{m4p_preamble.tex}
 
 
@@ -225,7 +225,10 @@
 
 \begin{dfn}[準同型]
     2つのモノイド$(M, \circ, i), (M', \circ', i')$が与えられているとき，写像$f:M \to M'$で，任意の$m,n \in M$について次を満たすものを，$M$と$M'$の間の\emph{準同型写像}(homomorphism)という：
-    \[f(m \circ n) = f(m) \circ' f(n)\]
+    \begin{enumerate}
+        \item モノイド演算を保存する: $\ \ \ f(m \circ n) = f(m) \circ' f(n)$
+        \item 単位元を単位元に送る: $\ \ \ f(i) = i'$
+    \end{enumerate}
 \end{dfn}
 
 位相空間の連続写像のところと同様，ここでの$f$はモノイドのもととなる集合$M,M'$の間の写像である．
@@ -236,9 +239,6 @@
 よってこの式全体は，$M$の演算$\circ$の結果を$f$で飛ばしたものと，先に$f$で飛ばしてから$M'$の演算$\circ'$を適用した結果が同じである，ということを表している．
 モノイドの構造はその演算のあり方によって決定されるのだから，このように作られた準同型写像はモノイドの構造をしっかり保っているといえる．
 
-\begin{exercise}
-    $f:M \to M'$がモノイド準同型のとき，$f(i) = i'$，つまり$M$の単位元は$f$によって$M'$の単位元に移されることを示せ．
-\end{exercise}
 
 ゼロ以上の実数$\bbR^+ := \{x \in \bbR | x \geq 0 \}$上の足し算と掛け算のモノイドの間の準同型写像はどのようなものがあるだろうか．
 つまり$M := (\bbR^+, +, 0), M' := (\bbR^+, \times, 1)$としたときの準同型$f:M \to M'$を見つけたい．
@@ -286,9 +286,9 @@
 また上に述べたように，$f:M \to N$が同型写像（つまり$M \sim N$）なら$f^{-1}:N \to M$が同型写像なので$N \sim M$．
 そして$f:M \to N, g:N \to O$がそれぞれ同型写像なら，合成$gf:M \to O$も同型写像になる（気になる人は調べてみよう），つまり$M \sim N, N \sim O$なら$M \sim O$．
 
-\begin{exercise}
-モノイド準同型は半順序であることを示せ（その際，モノイドの同一性はモノイド同型で考える．つまり反対称性は$f:M \to N$かつ$g:N \to M$がそれぞれ準同型であれば，$M \sim N$ということを示せばよい）．
-\end{exercise}
+% \begin{exercise}
+% モノイド準同型は半順序であることを示せ（その際，モノイドの同一性はモノイド同型で考える．つまり反対称性は$f:M \to N$かつ$g:N \to M$がそれぞれ準同型であれば，$M \sim N$ということを示せばよい）．
+% \end{exercise}
 
 
 \begin{example}
