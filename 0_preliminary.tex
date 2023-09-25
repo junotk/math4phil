@@ -72,7 +72,7 @@
 
 
 
-\section{論理記号}
+\section{命題論理}
 本授業では，数学的記号に加え，必要最小限の論理記号を用いる．
 これらはどれも論理学を少しかじった人にはおなじみだと思うが，ここで確認しておこう．
 
@@ -105,14 +105,26 @@
 \begin{itemize}
     \item 分配則
     \[ P \wedge ( Q \vee R ) \iff (P \wedge Q) \vee (P \wedge R) \]
+    \[ P \vee ( Q \wedge R ) \iff (P \vee Q) \wedge (P \vee R) \]
     \item ド・モルガン
+    \[ \neg (P \vee Q) \iff \neg P \wedge \neg Q \]
+    \[ \neg (P \wedge Q) \iff \neg P \vee \neg Q \]
     \item 対偶
+    \[ P \Rightarrow Q \iff \neg Q \Rightarrow \neg P \]
 \end{itemize}
 
+これらの論理式は常に成り立つ\emph{トートロジー}である．
+実際，上のような真理値表を作れば，左辺の真理値と右辺の真理値の並びが全く等しくなることが確認できる．
+両者の真理値が等しいので，「$\iff$」の左辺と右辺はいつでも交換できる．
+これを用いて，式変形をしていくというのが常套手段である（例えば「$P$ならば$Q$」を示したいときに，その対偶の「$\neg Q$ならば$\neg P$を示す，など）．
 
 
-% todo ド・モルガン則などの説明
-
+\begin{exercise} 
+ \begin{enumerate}
+     \item 「対偶」の左辺と右辺の真理値を調べ（上の真理値表を横に拡張して，「$\neg Q \Rightarrow \neg P$」という列を作り，それぞれの行での真理値を計算する），両者が一致することを確認せよ
+     \item 「分配束」の一つ目の左辺と右辺の真理値を調べ，両者が一致することを確認せよ．この場合，$P, Q, R$の三つの要素命題があるので，$2^3=8$行の真理値表が必要になる．
+ \end{enumerate}
+\end{exercise}
 
 \section{述語記号と量化子}
 \begin{itemize}
