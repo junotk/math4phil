@@ -85,7 +85,7 @@
 このことを，「集合は述語の外延的意味(extensional meaning)を与える」ともいう．
 なおここでいう述語には，「大学生」や「猫」などの一般名詞も含まれることに注意せよ．
 哲学において，これら一般名詞を含めた述語は，しばしば集合と同一視される．
-（では固有名詞は何に対応するだろうか，考えてみよ．）
+（では個体定項は何に対応するだろうか，考えてみよ．）
 \end{example}
 
 
@@ -96,6 +96,7 @@
 \[
  a \in A.
 \]
+また逆にそれが$A$の要素ではないということを$a \not \in A$と書く．
 なので例えば
 \begin{align*}
 \text{Michael} &\in \{ \text{Jackie, Tito, Jermaine, Marlon, Michael}\}  \\
@@ -153,7 +154,7 @@ A \subsetneq B \iff \forall x (x \in A \Rightarrow x \in B) \wedge \exists x (x 
 \begin{align*}
 \{ \text{Michael} \} &\subset \{ \text{Jackie, Tito, Jermaine, Marlon, Michael}\}  \\
 \{ \text{Michael} \} &\in \{ \text{Jackie, Tito, Jermaine, Marlon, Michael}\}  \\
-\{ \text{Michael} \} &\subset \{ \text{Michael}\}  
+\{ \text{Michael} \} &\subset \{ \text{Michael}\}   
 \end{align*}
 それぞれ真／偽／文法的に不正かどうか考えてみよう．
 \end{attn}
@@ -228,7 +229,7 @@ Quineはこれを逆に利用して，架空の事物について，その存在
 こうして「ペガサスがいない」というときに，我々はペガサスの存在を前提とする必要がなくなる，つまりペガサスに対応する個体を含む存在論にコミットする必要がなくなる．
 \end{example}
 
-p
+
 \section{集合の演算}
 \label{sec:setoperation}
 我々は小学校の算数で，数と数を足し合わせる（あるいは引く／掛ける）ことで別の数になるということを習った．
@@ -285,6 +286,15 @@ A \cup (B \cap C) &= (A \cup B) \cap (A \cup C) \\
 \end{align}
 (1)，(2)を分配則，(3)，(4)をド・モルガン則とよぶ．
 $\cup$を$\vee$，$\cap$を$\wedge$，$^c$を$\neg$と読み替えると，それぞれが論理学の分配則，ド・モルガン則に対応することが見えやすいだろう．（実際上の定義からわかるように，$\cup, \cap, ^c$は述語に対する論理的操作$\vee, \wedge, \neg$の外延における対応物である．）
+
+\begin{attn}
+以上から，集合演算が論理結合子の類似性が見て取れたかもしれない．
+実際$\cup$は$\vee$に，$\cap$は$\wedge$に，そして補集合演算子$^C$は否定$\neg$に対応している．
+集合演算が集合から集合を「作り出す」操作であったように，論理結合子も命題から命題を「作り出す」．
+例えば$\vee$は単純命題$A$と$B$から複合命題$A\vee B$を作るし，否定$\neg$は$A$からその否定$\neg A$を作る．
+分配則とド・モルガン則が集合・論理の双方で成立することは，両者での演算が互いに対応していることを示している．
+\end{attn}
+
 
 \begin{exercise}
 差は結合律と可換律を満たさないことを確認せよ．
