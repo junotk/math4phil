@@ -94,7 +94,7 @@
 \begin{itembox}[l]{半順序}
 前順序$\preceq$がさらに以下を満たす時，\emph{半順序}(partial order)といわれる．
 \begin{itemize}
- \item[O3] 反対称性：$\forall x, y, z \in X, \ x \preceq y$かつ$y \preceq x$ならば$x = y$
+ \item[O3] 反対称性：$\forall x, y \in X, \ x \preceq y$かつ$y \preceq x$ならば$x = y$
 \end{itemize}
 また$\preceq$が$X$上の半順序であるとき，組$\langle X, \preceq \rangle$を\emph{半順序集合}(partially ordered set または縮めて poset)という．
 \end{itembox}
@@ -107,7 +107,7 @@
 \begin{enumerate}
  \item 関係「$y$は$x$と同等かそれ以上に完全である」は半順序だろうか．
  \item 事例\ref{supervenience}で見た付随性は半順序だろうか．
- \item それ以外で身近な半順序の例を挙げよ．
+ \item 数学以外の半順序の例をあげよ．
 \end{enumerate}
 \end{exercise}
 
@@ -139,21 +139,37 @@
 
 
 \subsection{全順序}
+ポルピュリオスの樹に見られるように，一般に半順序はすべてが一列に並んでいるとは限らない．
+よって任意のペア$x, y$について，$x \preceq y $でも$y \preceq x$ない，つまり両者は比較不可能，ということがありえる．
+これに対し，すべてが一列に並んでいて互いに比較可能なものを，\emph{全順序}(total order)という．
 
 
-ところでなぜ「半」順序なのか？
-それは，一般に考える順序には少し及ばないからだ．
-一般的に順序というと，すべてが一列に並んでいるイメージがある．
-一列に並んでいるとは，任意の$x, y \in X$について，$x \preceq y$か$y \preceq x$の少なくとも一方が成り立つということだ（両方成立してても良い．その場合は反対称性より$x=y$となる）．
-これを\emph{完備性}(completeness)という．
-半順序は完備性を要求しないので，「枝分かれした」順序を許す．
-完備性を満たす半順序は\emph{全順序}(total order)という\footnote{ちなみに完全性は反射性を含意する（「任意の$x,y \in X$」の両方が$x$の場合）ので，全順序の定義は推移性，反対称性と完備性で事足りる．}．
+\begin{itembox}[l]{全順序}
+半順序$\preceq$がさらに以下を満たす時，\emph{全順序}(total order)といわれる．
+\begin{itemize}
+ \item[O4] 完備性：$\forall x, y \in X, \ x \preceq y$または$y \preceq x$. 
+\end{itemize}
+\end{itembox}
 %
-上の例では，$\langle \bbN, \leq \rangle$は全順序だが，$X$が2つ以上の元を持つときの$\langle \mcalP(X), \subset \rangle$はそうではない．
+簡単な例としては，$\langle \bbN, \leq \rangle$は全順序である．
+一方，$X$が2つ以上の元を持つときの$\langle \mcalP(X), \subset \rangle$はそうではない．
 
 \begin{exercise}
- 全順序集合と，全順序でない半順序集合の例を挙げよ．
+\begin{enumerate}
+ \item 数学以外の全順序集合の例をあげよ．
+ \item 事例\ref{supervenience}の付随性は全順序だろうか．
+\end{enumerate}
 \end{exercise}
+
+\begin{example}[測定理論]
+我々は日々，色々なものを数字で図る（身長，値段，IQ，幸福度・・・）．
+しかしなぜそれが可能なのだろうか？
+測定理論(Theory of measurement)は，事物の集合が数字で図られるために，その集合が満たしていなければならない条件を探る学問分野である．\footnote{e.g. Krantz, D. H., Suppes, P., Luce, R. D. \& Tversky, A. (1971) \textit{Foundations of Measurement (Additive and Polynomial Representations)}. vol. 1, Academic Press, Inc.}
+その中で最も基本的な性質が，全順序性である．
+しかし，図りたい事物や出来事が全順序性を満たしていないことはしばしばある．
+そのような事例を考えてみよう．
+\end{example}
+
 
 ここでいくつかの定義を確認しておこう．
 $\langle X, \preceq \rangle$を半順序集合，$A \subset X$としたとき：．
