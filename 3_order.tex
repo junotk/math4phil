@@ -1,4 +1,4 @@
-\documentclass[11pt,a4paper]{jsarticle}
+\documentclass[dvipdfmx,11pt,a4paper]{jsarticle}
 \input{m4p_preamble.tex}
 \begin{document}
 
@@ -60,6 +60,7 @@
  \item 冪集合と包含関係の組$\langle \mcalP(X), \subset \rangle$が前順序集合であることを示せ． 
  \item 「=」を等号とする．$\langle \bbN, = \rangle$は前順序だろうか．
  \item 0章で触れた関係「$y$は$x$と同等かそれ以上に完全である」は，前順序だろうか．
+ \item 関係「$y$は$x$の子孫である」は前順序だろうか．
  \item 前順序であるような関係を数学以外から探し，それが前順序であることを示せ．
 \end{enumerate}
 \end{exercise}
@@ -69,7 +70,7 @@
 このように，一般的な順序の直感にはそぐわなくても，順序の公理を満たすようなものは多数ありえる．
 
 
-\begin{example}[Supervenience]
+\begin{example}[Supervenience] \label{supervenience}
  $X$を個物の集合，$Y$を性質の集合とし，$f_1, f_2:X \to Y$を個物に性質を割り当てる2つの関数とする（これを「性質関数」と呼ぼう）．
  例えば$X$を（ある時点の）人の集合としたら，$f_1$はその人に心的状態を割り当て，$f_2$は身体状態を割り当てる，と考えても良いかもしれない．
 % % 例えば$X$を（各時点の）人の集合，$Y, Z$をそれぞれその心的／物理的状態と考えれば，$f_Y$はその人の心的状態を表す．
@@ -86,19 +87,58 @@
    
 
 \subsection{半順序}
-上で定義した前順序に，もう一つ次の公理を導入してみよう：
+前順序はサイクルを含みうる．
+つまり異なる$x \neq y$に対し，$x \preceq y$かつ$y \preceq x$の双方が成り立つ，ということが可能である．
+しかし次で定義する半順序では，こうしたサイクルは除外される．
+
+\begin{itembox}[l]{半順序}
+前順序$\preceq$がさらに以下を満たす時，\emph{半順序}(partial order)といわれる．
 \begin{itemize}
  \item[O3] 反対称性：$\forall x, y, z \in X, \ x \preceq y$かつ$y \preceq x$ならば$x = y$
 \end{itemize}
-つまり「タイ」であるようなものは全部同一である，という取り決めである．
-O1$\sim$O3を満たす関係は，\emph{半順序}(partial order)といわれる．
 また$\preceq$が$X$上の半順序であるとき，組$\langle X, \preceq \rangle$を\emph{半順序集合}(partially ordered set または縮めて poset)という．
+\end{itembox}
+
+実は上で前順序の例として見た$\langle \bbN, \leq \rangle$や$\langle \mcalP(X), \subset \rangle$などは，半順序でもある．
+実際，自然数$x, y \in \bbN$に対し$x \leq y$かつ$y \leq x$なら$x=y$であるし，
+集合$X$の部分集合$A, B$に対し$A \subset B$かつ$B \subset A$なら$A=B$である．
 
 \begin{exercise}
- 身近な半順序の例を挙げよ．
-% e.g. preference
+\begin{enumerate}
+ \item 関係「$y$は$x$と同等かそれ以上に完全である」は半順序だろうか．
+ \item 事例\ref{supervenience}で見た付随性は半順序だろうか．
+ \item それ以外で身近な半順序の例を挙げよ．
+\end{enumerate}
 \end{exercise}
 
+\begin{example}
+形式存在論で重要な関係に「〜は...である」というis-a relationshipがある．
+たとえば「人間は哺乳類である」「哺乳類は動物である」を2項述語「$-$」を用い，人間$-$哺乳類，哺乳類$-$動物，などと書くことができる．
+この「である関係」は半順序である（確認せよ）．
+こうした階層的な存在構造は，古くから\emph{ポルピュリオスの樹}(Porphyrian tree)として示されてきた（図\ref{fig:porphyrian}）．
+\end{example}
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+  \node (A) at (1,4) {物体};
+  \node (B) at (2,3) {動物};
+  \node (B2)at (0,3) {植物};
+  \node (C) at (3,2) {哺乳類};
+  \node (C2)at (1,2) {爬虫類};
+  \node (D) at (4,1) {人間};
+  \node (D2)at (2,1) {クジラ};
+  \node (E) at (5,0) {ソクラテス};
+  \draw(A)--(B)--(C)--(D)--(E);
+ \draw(A)--(B2);
+ \draw(B)--(C2);
+ \draw(C)--(D2);
+\end{tikzpicture}
+\caption{ポルピュリオスの樹}
+\label{fig:porphyrian} 
+\end{figure}
+
+
+\subsection{全順序}
 
 
 ところでなぜ「半」順序なのか？
