@@ -15,15 +15,15 @@
 では「〜は...を愛する」や「〜は...で割り切れる」といったような二項述語ないし\emph{関係}(relation)は何に対応するだろうか？
 これらはデカルト積の部分集合に対応する．
 
-これを例で考えるため，$A := \{\text{Alice, Bob, Chris}\}$を人の集合，$B := \{ \text{清水寺, 金閣寺, 銀閣寺}\}$を寺社仏閣の集合として，誰がどこを訪れたことがあるかを示す表を作ってみよう．
+これを例で考えるため，$A := \{\text{Alice, Bob, Chris, Dave}\}$を人の集合，$B := \{ \text{清水寺, 金閣寺, 銀閣寺}\}$を寺社仏閣の集合として，誰がどこを訪れたことがあるかを示す表を作ってみよう．
 
 \begin{table}[h]
 \centering
-\begin{tabular}{cccc} \hline
-  & Alice & Bob & Chris \\ \hline 
-清水寺 & \checkmark & & \checkmark \\
-金閣寺 & & \checkmark &  \\
-銀閣寺 & \checkmark  & \checkmark & \\ \hline
+\begin{tabular}{ccccc} \hline
+  & Alice & Bob & Chris & Dave \\ \hline 
+清水寺 & \checkmark & & \checkmark & \\
+金閣寺 & & \checkmark &  & \\
+銀閣寺 & \checkmark  & \checkmark & & \\ \hline
 \end{tabular} 
 \end{table}
 この表はそのまま，$A \times B$のデカルト積を表しており，チェックマークがついているところはその部分集合を構成していると考えることができる．
@@ -254,6 +254,42 @@ $f$が要素$x \in X$に対して$y \in Y$を対応させることを，$f(x)=y$
 
 実際これは，$X, Y$を実数の集合$\bbR$としたときの関数$f:X \to Y$になっている．
 グラフは各$x \in X$に対して唯一の$f(x) \in Y$を割り当てているし，また上の曲線は$\bbR \times \bbR$の部分集合になっていることを確認しよう．
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[scale=1]
+\draw (0,0) ellipse (1 and 1.5);
+\node (A) at (0,1.2) {A}; 
+\node (B) at (0,0.4) {B}; 
+\node (C) at (0,-0.4) {C}; 
+\node (D) at (0,-1.2) {D}; 
+
+\draw (-3,0) ellipse (1 and 1.5);
+\node (1) at (-3,1) {清}; 
+\node (2) at (-3,0) {金}; 
+\node (3) at (-3,-1) {銀}; 
+
+\draw[->] (A) -- (1);
+\draw[->] (A) -- (3);
+\draw[->] (B) -- (2);
+\draw[->] (B) -- (3);
+\draw[->] (C) -- (1);
+% 単射の図
+
+\draw (3,0) ellipse (1 and 1.5);
+\node (J) at (3,1) {JP}; 
+\node (U) at (3,0) {US}; 
+\node (F) at (3,-1) {FR}; 
+
+\draw[->] (A) -- (U);
+\draw[->] (B) -- (J);
+\draw[->] (C) -- (F);
+\draw[->] (D) -- (U);
+\end{tikzpicture} 
+\caption{関係と関数：左側は1節の表で示した「〜は…に行ったことがある」という二項関係，右側は上表の「〜は…国で生まれた」という関数を図示している．関数においては，ドメインの全ての要素A, B, C, Dに対して，一つだけ行き先が定まっている．}
+\end{figure}
+
+
 
 \begin{example}[意味論]
 関数は哲学でも非常に頻繁に登場する．
