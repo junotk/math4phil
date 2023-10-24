@@ -431,6 +431,60 @@ $f$の後に$g$を適用するのに，$g \circ f$と書くのは一見逆な気
 例えば上の出生地表では，「$f(x)=\text{アメリカ}$」となる人はAliceとDaveの二人がいるし，$y=x^3-2x$の場合$x=0, \pm \sqrt{2}$のとき$f(x)=0$となる．
 よって一般に$f^{-1}$は$Y \to X$への関数には\emph{ならない}（あくまで$\mcalP(X)$への関数である）ことに注意．
 
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[
+    dot/.style={draw, circle, fill=black, inner sep=1pt} % 全てのノードに適用されるスタイル
+    ]
+\begin{scope}
+\draw (0,0) ellipse (0.6 and 1.2);
+\node at (0,1.5) {$X$}; 
+\draw (0,0.6) ellipse (0.3 and .5) [fill=gray!30];
+\node at (0,.6) {$A$}; 
+\node[dot] (1) at (0,.9) {}; 
+\node[dot] (2) at (0,.3) {}; 
+\node[dot] (3) at (0,-.3) {}; 
+\node[dot] (4) at (0,-.9) {}; 
+
+\draw (2,0) ellipse (0.6 and 1.2);
+\node at (2,1.5) {$Y$}; 
+\draw (2,0.3) ellipse (0.3 and .5) [fill=gray!30];
+\node at (2.7,0.3) {$f(A)$}; 
+\node[dot] (a) at (2,.6) {}; 
+\node[dot] (b) at (2,0) {}; 
+\node[dot] (c) at (2,-.6) {};  
+\draw[->] (1) -- (b);
+\draw[->] (2) -- (a);
+\draw[->] (3) -- (c);
+\draw[->] (4) -- (b);
+\end{scope} 
+\begin{scope}[xshift=6cm]
+\draw (0,0) ellipse (0.6 and 1.2);
+\node at (0,1.5) {$X$}; 
+\draw (0,1.1) to[out=190,in=90] (-.3,0) to[out=270,in=180] (0,-1.1) to[out=0,in=290] (-.15,-.3) to[out=70,in=230] (.1,.1) to[out=40,in=350] (0,1.1) [fill=gray!30];
+\node[fill=white, fill opacity=0.7, text opacity=1] at (-1,0) {$f^{-1}(B)$}; 
+\node[dot] (1) at (0,.9) {}; 
+\node[dot] (2) at (0,.3) {}; 
+\node[dot] (3) at (0,-.3) {}; 
+\node[dot] (4) at (0,-.9) {}; 
+
+\draw (2,0) ellipse (0.6 and 1.2);
+\node at (2,1.5) {$Y$}; 
+\draw (2,0.3) ellipse (0.3 and .5) [fill=gray!30];
+\node at (2,0.3) {$B$}; 
+\node[dot] (a) at (2,.6) {}; 
+\node[dot] (b) at (2,0) {}; 
+\node[dot] (c) at (2,-.6) {};  
+\draw[->] (1) -- (b);
+\draw[->] (2) -- (a);
+\draw[->] (3) -- (c);
+\draw[->] (4) -- (b);
+\end{scope}
+\end{tikzpicture}
+\caption{関数$f:X \to Y$の像（左）と逆像（右）．これらが冪集合の間の関数$f:\mcalP(X) \to \mcalP(Y), f^{-1}:\mcalP(Y) \to \mcalP(X)$を与えることを様々な$A \subset X, B \subset Y$で試して確認せよ．} %
+\end{figure}
+
+
 \begin{exercise}
  上の出生地表で，各国の逆像を求めよ．
 \end{exercise}
