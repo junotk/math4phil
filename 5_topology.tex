@@ -1,5 +1,6 @@
 \documentclass[11pt,a4paper]{jsarticle}
 \input{m4p_preamble.tex}
+\usepackage{xcolor}
 
 \begin{document}
 
@@ -140,6 +141,11 @@
 例えば上で，同じ性質を共有する事物を「似た者」としてグルーピングしたが，これが位相を構成するためには，複数の似た者グループ／開集合の和や共通部分もまたグループ／開集合となっているのでなければならない．
 逆に，ある部分集合族が与えられたら，これらの部分集合の和や共通部分をすべて付け加えることで，位相を構成できる．
 この作業を，「無限和と有限共通部分をとる」と表現することがある．
+
+\begin{exercise}
+ $T = \{$ アメリカ(A), 中国(C), 日本(J), メキシコ(M), イギリス(U) $\}$とする．
+これらを何らかの基準で「似た者」とするグルーピングを考え，位相空間を構成せよ．当然この問題には答えはないが，それぞれのグループに説明があると望ましい．
+\end{exercise}
 
 
 \begin{example}
@@ -315,26 +321,12 @@ $X$上の異なる位相$\mcalO, \mcalO'$を考えると，$i$は位相空間$(X
 % 概念体系を別の概念体系に移す
 % 連続写像の条件は？
 
-\begin{develop}
 「連続」というと，高校数学で習った実数関数の連続性を思い浮かべる人もいるかもしれない．
 実のところその連続性は，ここで見た位相的な連続性にほかならない．
 実数の集合$X$から$Y$への関数を考える．
 例\label{ex:real}で見たように，実数上の位相は，開区間$(a,b)$とその無限和・有限共通部分からなっている．
 $X$から$Y$への関数$f:X \to Y$が連続であるとは，$Y$の開区間$(a,b)$の逆像$f^{-1}(a,b)$が，$X$で開区間（ないしその無限和か有限共通部分）になっているということである．
 例えば$f(x) = x^3-2x$では，$y$軸上の任意の開区間で曲線を$x$軸に投影すると，その影は開区間の和になっている．よってこの関数は連続である（図\ref{fig:realcontinuous}左）．
-
-一方で，次のような関数を考える．
-\[
-g(x) = \left\{
-\begin{array}{ll}
-1 & (x > 1)\\
--1 & (x \leq 1)
-\end{array}
-\right. 
-\]
-ここで$-1$を含み$1$を含まないような$Y$の開区間（例えば$(-2, 0)$）を適当にとると，この逆像は$g^{-1}((-2, 0)) = (-\infty, 1]$という区間となり，$X$の開区間にはならない．
-よって関数$g$は連続ではない．実際，それは$x=1$で$y=-1$から$y=1$にジャンプしていることが図\ref{fig:realcontinuous}右からもわかる．
-\end{develop}
 
 \begin{figure}[h]
   \begin{minipage}[b]{0.45\linewidth}
@@ -360,9 +352,76 @@ g(x) = \left\{
  \label{fig:realcontinuous}
 \end{figure}
 
-% 4次元主義における個体関数
+一方で，次のような関数を考える．
+\[
+g(x) = \left\{
+\begin{array}{ll}
+1 & (x > 1)\\
+-1 & (x \leq 1)
+\end{array}
+\right. 
+\]
+ここで$-1$を含み$1$を含まないような$Y$の開区間（例えば$(-2, 0)$）を適当にとると，この逆像は$g^{-1}((-2, 0)) = (-\infty, 1]$という区間となり，$X$の開区間にはならない．
+よって関数$g$は連続ではない．実際，それは$x=1$で$y=-1$から$y=1$にジャンプしていることが図\ref{fig:realcontinuous}右からもわかる．
 
 
+% 我々は2章で，4次元主義における個体を，各時間$t \in T$に対し3次元空間の部分集合$I(t) \subset \bbR^3$を割り当てる関数$I:T \to \mcalP(\bbR^3)$としてモデル化した．
+% しかしこれだと，空間的に全く離れた部分や，時間の遷移に応じて「ぶつ切り」になる（たとえば特定時間$t_0$までは私で，それ以降は突然あなたというような）ものも個体に含まれてしまう．
+% これがおかしいのは，通常，個体というものはその空間的・時間的部分が「繋がっている」ものだと考えられるからだ．
+% これを表すために，弧状連結という概念を導入する．
+
+連続写像を用いると，空間の部分が「繋がっている」という直観を正確に定式化できるようになる．
+
+\begin{itembox}[l]{弧状連結}
+$(T,\mcalO)$を位相空間とする．部分集合$C \subset T$が弧状連結(pathconnected)であるとは，任意の2点$a, b \in C$に対して，連続写像$\phi: [0,1] \to C$で$\phi(0)=a, \phi(1)=b$となるものが存在することをいう．
+\end{itembox}
+
+つまり弧状連結である部分集合は，左のように全体が「地続き」であり，任意の点から他の点までスムーズに移動できる．
+一方，右図のように飛び飛びになっている集合は弧状連結ではない．
+\begin{figure}[htbp]
+ \begin{center}
+  \begin{tikzpicture}
+   \begin{scope}
+   \draw[thick] plot[smooth cycle] coordinates{(0,0) (1,1.5) (2,2)(3, 1)(2,1)(3,-.5)(2,-1)};
+   \node[right] (b) at (1.8, -.5) {$b$};
+   \node[right] (a) at (1.2, 1.2) {$a$};
+   \draw (a) to [out=210,in=150] (b);
+
+   \fill(-1,-.5) circle [radius=2pt];
+   \fill(-1,1.2) circle [radius=2pt];
+   \draw(-1,-.5)--(-1,1.2);
+   \node[left] (1) at (-1,-.5) {1};
+   \node[left] (0) at (-1,1.2) {0};
+
+   \draw[->, dashed] (0) to (a);
+   \draw[->, dashed] (1) to (b);    
+   \end{scope}
+   \begin{scope}[xshift=5cm]
+   \draw[thick] plot[smooth cycle] coordinates{(0,1) (1,2) (2,.7)(1, .5)};
+   \draw[thick] plot[smooth cycle] coordinates{(1,0) (3,-.2) (2,-1)};    
+   \fill(1,1.2) circle [radius=1pt];
+   \fill(2,-.5) circle [radius=1pt];
+   \node[right] at (1,1.2) {$a$};
+   \node[right] at (2,-.5) {$b$};
+   \end{scope}
+  \end{tikzpicture}
+ \end{center}
+\end{figure}
+
+\begin{example}
+我々は事例2.1で，性質を位相空間としてモデル化した．
+しかし開集合は合併で閉じているので，例えば「赤」と「緑」という性質を認めるとすると，「赤もしくは緑」という色性質も認めなければならないことになる．
+これは，我々が個別に名付ける「色」は連続的に似通ったものでなければならない，という直観に反するかもしれない．
+これを防ぐためには，例えば色相環のような位相空間を考え，色の性質をそのうちの弧状連結な部分集合として定義すればよい．
+ \begin{center}
+ \begin{tikzpicture}
+ \ColourTransitionCircle[inner=1.5, outer=1.6]{yellow,red,blue,green}
+ \end{tikzpicture}
+ \end{center}
+ここから，概念を位相的な性質によって定めるというアイデアが得られる．例えば\cite{Mormann1993-fd, Gardenfors2004-vz}などを参照．
+\end{example}
+
+% 問題：弧状連結性が同値類を形成すること
 
 \section{同相写像}
 2つの位相空間$X, Y$は，両者が集合として異なれば別物である．
@@ -450,6 +509,8 @@ $(T_0)$では全ての点のペアについて，一方のみを含み他方を�
 
 
 
+\bibliographystyle{apalike}
+\bibliography{m4p}
 
 
 \end{document}
