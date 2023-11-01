@@ -68,6 +68,8 @@
 ちなみに問題2の答えはYesである．
 というのも，「=」は同値類であり，反射性・対称性・推移性を満たすので，当然O1とO2を満たす．
 このように，一般的な順序の直感にはそぐわなくても，順序の公理を満たすようなものは多数ありえる．
+他方，問題5のようにある関係が全順序であることを示すためには，まずどんな集合をベースにしているか，その要素はなにかを明らかにするところから始める．
+その上で，二項関係を定義し（つまり「$x \preceq y$ iff ...」の...の部分を明示的に示す），その関係が反射性と推移性を満たすことを確認すれば良い．
 
 \begin{example} \label{logic}
  $L$を命題論理の論理式の集合とし，$p, q \in L$について「$p$から$q$が証明される」を$p \vdash q$と表す．
@@ -77,10 +79,10 @@
 
 
 \begin{example}[Supervenience] \label{supervenience}
- $X$を個物の集合，$Y$を性質の集合とし，$f_1, f_2:X \to Y$を個物に性質を割り当てる2つの関数とする（これを「性質関数」と呼ぼう）．
- 例えば$X$を（ある時点の）人の集合としたら，$f_1$はその人に心的状態を割り当て，$f_2$は身体状態を割り当てる，と考えても良いかもしれない．
+ $X$を個物の集合，$Y$を性質の集合とし，$f, g:X \to Y$を個物に性質を割り当てる2つの関数とする（これを「性質関数」と呼ぼう）．
+ 例えば$X$を（ある時点の）人の集合としたら，$f$はその人に心的状態を割り当て，$g$は身体状態を割り当てる，と考えても良いかもしれない．
 % % 例えば$X$を（各時点の）人の集合，$Y, Z$をそれぞれその心的／物理的状態と考えれば，$f_Y$はその人の心的状態を表す．
- $f_1$が$f_2$に\emph{付随}(supervene)するとは，$f_1$における差異が必ず$f_2$における差異を含意すること，つまり任意の$x, x' \in X$について$f_1(x) \neq f_1(x')$なら$f_2(x) \neq f_2(x')$が成立することである．
+ $f$が$g$に\emph{付随}(supervene)するとは，$f$における差異が必ず$g$における差異を含意すること，つまり任意の$x, x' \in X$について$f(x) \neq f(x')$なら$g(x) \neq g(x')$が成立することである．
 
  すべての性質関数の集合を$Y^X$とすると，付随は$Y^X$上の前順序を定める．
  これを示そう．$f, g, h \in Y^X$を任意の性質関数とすると
@@ -114,9 +116,9 @@
 \begin{enumerate}
  \item 関係「$y$は$x$と同等かそれ以上に完全である」は半順序だろうか．
  %\item 事例\ref{logic}で見た$\langle L, \vdash \rangle$は半順序だろうか．
- \item 事例\ref{supervenience}で見た付随性は半順序だろうか．
- \item 正の整数$x, y \in \bbN^+$において，「$x$は$y$を割り切る」という関係は半順序であることを示せ．
+ \item 正の整数$x, y \in \bbN^+$において，「$x$は$y$を割り切る」という関係を$x \preceq y$と表すとすると，$x \preceq y$は半順序となることを示せ．
  \item 数学以外の半順序の例をあげよ．
+ \item 事例\ref{supervenience}で見た付随性は半順序ではない．これを示すには，$f(x) \neq f(x') \iff g(x) \neq g(x')$であるにも関わらず，$f$と$g$が関数として同じではない，つまり$f(x) \neq g(x)$となるような事例を探せば良い．そのような反例を構成せよ．
 \end{enumerate}
 \end{exercise}
 
@@ -172,7 +174,7 @@
 \begin{exercise}
 \begin{enumerate}
  \item 数学以外の全順序集合の例をあげよ．
- \item 事例\ref{supervenience}の付随性は全順序だろうか．
+ \item 事例\ref{supervenience}の付随性は完備だろうか．
 \end{enumerate}
 \end{exercise}
 
@@ -194,10 +196,64 @@
 
 $\langle X, \preceq \rangle$を半順序集合，$A \subset X$としたとき：．
 \begin{itemize}
- \item $a \in A$が$A$の\emph{最大元}であるとは，$\forall x \in A (x \preceq a)$が成り立つこと．逆に\emph{最小元}であるとは，$\forall x \in A (a \preceq x)$が成り立つこと．最大／最小元は存在するとは限らないが，あれば一つしかない．
- \item $b \in X$が$A$の\emph{上界}(upper bound)であるとは，$\forall x \in A (x \preceq b)$が成り立つこと．$A$に上界が存在するとき，$A$は\emph{上に有界}であるという．最大元と違い，$A$の上界は$A$に含まれている必要がないことに注意．同様の仕方で，$A$の下界(lower bound)が定義される．$A$が上に有界かつ下に有界のとき，$A$は有界であるという．
- \item $A$の上界は複数ありえる．例えばもし$b$が上界で$b \preceq c$なら$c$も上界である．でもその中で一番小さい，いわば「スレスレの上界」があれば，これを\emph{上限}ないし最小上界(least upper bound)という．つまり$A$の上限とは，$A$の上界の集合$B$の最小元（あれば）である．上界が存在しても（つまり$B \neq \emptyset$でも）上限は存在しないこともある．同様に，$A$の最大下界を\emph{下限}(greatest lower bound)という．
+  \item $a \in A$が$A$の中で一番大きい，つまり$\forall x \in A (x \preceq a)$が成りたつとき，\emph{最大元}であるという．逆に\emph{最小元}であるとは，$\forall x \in A (a \preceq x)$が成り立つこと．最大／最小元は存在するとは限らないが，あれば一つしかない．
+  \item $A$に属する全ての元より大きい元の集合，つまり$\{ b \in X | \forall x \in A (x \preceq b) \}$を$A$の\emph{上界}(upper bound)という．$A$に上界が存在するとき，$A$は\emph{上に有界}であるという．同様に，$A$の全元より「下に」ある元の集合を下界(lower bound)という．$A$が上に有界かつ下に有界のとき，$A$は有界であるという．
+  \item $A$の上界のうちで一番小さい，いわば「スレスレの上界」があるとき，これを\emph{上限}ないし最小上界(least upper bound)という．つまり$A$の上限とは，$A$の上界集合$B$の最小元（あれば）である．上界が存在しても（つまり$B \neq \emptyset$でも）上限は存在しないこともある．同様に，$A$の最大下界を\emph{下限}(greatest lower bound)という．
 \end{itemize}
+
+
+  このようにまくし立てられても全く頭に入ってこない，という人は図\ref{fig:limits}を見ると若干イメージがつくかもしれない．
+ここでは順序は上に行くほうが「大きい」としよう．
+部分集合$A$は赤く囲った部分である．
+この$A$の中には「一番大きい」といえるものはないので，最大元は存在しない．
+しかし最小元は存在し，それは$a$である．
+どの$A$の要素より大きい要素の集合，つまり$A$の上界は，緑で囲った部分になる．この中で一番小さいのは$b$であり，これが$A$の上限である．
+一方$A$の下界は青い部分であり，そのうち最大のもの，つまり下限は$a$である．
+
+\begin{figure}
+  \centering
+  \begin{tikzpicture}[element/.style={circle, draw, inner sep=1pt}]
+    \node[element] (a) at (1,0) {};
+    \node[element] (b) at (3,0) {};
+    \node (c) at (2,1) {$a$};
+    \node[element] (d) at (1,2) {};
+    \node[element] (e) at (1,3) {};
+    \node[element] (f) at (2,2) {};
+    \node[element] (g) at (2,3) {};
+    \node[element] (h) at (3,3) {};
+    \node (i) at (2,4) {$b$};
+    \node[element] (j) at (3,4) {};
+    \node[element] (k) at (4,4) {};
+    \node[element] (l) at (2,5) {};
+    \node[element] (m) at (4,5) {};
+
+    \draw(a)--(c)--(d)--(e)--(f);
+    \draw(b)--(c)--(f)--(g)--(i)--(l);
+    \draw(f)--(h)--(i);
+    \draw(c)--(h)--(j)--(l);
+    \draw(c)--(h)--(k)--(m);
+    \draw(i)--(m);
+    \draw[fill=red!30, opacity=0.3] plot[smooth cycle] coordinates{(1.7,.7) (2.3,.7) (3.3,3)(1.7,3)};
+    \node[right] at (3,2) {\color{red}$A$};
+
+    \draw[fill=green!30, opacity=0.3] plot[smooth cycle] coordinates{(2,3.7) (4.3,5) (3, 5.3) (1.7,5)};
+    \node[right] at (0,5) {\color{teal}$A$の上界};
+
+    \draw[fill=blue!30, opacity=0.3] plot[smooth cycle] coordinates{(.7,-.2) (3.3,-.2) (2,1.3)};
+    \node[right] at (3,.5) {\color{blue}$A$の下界};
+\end{tikzpicture}
+\label{fig:limits}
+\caption{半順序上の最小限，上界，下界，上限，下限．}
+\end{figure}
+
+一番ややこしいのは，最大元（最小元）と上限（下限）の区別かもしれない．
+一般に，部分集合$A$の最大元（最小元）があればそれは上限（下限）となるが，逆は必ずしもそうではない．というのは，後者は$A$の中に含まれる必要がないからだ．
+図\ref{fig:limits}では，$A$に複数の「最大」があるために最大元はないが上限は存在する．
+一方，このような分岐がなくても最大／最小元がないケースがある．
+例えば実数直線上の区間 $A = \{x \in \bbR| -1 < x < 1 \}$とすると，この区間の最大／最小元は存在しない．
+というのもいかなる数$y<1$を取ったとしても，それよりも少しだけ1に近い数が考えられるからだ（最小元も同様）．
+しかし上限と下限は明らかに存在し，それは$1$と$-1$である．
+
 
 \begin{exercise} \label{ex:bounds}
 3つの元からなる集合$X = \{x, y, z\}$として，集合包含関係の半順序$\langle \mcalP(X), \subset \rangle$を考える．
@@ -236,10 +292,10 @@ $x \preceq y$であるときに$x \to y$と矢印を引いた図を，\emph{ハ�
 
 \begin{exercise}
 \begin{enumerate}
-  \item 正の整数$x, y \in \bbN^+$において，「$x$は$y$を割り切る」という関係を考える．
+  \item 正の整数$x, y \in \bbN^+$において，「$x$は$y$を割り切る」という関係を$x \preceq y$と表す．
   任意の正整数$a,b$をとってきたとき，その最大元，上界，上限はそれぞれなんだろうか．
   % 最大限：存在しない　上界：公倍数　上限：最小公倍数
-  \item 系統樹は祖先関係によって半順序をなす（ただし便宜上，すべての個体は自らの祖先でもあると取り決める）．ある生物集団$A$をとってきたとき，この集団は有界か，また上限・下限を持つか．
+  \item $X$を地球上に存在した／しているあらゆる生物の集合とし，$x, y \in X$に対して$x \preceq y$で「$x$は$y$の祖先か同一個体である」という関係を表す．ここから形成される半順序は生物系統樹と呼ばれる．この系統樹内のある部分集合$A \subset X$をとってきたとき，この生物集合は有界か，また上限・下限を持つか．
 \end{enumerate}
 \end{exercise}
 
