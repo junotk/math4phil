@@ -368,7 +368,6 @@ $f$の後に$g$を適用するのに，$g \circ f$と書くのは一見逆な気
 写像の合成は\emph{結合的}(associative)であり，任意の写像$f:W \to X, g:X \to Y, h:Y \to Z$があったとき，$(h \circ g) \circ f = h \circ (g \circ f)$が成り立つ．
 つまり$h$と$g$を先に合成したものと$f$を合成しても，$g$と$f$を合成したものに$h$を合成しても，同じ$W$から$Z$への写像ができる．
 
-
 \begin{figure}[h]
 \centering
 \begin{tikzpicture}
@@ -407,7 +406,15 @@ $f$の後に$g$を適用するのに，$g \circ f$と書くのは一見逆な気
 上で見た関数$y = f(x) = x^3 -2x$は$\bbR$からそれ自身への関数であり，よって合成$f \circ f$を考えることができる．$f \circ f$を$X$の関数として具体的に書き下せ．
 \end{exercise}
 
-
+% \begin{rei}{力学系}{dynamical_systems}
+%       ある系が取りうる状態の集合を$X$とし，$f:X \to X$を任意の一時点の状態を次の状態へと変化させる関数とする．
+%       %例えばある動物集団の個体数の変化$\bbN \to \bbN$を記述する関数や，形質の進化
+%       こうした関数は，系のふるまいを定める\emph{法則}を体現している．
+%       これを任意の回数合成することで，ある状態$x \in X$を始点としたときの未来の状態を$f \circ \dots \circ f(x)$のように求めることができる．
+%       このように，一定の規則に従って状態変化するシステムのふるまいを記述するモデルを，\emph{力学系}(dynamical system)と呼ぶ．
+%       代表的な力学系の一つとして，次のようなロジスティック写像(logistic map)がある
+%       \[ f: x \mapsto \alpha x (1-x) \]
+% \end{rei}
 
 \section{像と逆像}
 
