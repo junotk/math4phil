@@ -29,7 +29,7 @@
 この条件から対称性を落とすと，0章でも見た\emph{前順序}ないし\emph{擬順序}(preorder)が得られる．
 きちんと定義すると以下のようになる．
 
-\begin{itembox}[l]{前順序}
+\begin{dfn}{前順序}{}
 集合$X$上の2項関係$\preceq$が，すべての$x, y, z\in X$について以下を満たすとき，\emph{前順序}ないし\emph{擬順序}といわれる．
 \begin{itemize}
  \item[O1] 反射性：$x \preceq x$
@@ -37,7 +37,7 @@
 % \item 反対称性：$x \preceq y$かつ$y \preceq x$ならば$x = y$
 \end{itemize}
 また組$\langle X, \preceq \rangle$を，\emph{前順序集合}という． 
-\end{itembox}
+\end{dfn}
 %また集合$X$とその上に定義された前順序関係$\preceq$の組$\langle X, \preceq \rangle$を，\emph{前順序集合}という．
 
 これは我々が今後多数見ていくことになる数学的構造の最初の例である．
@@ -55,7 +55,7 @@
 以上から，$\langle \bbN, \leq \rangle$が前順序であることが示された．
 この例はあまりにも自明だが，実際にある対象を数学的構造でモデリングするためには，その公理が成立することを確認するのが第一のステップである．
 
-\begin{exercise}
+\begin{renshu}{}{}
 \begin{enumerate}
  \item 冪集合と包含関係の組$\langle \mcalP(X), \subset \rangle$が前順序集合であることを示せ． 
  \item 「=」を等号とする．$\langle \bbN, = \rangle$は前順序だろうか．
@@ -63,7 +63,7 @@
  \item 関係「$y$は$x$の子孫である」は前順序だろうか．
  \item 前順序であるような関係を数学以外から探し，それが前順序であることを示せ．
 \end{enumerate}
-\end{exercise}
+\end{renshu}
 
 ちなみに問題2の答えはYesである．
 というのも，「=」は同値類であり，反射性・対称性・推移性を満たすので，当然O1とO2を満たす．
@@ -71,14 +71,14 @@
 他方，問題5のようにある関係が全順序であることを示すためには，まずどんな集合をベースにしているか，その要素はなにかを明らかにするところから始める．
 その上で，二項関係を定義し（つまり「$x \preceq y$ iff ...」の...の部分を明示的に示す），その関係が反射性と推移性を満たすことを確認すれば良い．
 
-\begin{example} \label{logic}
+\begin{rei}{証明関係}{logic}
  $L$を命題論理の論理式の集合とし，$p, q \in L$について「$p$から$q$が証明される」を$p \vdash q$と表す．
  するとトリビアルに$p \vdash p$であり，また$p$から$q$が証明され，$q$から$s$が証明されるなら$p$から$s$が証明できる，つまりO2も成り立つ．
  よって$\langle L, \vdash \rangle$は前順序をなす．
-\end{example}
+\end{rei}
 
 
-\begin{example}[Supervenience] \label{supervenience}
+\begin{rei}{Supervenience}{supervenience}
  $X$を個物の集合，$Y$を性質の集合とし，$f, g:X \to Y$を個物に性質を割り当てる2つの関数とする（これを「性質関数」と呼ぼう）．
  例えば$X$を（ある時点の）人の集合としたら，$f$はその人に心的状態を割り当て，$g$は身体状態を割り当てる，と考えても良いかもしれない．
 % % 例えば$X$を（各時点の）人の集合，$Y, Z$をそれぞれその心的／物理的状態と考えれば，$f_Y$はその人の心的状態を表す．
@@ -91,7 +91,7 @@
   \item $f$は$g$に付随し，$g$は$h$に付随するとする．任意の$x, x' \in X$につき，$f(x) \neq f(x')$とすると，$f$は$g$に付随するので$g(x) \neq g(x')$．さらに$g$は$h$に付随するのでこのとき$h(x) \neq h(x')$が成り立つ．よって$f$は$h$に付随する．
  \end{enumerate}
 以上よりO1とO2が示されたので，付随性は前順序である．
-\end{example}
+\end{rei}
 
 % 事例：美的性質の物理的性質へのSupervenience
    
@@ -100,40 +100,40 @@
 つまり異なる$x \neq y$に対し，$x \preceq y$かつ$y \preceq x$の双方が成り立つ，ということが可能である．
 しかし次で定義する半順序では，こうしたサイクルは除外される．
 
-\begin{itembox}[l]{半順序}
+\begin{dfn}{半順序}{}
 前順序$\preceq$がさらに以下を満たす時，\emph{半順序}(partial order)といわれる．
 \begin{itemize}
  \item[O3] 反対称性：$\forall x, y \in X, \ x \preceq y$かつ$y \preceq x$ならば$x = y$
 \end{itemize}
 また$\preceq$が$X$上の半順序であるとき，組$\langle X, \preceq \rangle$を\emph{半順序集合}(partially ordered set または縮めて poset)という．
-\end{itembox}
+\end{dfn}
 
 実は上で前順序の例として見た$\langle \bbN, \leq \rangle$や$\langle \mcalP(X), \subset \rangle$などは，半順序でもある．
 実際，自然数$x, y \in \bbN$に対し$x \leq y$かつ$y \leq x$なら$x=y$であるし，
 集合$X$の部分集合$A, B$に対し$A \subset B$かつ$B \subset A$なら$A=B$である．
 
-\begin{exercise}
+\begin{renshu}{}{}
 \begin{enumerate}
  \item 関係「$y$は$x$と同等かそれ以上に完全である」は半順序だろうか．
  %\item 事例\ref{logic}で見た$\langle L, \vdash \rangle$は半順序だろうか．
  \item 正の整数$x, y \in \bbN^+$において，「$x$は$y$を割り切る」という関係を$x \preceq y$と表すとすると，$x \preceq y$は半順序となることを示せ．
  \item 数学以外の半順序の例をあげよ．
- \item 事例\ref{supervenience}で見た付随性は半順序ではない．これを示すには，$f(x) \neq f(x') \iff g(x) \neq g(x')$であるにも関わらず，$f$と$g$が関数として同じではない，つまり$f(x) \neq g(x)$となるような事例を探せば良い．そのような反例を構成せよ．
+ \item 事例\ref{rei:supervenience}で見た付随性は半順序ではない．これを示すには，$f(x) \neq f(x') \iff g(x) \neq g(x')$であるにも関わらず，$f$と$g$が関数として同じではない，つまり$f(x) \neq g(x)$となるような事例を探せば良い．そのような反例を構成せよ．
 \end{enumerate}
-\end{exercise}
+\end{renshu}
 
-事例\ref{logic}で見た$\langle L, \vdash \rangle$は半順序ではない．
+事例\ref{rei:logic}で見た$\langle L, \vdash \rangle$は半順序ではない．
 というのも例えば$p \vee q$と$q \vee p$は互いに異なる論理式だが，相互に証明可能であり，よってサイクルが生じるからだ．
 これを半順序にするためには，「互いに証明可能」という関係$R$を，$\forall p, q (pRq \iff p \vdash q \wedge q \vdash p)$というように定義し，$L$を$R$で割る，つまり互いに証明可能な論理式は同じ同値類として同一視してしまえばよい．
 この商集合を$L' = L/R$とすると，$\langle L', \vdash \rangle$は半順序となる．\\
 （細かいことを言うと，証明可能である$\vdash$という関係も同値類上に定義しなおさなければならない．つまり$[p]\vdash[q], [p], [q] \in L'$を，ある$p \in [p]$かつある$q \in [q]$があって$p \vdash q$が成り立つことという具合に定義し，かつこれはwell-definedである，つまりどんな$p, q$を代表として選んでも帰結関係は成立する，ということを示さねばならないが，ここでは割愛する．）
 
-\begin{example}
+\begin{rei}{}{}
 形式存在論で重要な関係に「〜は...である」というis-a relationshipがある．
 たとえば「人間は哺乳類である」「哺乳類は動物である」を2項述語「$-$」を用い，人間$-$哺乳類，哺乳類$-$動物，などと書くことができる．
 この「である関係」は半順序である（確認せよ）．
 こうした階層的な存在構造は，古くから\emph{ポルピュリオスの樹}(Porphyrian tree)として示されてきた（図\ref{fig:porphyrian}）．
-\end{example}
+\end{rei}
 \begin{figure}[h]
 \centering
 \begin{tikzpicture}
@@ -161,31 +161,31 @@
 これに対し，すべてが一列に並んでいて互いに比較可能なものを，\emph{全順序}(total order)という．
 
 
-\begin{itembox}[l]{全順序}
+\begin{dfn}{全順序}{}
 半順序$\preceq$がさらに以下を満たす時，\emph{全順序}(total order)といわれる．
 \begin{itemize}
  \item[O4] 完備性：$\forall x, y \in X, \ x \preceq y$または$y \preceq x$. 
 \end{itemize}
-\end{itembox}
+\end{dfn}
 %
 簡単な例としては，$\langle \bbN, \leq \rangle$は全順序である．
 一方，$X$が2つ以上の元を持つときの$\langle \mcalP(X), \subset \rangle$はそうではない．
 
-\begin{exercise}
+\begin{renshu}{}{}
 \begin{enumerate}
  \item 数学以外の全順序集合の例をあげよ．
- \item 事例\ref{supervenience}の付随性は完備だろうか．
+ \item 事例\ref{rei:supervenience}の付随性は完備だろうか．
 \end{enumerate}
-\end{exercise}
+\end{renshu}
 
-\begin{example}[測定理論]
+\begin{rei}{測定理論}{measurement}
 我々は日々，色々なものを数字で図る（身長，値段，IQ，幸福度・・・）．
 しかしなぜそれが可能なのだろうか？
 測定理論(Theory of measurement)は，事物の集合が数字で図られるために，その集合が満たしていなければならない条件を探る学問分野である．\footnote{e.g. Krantz, D. H., Suppes, P., Luce, R. D. \& Tversky, A. (1971) \textit{Foundations of Measurement (Additive and Polynomial Representations)}. vol. 1, Academic Press, Inc.}
 その中で最も基本的な性質が，全順序性である．
 しかし，測りたい事物や出来事が全順序性を満たしていないことはしばしばある．
 そのような事例を考えてみよう．
-\end{example}
+\end{rei}
 
 
 \section{順序の中の元}
@@ -255,7 +255,7 @@ $\langle X, \preceq \rangle$を半順序集合，$A \subset X$としたとき：
 しかし上限と下限は明らかに存在し，それは$1$と$-1$である．
 
 
-\begin{exercise} \label{ex:bounds}
+\begin{renshu}{}{bounds}
 3つの元からなる集合$X = \{x, y, z\}$として，集合包含関係の半順序$\langle \mcalP(X), \subset \rangle$を考える．
 $A = \{ \{x\}, \{y\} \}, B = \{ \{x\}, \{y\}, \{x, y\} \}, C = \{ \{x,y\}, \{z\} \}$とする．
 \begin{enumerate}
@@ -263,7 +263,7 @@ $A = \{ \{x\}, \{y\} \}, B = \{ \{x\}, \{y\}, \{x, y\} \}, C = \{ \{x,y\}, \{z\}
  \item $A, B, C$の上界をそれぞれ答えよ．  % A:{x,y},X  B:{x,y},X  C:X
  \item $A, B, C$の上限をそれぞれ答えよ．  % A:{x,y}    B:{x,y}    C:X
 \end{enumerate}
-\end{exercise}
+\end{renshu}
 
 この問題に限らず，順序は図で示したほうがわかりやすいことが多い．
 $x \preceq y$であるときに$x \to y$と矢印を引いた図を，\emph{ハッセ図}(Hasse diagram)という．
@@ -286,26 +286,26 @@ $x \preceq y$であるときに$x \to y$と矢印を引いた図を，\emph{ハ�
   \draw(z)--(xz);
   \draw(0)--(y);
 \end{tikzpicture}
-\caption{問\ref{ex:bounds}のハッセ図}
+\caption{問\ref{renshu:bounds}のハッセ図}
 \label{fig:hasse} 
 \end{figure}
 
-\begin{exercise}
+\begin{renshu}{}{}
 \begin{enumerate}
   \item 正の整数$x, y \in \bbN^+$において，「$x$は$y$を割り切る」という関係を$x \preceq y$と表す．
   任意の正整数$a,b$をとってきたとき，その最大元，上界，上限はそれぞれなんだろうか．
   % 最大限：存在しない　上界：公倍数　上限：最小公倍数
   \item $X$を地球上に存在した／しているあらゆる生物の集合とし，$x, y \in X$に対して$x \preceq y$で「$x$は$y$の祖先か同一個体である」という関係を表す．ここから形成される半順序は生物系統樹と呼ばれる．この系統樹内のある部分集合$A \subset X$をとってきたとき，この生物集合は有界か，また上限・下限を持つか．
 \end{enumerate}
-\end{exercise}
+\end{renshu}
 
 
-\begin{example}
+\begin{rei}{}{}
 順序集合の有界性についての問題は，哲学で非常によく出くわす．
 例えば神の宇宙論的証明や存在論的証明の議論を順序の概念を用いてモデル化するとどうなるだろうか．
 
 参考（神の宇宙論的証明）：存在するあらゆるものは，原因を持つ．しかし時空間は有限であるので，因果の系列は無限に遡ることはできない．よって「原因をもたない原因」ないし「不動の第一動者（アリストテレス）」としての神が存在する．これは因果順序における最小元の存在の主張だ．ではそれはどのような証明だろうか．
-\end{example}
+\end{rei}
 
 
 \section{単調写像}
@@ -318,23 +318,23 @@ $x \preceq y$であるときに$x \to y$と矢印を引いた図を，\emph{ハ�
 むしろ$X$の大小関係が，$Y$においてもしっかりと保たれていてほしい．
 これを数学的には，順序の\emph{構造を保つ写像}(structure-preserving map)という．
 それは具体的には次で与えられる：
-\begin{itembox}[l]{単調写像}
+\begin{dfn}{単調写像}{}
 関数$f:X \to Y$が次の条件を満たすとき，順序$\langle X, \preceq_X \rangle$, $\langle Y, \preceq_Y \rangle$の間の\emph{単調写像}(monotone map)といわれる
 \[
  \text{すべての}x, x' \in X \text{に対して, }  x \preceq_X x' \text{ ならば } f(x) \preceq_Y f(x').
 \]
-\end{itembox}
+\end{dfn}
 つまり$x$より$x'$のほうが大きいなら，それぞれを$Y$に飛ばした$f(x)$より$f(x')$のほうが大きくなっている，ということだ．
 ここで，左辺は$X$上の順序$\preceq_X$であるのに対し，右辺は$Y$上の順序$\preceq_Y$で比較されていることに注意．
 よって上の条件は，$\preceq_X$で定めれられる$X$の順序構造が，$Y$において$\preceq_Y$として保たれている，ということを定めている．
 
-\begin{example}
+\begin{rei}{}{}
  \begin{enumerate}
   \item 整数$\bbN$を実数$\bbR$に埋め込む関数$f:x \mapsto x$を考えると，これは当然$\langle \bbN, \leq \rangle$, $\langle \bbR, \leq \rangle$の間の単調写像になっている．
   \item 整数を2倍する関数$f:x \mapsto 2x$は，$\langle \bbN, \leq \rangle$とそれ自身の間の単調写像である．
   \item 素点(0〜100点)を評語（F, D, C, B, A, A+）に換算する成績評価関数は，単調写像である（でないと困る）．
  \end{enumerate}
-\end{example}
+\end{rei}
 
 以上はいずれも全順序間の写像であったが，半順序から全順序，のような単調写像も考えることができる．
 例えば生命の分類体系(taxonomy)は，図\ref{fig:taxonomy}のような半順序をなす．
@@ -386,13 +386,13 @@ $x \preceq y$であるときに$x \to y$と矢印を引いた図を，\emph{ハ�
 \end{figure}
 単調写像とは，このように二つの順序を横に並べて描いたとき，写像の対応を示す線（図\ref{fig:taxonomy}の点線矢印）が互いにクロスしない，という条件だと理解できる．
 
-\begin{example}[真理値関数] \label{truthvalue}
-事例\ref{logic} の論理式間の証明関係の前順序$\langle L, \vdash \rangle$を思い出そう．
+\begin{rei}{真理値関数}{truthvalue}
+事例\ref{rei:logic} の論理式間の証明関係の前順序$\langle L, \vdash \rangle$を思い出そう．
 それとは別に$\bbB = \{ \texttt{false}, \texttt{true} \}$からなる二元集合上に全順序$\texttt{false} \leq \texttt{true}$を導入する．
 論理式への真理値割当を関数$f:L \to \bbB$によって表すとすると，この関数はどのようなものでなければならないか．
-\end{example}
+\end{rei}
 
-\begin{example}[測定理論] \label{ordinal}
+\begin{rei}{測定理論}{ordinal}
 $\langle X, \preceq \rangle$をなんらかの物の集合$X$の間の何らかの全順序であるとする．
 実数値関数$\phi:X \to \bbR$が$\langle X, \preceq \rangle$と$\langle \bbR, \leq \rangle$の間の単調写像であるとき，$\phi$を\emph{順序尺度}(ordinal scale)という．
 
@@ -400,21 +400,21 @@ $\langle X, \preceq \rangle$をなんらかの物の集合$X$の間の何らか�
 このとき，数値間の大小は$X$の間の順序を反映しているが，その間隔や比率などには意味がない．
 なので数値を足したりかけたりすることはできない．
 これは，ここで使われている道具立てが単に順序集合に過ぎず，足し算や掛け算などの演算を備えていない，という事実を反映している．
-\end{example}
+\end{rei}
 
-\begin{exercise}
+\begin{renshu}{}{}
  順序尺度の例をあげ，それが単調性を満たしていることを確認せよ．
-\end{exercise}
+\end{renshu}
 
 単調写像は極めて単純な道具立てに思える（単に順序を別の順序にうつしているだけじゃないか！）．
 しかしここにはすでに，複数の重要な哲学的含意がある．
 
-まず事例\ref{truthvalue}は，意味論的な含意を示す．
+まず事例\ref{rei:truthvalue}は，意味論的な含意を示す．
 意味論とは，統語的表現とその意味，あるいはその真偽値の間の関係である．
 我々はその間に，なんらかの法則的関係が成り立っていることを期待する．
 この事例では，命題論理の証明関係と，その真偽値の間の関係性が，単調写像によって捉えられていることに注意しよう．
 
-次に事例\ref{ordinal}は，認識論的な含意を示す．
+次に事例\ref{rei:ordinal}は，認識論的な含意を示す．
 というのも測定理論とは，形式化された認識論だからである．
 それは，ある事物の体系（世界）を，数的表現の体系（記述）へと写し取ることを目指している．
 その際，我々の記述は世界の構造を写し取ったものであってほしい．
@@ -427,10 +427,10 @@ $\langle X, \preceq \rangle$をなんらかの物の集合$X$の間の何らか�
 上の事例は，それぞれ証明帰結関係の真理値による表現，事物の大小関係の数値による表現，ということができる．
 
 
-\begin{exercise}[単調写像の合成]
+\begin{renshu}{単調写像の合成}{}
 $\langle X, \preceq_X \rangle, \langle Y, \preceq_Y \rangle, \langle Z, \preceq_Z \rangle$を前順序とする．
 $f:X \to Y, g:Y \to Z$が単調写像ならば，その合成$g \circ f: X \to Z$も単調写像になることを示せ． 
-\end{exercise}
+\end{renshu}
 
 
 \section{同型写像}
@@ -439,7 +439,7 @@ $f:X \to Y, g:Y \to Z$が単調写像ならば，その合成$g \circ f: X \to Z
 上の練習問題で単調写像の合成性を見たが，ここで$Z$を$X$にして$X \xrightarrow{f} Y \xrightarrow{g} X$と戻ってくるようにすると合成$g \circ f$は$X$から$X$への単調写像である．
 同型とは，このような合成写像によって任意の$x \in X$に対してもとの場所$x$に帰ってくることができることをいう．
 
-\begin{itembox}[l]{同型写像}
+\begin{dfn}{同型写像}{}
 $\langle X, \preceq_X \rangle, \langle Y, \preceq_Y \rangle$を前順序とする．
 単調写像$f:X \to Y$に対し，任意の$x \in X, y \in Y$に対し，
 \[
@@ -447,23 +447,23 @@ $\langle X, \preceq_X \rangle, \langle Y, \preceq_Y \rangle$を前順序とす�
 \]
 を満たすような「帰りの」単調写像$g:Y \to X$があるとき，$f$を\emph{同型写像}(isomorphism)と呼ぶ．
 また同型写像$X \to Y$が存在するとき，前順序$X$と$Y$は\emph{同型}(isomorphic)であるという．
-\end{itembox}
+\end{dfn}
 言い換えれば，同型写像とは全単射（前章7節）であるような単調写像，ということにほかならない．
 
 同型であるような順序集合は，基本的には集合の中身が違うだけで，順序としては全く同一である．
 つまり図\ref{fig:hasse}のようなハッセ図で表すと，ノードのラベルが違うだけで，図の形としては全く同じになる．
 
 
-\begin{example}[心身並行論]
+\begin{rei}{心身並行論}{parallelism}
 因果関係「$x$は$y$の原因である」が前順序を構成するとしよう（便宜的に，すべてのものはそれ自身の原因でもあると考える）．
 $\langle P, \to_P \rangle, \langle M, \to_M \rangle$をそれぞれ，物的対象$P$および心的対象$M$の間の因果的順序であるとする．
 \emph{心身並行論}（cf. スピノザ）とは，二つの前順序$P, M$が同型であるという主張だと解釈できる．
-\end{example}
+\end{rei}
 
-\begin{develop}
+\begin{hatten}{}{}
 心身並行論からは，すべての物的事象は固有の心的対応物を持つこと，すなわち汎心論が帰結する．
 汎心論を避ける形で，しかし心的事象の間の因果関係を物的事象の間の因果関係に基づけるためには，どうすればよいだろうか．
-\end{develop}
+\end{hatten}
 
 最後に少し進んだ話題を一つ．
 同型写像は行って戻ってきたときにちょうど元のところに帰る，という意味でなかなかに強い条件である．
