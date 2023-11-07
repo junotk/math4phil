@@ -30,7 +30,7 @@
 さらに前章で，順序の部分集合$A$のどれよりも大きい元たちのなかで一番小さい「スレスレの上界」として上限（およびその逆の「スレスレの下界」として下限）を定めた．
 \emph{束}(lattice)とは，そうした上限・下限がどのペア$A$にも存在するような半順序のことである．
 
-\begin{dfn}{束}
+\begin{dfn}{束}{lattice}
 束とは半順序集合$\langle X, \preceq \rangle$であり，どの2元$x, y \in X$に対しても，上限および下限が存在するものである．
 $x, y$の上限を\emph{結び}(join)といい，$x \vee y$で表す．またその下限を\emph{交わり}(meet)といい，$x \wedge y$で表す．
 
@@ -136,7 +136,7 @@ x \vee y &= y \vee x
 束は特殊な半順序なので，当然それは$X$から$Y$への単調写像である必要があるが，それに加え束の特徴である結びと交わりを保存する必要がある．
 具体的には次である
 
-\begin{dfn}{束準同型写像}
+\begin{dfn}{束準同型写像}{homomorphism}
 関数$f:X \to Y$が次の条件を満たすとき，束$X, Y$の間の\emph{準同型写像}(homomorphism)といわれる．すべての$x, x' \in X$に対して, 
 \[
  f(x \vee x') = f(x) \vee f(x') \ \text{ かつ } \ f(x \wedge x') = f(x) \wedge f(x')
@@ -328,7 +328,7 @@ $X$の真部分集合であるようなフィルター／イデアルは，固�
 というのも否定というのは2項ではなく1項演算$\neg:p \mapsto \neg p$であり，単なる束の中には対応物が無いからである．
 この否定演算を加え，さらに$\vee$と$\wedge$についての分配則を付け加えたものを，\emph{ブール代数}(Boolean algebra)と呼ぶ．
 
-\begin{dfn}{ブール代数}
+\begin{dfn}{ブール代数}{bool}
     最大元1と最小元0を持つ束$\langle X, \preceq \rangle$が以下を満たすとき，ブール代数と呼ばれる
     \begin{enumerate}
         \item \emph{分配則}(distributive law)を満たす，つまりすべての$x, y, z \in X$に対し，
@@ -443,7 +443,7 @@ $X$の真部分集合であるようなフィルター／イデアルは，固�
 
 最後にブール代数間の準同型写像を，以下のように定義される
 
-\begin{dfn}{ブール準同型}
+\begin{dfn}{ブール準同型}{bool_homomorphism}
     ブール代数$X, Y$間の束準同型$f:X \to Y$が，さらに以下の条件を満たすとき，\emph{ブール準同型}(Boolean homomorphism)と呼ぶ．
     \begin{enumerate}
         \item $f(0) = 0$ かつ $f(1) = 1$.
