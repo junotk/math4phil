@@ -602,19 +602,31 @@ $X$上の異なる位相$\mcalO, \mcalO'$を考えると，$i$は位相空間$(X
     \centering
     \begin{tikzpicture}[scale=1]
      \draw[->,>=stealth,semithick](-2,0)--(2,0)node[above]{$x$};%x軸
-     \draw[->,>=stealth,semithick](0,-1.5)--(0,1.5)node[right]{$y$};%y軸
+     \draw[->,>=stealth,semithick](0,-2)--(0,2)node[right]{$y$};%y軸
      \draw[thick,domain=-1.65:1.65] plot(\x,{pow(\x,3)-2*\x});
+
+     \fill[color=blue!30, opacity=0.3] (-2,.5) rectangle (2,-.5);
+     \fill[color=red!30, opacity=0.3] (-1.52,.5) rectangle (-1.26,-.5);
+     \draw[thick, color=red] (-1.52,0)--(-1.26,0);
+     \fill[color=red!30, opacity=0.3] (-.25,.5) rectangle (.25,-.5);
+     \draw[thick, color=red] (-.26,0)--(.25,0);
+     \fill[color=red!30, opacity=0.3] (1.26,.5) rectangle (1.52,-.5);
+     \draw[thick, color=red] (1.26,0)--(1.52,0);
     \end{tikzpicture} 
   \end{minipage}
   \begin{minipage}[b]{0.45\linewidth}
    \begin{tikzpicture}[scale=1]
     \draw[->,>=stealth,semithick](-1,0)--(3,0)node[above]{$x$};%x軸
-    \draw[->,>=stealth,semithick](0,-1.5)--(0,1.5)node[right]{$y$};%y軸
-    \draw[thick,domain=-0.5:1] plot(\x,-1);
-    \draw[thick,domain=1.06:2.5] plot(\x,1);
+    \draw[->,>=stealth,semithick](0,-2)--(0,2)node[right]{$y$};%y軸
+    \draw[thick,domain=-1:1] plot(\x,-1);
+    \draw[thick,domain=1.06:3] plot(\x,1);
     \draw(1,1) circle [thick, radius=2pt];
     \fill(1,-1) circle [radius=2pt];
     \draw[dashed] (1,-1)--(1,0.94);
+
+    \fill[color=blue!30, opacity=0.3] (-1,-.5) rectangle (3,-1.5);
+    \draw[thick,color=red] (-1,0)--(1,0);
+ 
    \end{tikzpicture} 
   \end{minipage}
  \caption{連続関数と非連続関数}
