@@ -51,7 +51,40 @@ $x, y$の上限を\emph{結び}(join)といい，$x \vee y$で表す．またそ
 かくして我々は，最初の代数的演算を手に入れた．
 
 半順序同様，束もハッセ図によって図示することができる．
-
+図\ref{fig:lattice}の左側は束の一例である．
+実際，すべてのペアについて，その上限・下限が一意に定まっている．
+上の演算を確認すると，例えば$b\vee d = e$であり，$c \wedge f = a$である．
+一方，右側のハッセ図は半順序であるが束ではない．
+というのも，ペア$(b, c)$は上界として$d, e, f$を持つが，そのうちどれが最小かは定まらない，つまり上限がないからだ．同様に$(d, e)$は下限を持たない．
+よって演算$b \vee c, d \wedge e$が一意に定義されず，束の条件を満たさない．
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[node distance=1.5cm]
+        \begin{scope}
+            \node (a) at (0,0) {$a$};
+            \node (b) at (-1,1) {$b$};
+            \node (c) at (0,1) {$c$};
+            \node (d) at (1,1) {$d$};
+            \node (e) at (0,2) {$e$};
+            \node (f) at (1,2) {$f$};
+            \node (g) at (2,2) {$g$};
+            \node (h) at (1,3) {$h$};
+            \draw (a)--(b)--(e)--(h)--(f)--(d)--(e)--(c)--(a)--(d)--(g)--(h);
+        \end{scope}
+        \begin{scope}[xshift=5cm]
+            \node (a) at (0,0) {$a$};
+            \node (b) at (-1,1) {$b$};
+            \node (c) at (1,1) {$c$};
+            \node (d) at (-1,2) {$d$};            
+            \node (e) at (1,2) {$e$};
+            \node (f) at (0,3) {$f$};
+            \draw (a)--(b)--(d)--(f)--(e)--(c)--(a);
+            \draw (b)--(e); \draw (d)--(c);
+        \end{scope}
+    \end{tikzpicture}
+    \caption{束の事例（左）と束でない半順序（右）．右側では，一部のペアについて結びと交わりが存在しない．}
+    \label{fig:lattice}
+\end{figure}
 
 
 
@@ -105,6 +138,12 @@ x \vee y &= y \vee x
  1 \wedge x = x, \ \ \ 0 \vee x = x \\
  x \wedge (y \vee x) = x = (x \wedge y) \vee x .
 \end{align}
+
+(3)はまあ自明だろう．(4)についても，任意の$x \in X$について$x \preceq 1$なので，その下限は$x$となり，また$0$についてはその逆を考えればよい．
+(5)については視覚的にイメージするとわかりやすい．
+具体例として図\ref{fig:lattice}左の束から$b \wedge (f \vee b)$を取ると，$f \vee b$は$(f, b)$の上限なので当然$b$より上に位置する（$b \preceq f \vee b$）．
+よってそれと$b$の下限をとると，$b$に一致する．
+同様に，$b \wedge f$は$b$より下に来るので，それと$b$の上限は$b$と一致する．
 
 \begin{renshu}{}{}
 \begin{enumerate} \label{logic}
