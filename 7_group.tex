@@ -1,10 +1,6 @@
 \documentclass[11pt,a4paper]{jsarticle}
 \input{m4p_preamble.tex}
 
-
-\usepackage{tikz}
-\usetikzlibrary{intersections, calc, arrows, positioning, arrows.meta}
-
 \begin{document}
 
 
@@ -224,16 +220,18 @@
     
     一般に，与えられた図形に対し，その図形をそのままに保つ対称変換の全体は，群を成す．
     そしてこの群は，図形によって変わってくる．
-    例えば以下のような二等辺三角形が持つ対称変換は$\{i, \sigma_A\}$の2つである．
+    例えば以下左のような二等辺三角形が持つ対称変換は$\{i, \sigma_A\}$の2つである．
     \begin{center}
         \begin{tikzpicture}
-            \node[above](a) at (.7,1.5){$A$};
-            \node[right](b) at (1.4,0){$B$};
+            \node[above](a) at (.5,1.5){$A$};
+            \node[right](b) at (1,0){$B$};
             \node[left](c) at (0,0){$C$};
-            \draw(0,0)--(1.4,0)--(.7,1.5)--(0,0);
+            \draw(0,0)--(1,0)--(.5,1.5)--(0,0);
+
+	   \draw (4,.8) circle[radius=.8];
         \end{tikzpicture}
     \end{center}
-    一方，円の場合はあらゆる角度の回転，および中心点を通るあらゆる軸での鏡映が対称変換になる．
+    一方，右のような円の場合はあらゆる角度の回転，および中心点を通るあらゆる軸での鏡映が対称変換になる．
     これは，二等辺三角形よりも三角形が，そして三角形より円のほうがより対称的である，という我々の直観とも合致している．
 
 \end{rei}
@@ -246,32 +244,57 @@
     正方形の対称変換をすべて求め，各変換の逆元を確定せよ．
 \end{renshu}
 
-\begin{rei}{クラインの四元群}{klein}
-    以上ではカードのシャッフルや図形の変換といった，比較的具体的な例をあげてきたが，最後に抽象的な群の例を一つ見よう．
-    以下の積表で定まる群を，クラインの四元群という．
+
+\begin{rei}{カリエラ型婚姻規則}{klein}
+ レヴィ・ストロースは『親族の基本構造』の中で，オーストラリア原住民であるカリエラ族の婚姻規則を紹介している．
+ カリエラ族は$A1, A2, B1, B2$で表される4つの氏族からなる．
+ 子供は母からアルファベットを，父から数字を引き継ぐ------よって$B2$の母と$A1$の父から生まれる子供は$B1$となる．
+ そして結婚は，数字もアルファベットも異なる相手としかできない------なので婚姻は$A1$と$B2$，$A2$と$B1$の間でのみ可能である．
+ 以下の図はこれをまとめたものである．
+ \[\begin{tikzpicture}[equal/.style={double distance=1.5pt}]
+    % ノードの配置
+    \node (A1) at (0,0) {$A1$};
+    \node (B2) at (2,0) {$B2$};
+    \node (A2) [below=of A1] {$A2$};
+    \node (B1) [below=of B2] {$B1$};
+    % 矢印の描画
+    \draw[double, equal] (A1) -- (B2) node[midway, above]{$\gamma$};
+    \draw[double, equal] (A2) -- (B1) node[midway, below]{$\gamma$};
+    \draw[{Stealth[scale=1.0]}-{Stealth[scale=1.0]}] (A1) -- (A2) node[midway, left]{$\beta$};
+    \draw[{Stealth[scale=1.0]}-{Stealth[scale=1.0]}] (B2) -- (B1)  node[midway, right]{$\beta$};
+    \draw[decorate, decoration={snake, amplitude=.4mm, segment length=2mm, post length=1mm}] (A1) -- (B1)  node[midway, above=5pt]{$\alpha$};
+    \draw[decorate, decoration={snake, amplitude=.4mm, segment length=2mm, post length=1mm}] (A2) -- (B2);
+ \end{tikzpicture}\]
+ この図において，$\alpha$は父子関係，$\beta$は母子関係，$\gamma$は婚姻関係を表している．
+ 例えばあなたが$A1$なら，あなたの父や息子は$\alpha(A1)=B1$であり，またその結婚相手は$\gamma (\alpha (A1)) = A2$である．
+ 実はこのややこしい婚姻規則は，\emph{クラインの四元群}という群構造を持っている：
     \[
         \begin{array}{c|cccccc}
-                 & i & a & b & c \\ \hline
-               i & i & a & b & c \\ 
-               a & a & i & c & b \\ 
-               b & b & c & i & a \\ 
-               c & c & b & a & i \\ 
+                 & i & \alpha & \beta & \gamma \\ \hline
+               i & i & \alpha & \beta & \gamma \\ 
+               \alpha & \alpha & i & \gamma & \beta \\ 
+               \beta & \beta & \gamma & i & \alpha \\ 
+               \gamma & \gamma & \beta & \alpha & i \\ 
         \end{array}
     \]
+ 『親族の基本構造』の補遺には，数学者アンドレ・ヴェイユ（ブルバキの中心メンバー，シモーヌ・ヴェイユの兄）によるより複雑なムルンギン族の婚姻制度に対する群論的分析が収められている\citep[cf.][]{Hashizume1988-lo}．
 \end{rei}
+
 
 \begin{rei}{ロボットの操作群}{robot_group}
     前章発展5.1では，ロボットの状態に対するプログラム作用を，その結果の同一性でまとめた同値類$M/\sim$を考えた．
     この同値類は群をなす．
     というのも，以下のような仕方ですべての生成元に対して逆元を考えることができるからだ
     \begin{itemize}
-        \item $[a]^{-1} = [bbabb]$ （一歩進む，の逆は右に180度回転・一歩前進・右180度回転）,
-        \item $[b]^{-1} = [c]$ （右向の逆は左向）,
-        \item $[c]^{-1} = [b]$ （左向の逆は右向）,
+        \item $[f]^{-1} = [rrfrr]$ （一歩進む，の逆は右に180度回転・一歩前進・右180度回転）,
+        \item $[r]^{-1} = [l]$ （右向の逆は左向）,
+        \item $[l]^{-1} = [r]$ （左向の逆は右向）,
         \item $[i]^{-1} = [i]$.
     \end{itemize}
-    よってこれらから形成される任意の元，例えば$[baac]$などに対しても，$[baac]^{-1} = [c]^{-1} [a]^{-1} [a]^{-1} [b]^{-1}$といった仕方で逆元が存在する．
-
+    よって生成元から形成される任意の元，例えば$[rffl]$などに対しても，$[rffl]^{-1} = [l]^{-1} [f]^{-1} [f]^{-1} [r]^{-1}$といった仕方で逆元が存在する．
+    % ちなみに動作ベースで考えれば，これが唯一の戻り方ではない．
+    % 例えば$lffr$も$rffl$に対して逆の動きをする．しかし最終結果は
+    % aab]も同様．そしてこれはステップ毎の動きとしては上とかなり違う．が，最終結果は等しいので同値類になる．
     一方で，同値類で割る前の$M$は群ではない．その理由を考えてみよ．
 \end{rei}
 
