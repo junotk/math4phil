@@ -236,7 +236,7 @@
 
 \end{rei}
 
-\begin{renshu}{}{}
+\begin{renshu}{}{C2_table}
     正三角形の対称性$\{i, c_1, c_2, \sigma_A, \sigma_B, \sigma_C\}$の積表を作れ．（ヒント：もちろん三角形にこれらを適用して結果を逐一確認してもよい．しかしより楽なやり方もある．三角形の変換の一つ一つは，その頂点$\{A, B, C\}$を並び替える置換になっていることに注意せよ．よってその全体は上で見た$S_3$に等しい．）
 \end{renshu}
  
@@ -308,23 +308,88 @@
 
 
 \section{群準同型写像}
+次に，（集合として）ことなる群の間の同一性の基準として，群の準同型を定めよう．
+こちらも基本的には，モノイド準同型の定義に従う．
 
+\begin{dfn}{群準同型}{homomorphism}
+    2つの群$(G, \circ, i), (G', \circ', i')$が与えられているとき，写像$f:G \to G'$が\emph{群準同型写像}(group homomorphism)であるとは，任意の$g,h \in G$について群演算を保存する，つまり$f(g\circ h) = f(g) \circ' f(h)$が成立することをいう．
+\end{dfn}    
 
-\begin{renshu}{}{}
-    5章で見た準同型は，群についても同様にいえる．
-    群$(G, \circ, i)$から群$(G', \circ', i')$への準同型写像とは，写像$f:G \to G'$であって，すべての$x, y \in G$について$f(x\circ y) = f(x) \circ' f(y)$が成立するものである．
+モノイド群準同型のときは，これに加えて一方の単位元が他方の単位元に移される$f(i) = i'$という条件があったが，群の場合はそれは必要ない．
+というのも以下のように，その性質は上の定義から導くことができるからだ．
+
+\begin{prop}{群準同型の性質}{}
+ 群準同型$f:G \to G'$について，以下が成り立つ．
+ \begin{enumerate}
+  \item 単位元は単位元に移される．つまり$f(i) = i'$．
+  \item 逆元は逆元に移される．つまり任意の$g \in G$について$f(g^{-1}) = f(g)^{-1}$．
+ \end{enumerate}
+\end{prop}
+証明は以下の通り：
+ \begin{enumerate}
+  \item $i = i \circ i$であることに注意すると，$f$は準同型なので$f(i) = f(i \circ i) = f(i) \circ' f(i)$．この両辺に$f(i)^{-1}$をかけると
+	\begin{align*}
+	 f(i) \circ' f(i)^{-1} &= f(i) \circ' f(i) \circ f(i)^{-1} \\ 
+	 i' &=   f(i) \circ' i' = f(i).
+	\end{align*}
+  \item $g \circ g^{-1} = i$より，
+	\[ f(i) = f(g \circ g^{-1}) = f(g) \circ' f(g^{-1}) \ \ \ \ \because f\text{は準同型}	\]
+	一方上より$f(i) = i'$なので，これと組み合わせて$f(g) \circ' f(g^{-1}) = i'$，つまり$f(g^{-1})$は$f(g)$の逆元$f(g)^{-1}$である．
+ \end{enumerate}
+ 
+
+\begin{rei}{}{}
     例えば上の正三角形と二等辺三角形の対象変換の間に，以下のような写像を構築すると，これは両群の間の準同型写像になっている：
     \[
-    f(c_1)=f(c_2)=i, \ \ \ f(\sigma_1) = f(\sigma_2) = f(\sigma_3) = \sigma_A.    
+    f(i)=f(c_1)=f(c_2)=i, \ \ \ f(\sigma_1) = f(\sigma_2) = f(\sigma_3) = \sigma_A.    
     \]
+    この様子は，2つの群の積表を比べて見るとわかりやすい．
+    下の表において，$f$は左側の緑／青のブロックに入っている元を，それぞれ右側の緑／青のブロックの元へと移す．
+    $f$が準同型であるとは，左の積表で計算してから（例えば$c_1 \circ \sigma_A = \sigma_B$）それを右に飛ばしても（$f(\sigma_B)=\sigma_A$），右に飛ばしてから（$f(\sigma_B) = \sigma_A, f(c_1)=i$）それを計算しても（$i \circ \sigma_A = \sigma_A$），結果が変わらないということだ．
+    このように元を適切に並べてやれば，準同型で送られた先の群の積表は，送る先の積表がギュッと縮んだような形になる（柄物のシャツが洗濯で縮んでしまったイメージ）．
+    \begin{center}
+    \begin{tikzpicture}
+        \node at (0,0) {$\begin{array}{c|cccccc}
+               & i & c_1 & c_2 & \sigma_A & \sigma_B & \sigma_C \\ \hline
+               i & i & c_1 & c_2 & \sigma_A & \sigma_B & \sigma_C \\ 
+               c_1 & c_1 & c_2 & i &  \sigma_C & \sigma_A & \sigma_B  \\ 
+               c_2 & c_2 & i & c_1 &  \sigma_B & \sigma_C & \sigma_A \\ 
+               \sigma_A & \sigma_A & \sigma_B & \sigma_C &  i  &  c_1 & c_2 \\ 
+               \sigma_B & \sigma_B & \sigma_C & \sigma_A &  c_2 &  i  & c_1\\ 
+               \sigma_C & \sigma_C & \sigma_A & \sigma_B &  c_1 & c_2 &  i \\ 
+        \end{array}$};
+        \fill[rounded corners=5pt, fill=green!30, opacity=0.3] (-1.9,-0.3) rectangle (0.3,1.4);
+        \fill[rounded corners=5pt, fill=green!30, opacity=0.3] (0.5,-2.1) rectangle (2.7,-0.4);
+        \fill[rounded corners=5pt, fill=blue!30, opacity=0.3] (-1.9,-2.1) rectangle (0.3,-0.4);
+        \fill[rounded corners=5pt, fill=blue!30, opacity=0.3] (0.5,-0.3) rectangle (2.7,1.4);
+        \node at (5,0) {$\begin{array}{c|cc}
+                 & i & \sigma_A  \\ \hline
+               i & i & \sigma_A  \\
+               \sigma_A & \sigma_A & i \\
+        \end{array}$};
+        \fill[rounded corners=5pt, fill=green!30, opacity=0.3] (4.7,-0.3) rectangle (5.3,0.3);
+        \fill[rounded corners=5pt, fill=green!30, opacity=0.3] (5.5,-0.9) rectangle (6.1,-0.3);
+        \fill[rounded corners=5pt, fill=blue!30, opacity=0.3] (4.7,-0.9) rectangle (5.3,-0.3);
+        \fill[rounded corners=5pt, fill=blue!30, opacity=0.3] (5.5,-0.3) rectangle (6.1,0.3);
+    \end{tikzpicture}
+    \end{center}
+\end{rei}
+
+
+そして通例通り，群$G, G'$の間の準同型写像$f:G \to G'$が全単射であるとき，$f$は\emph{同型写像}(isomorphism)といわれ，$G$と$G'$は群として\emph{同型}(isomorphic)になる．
+練習問題\ref{renshu:C2_table}で示唆したように，正三角形の対称変換群$C_2$と，事例\ref{rei:symmetric_group}で見た3次対称群$S_3$は同型である．
+
+\begin{renshu}{}{group_isomophism}
     \begin{enumerate}
-        \item これが準同型写像の定義を満たすことを確認せよ．
-        \item 上の練習問題で求めた正方形から長方形の対象変換群への準同型写像を構築せよ．
+        \item $C_2 = \{i, c_1, c_2, \sigma_A, \sigma_B, \sigma_C\}$と$S_3 = \{i, s_1, s_2, s_3, s_4, s_5\}$の間の同型写像を構成せよ．
+%        \item \ref{rei:klein}で見たクラインの4元群と$S_3$の間の準同型は存在するだろうか．
     \end{enumerate}
+    
 \end{renshu}
 
-
 \section{群の作用}
+我々は前章5節で，
+
 
 \section{対称性の哲学的含意}
 
@@ -334,7 +399,7 @@
 当時は，19世紀初頭の非ユークリッド幾何学の発見に導かれ，射影幾何学など様々な幾何学が林立していた．
 クラインのプログラムは，こうした様々な幾何学を，対称性の観点から分類・統合する，というものである．
 そのアイデアをざっくり説明すると，次のようなものである．
-\begin{figure}[h]
+p\begin{figure}[h]
 \begin{center}
 \begin{tikzpicture}
     \draw(0,0)--(1,0)--(1,2)--(0,2)--(0,0);
