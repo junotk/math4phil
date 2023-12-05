@@ -264,7 +264,7 @@ M \arrow{r}{m} & M
 m, n \arrow{r}{f} \arrow[swap]{d}{\circ} 
 & f(m), f(n) \arrow{d}{\circ'} \\
 m \circ n \arrow{r}{f} 
-& \begin{array}{c} f(m) \circ f(n) \\ = f(m \circ' n) \end{array}
+& \begin{array}{c} f(m) \circ' f(n) \\ = f(m \circ n) \end{array}
 \end{tikzcd}
 \]
 つまり$M$上で積を計算して$f$で$M'$へと飛ばしても（反時計回り），まず$M'$に飛ばしてから$M'$上の積$\circ'$を計算しても，結果は同じということだ．
@@ -290,8 +290,8 @@ m \circ n \arrow{r}{f}
 
 \begin{rei}{}{}
     事例\ref{rei:life_monoid}の人生モノイド$M$の縮小版として，(1)がんばる, (2)がんばらない，という2つの選択肢と単位元($i$)のみから生成される自由モノイド$M'$を考える．
-    $M$から$M'$への関数$f$は，$M$の元に現れる「勉強する(b)」「バイトする(c)」を(1)に，「遊ぶ(a)」「休む(d)」を(2)に置き換えるものとすると，これは$M$から$M'$への準同型写像となる．
-    例えば，$f(abd) \circ (dca) = 212 \circ' 212 = 212212 = f(abddca) = f(abd \circ dca)$である．
+    $M$から$M'$への関数$f$は，$M$の元に現れる「勉強する($s$)」「バイトする($w$)」を(1)に，「遊ぶ($p$)」「休む($r$)」を(2)に置き換えるものとすると，これは$M$から$M'$への準同型写像となる．
+    例えば，$f(psr) \circ (rwp) = 212 \circ' 212 = 212212 = f(psrrwp) = f(psr \circ rwp)$である．
 
     （ところで自由モノイドは半順序を定義するのだった．$M$から$M'$へのモノイド準同型があるとき，そこから得られる半順序の間にはどのような関係があるか，考えてみても面白いかもしれない．）
 \end{rei}
@@ -443,9 +443,9 @@ $M$と$N$の間に同型写像があるとき，両者はモノイドとして\e
 \begin{renshu}{}{}
     以下の同値類に属する$M$の元をそれぞれ3つ挙げよ．
     \begin{enumerate}
-        \item $[a]$
-        \item $[b]$
-        \item $[aiabac]$
+        \item $[f]$
+        \item $[r]$
+        \item $[fifrfl]$
     \end{enumerate}
 \end{renshu}
 
@@ -482,7 +482,7 @@ $M$と$N$の間に同型写像があるとき，両者はモノイドとして\e
           \node[node, right = 2cm of 1] (2) {$2$};
     
           \path[->, >=stealth]
-            (0) edge[loop above, in=60, out=120, looseness=6] node{$s, b$} (0)
+            (0) edge[loop above, in=60, out=120, looseness=6] node{$s, w$} (0)
             (0) edge[above, bend left = 20] node{$p, r$} (1)
             (1) edge[loop above, in=60, out=120, looseness=6] node{$r$} (1)
             (1) edge[below, bend left = 20] node{$p, w$} (0)
