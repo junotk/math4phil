@@ -61,7 +61,19 @@
 \end{rei}
 
 モノイドの演算が具体的にどうなっているのかは，それぞれの元のペアの演算結果を明示することによって表示できる．
-例えば，お馴染みの「九九の表」は，自然数の掛け算モノイドの演算を表で表したものだ：
+具体的には，すべてのモノイド元を表の上端と左端に並べ，それが交差するマスにその積の結果を示していく．
+ただしかける順番は「行$\circ$列」，つまり$a$行$b$列にあるマスには$a \circ b$が入るとする．
+\[
+\begin{array}{c|cccccc}
+       & i & a        & b        & c        & \dots  \\ \hline
+     i & i & a        & b        & c        & \dots  \\ 
+     a & a & a\circ a & a\circ b & a\circ c & \dots  \\ 
+     b & b & b\circ a & b\circ b & b\circ c & \dots  \\ 
+     c & c & c\circ a & c\circ b & c\circ c & \dots  \\ 
+     \vdots & \vdots & \vdots & \vdots & \\
+\end{array}
+\]
+お馴染みの「九九の表」は，自然数の掛け算モノイドの演算を表で表したものだ：
 \[
 \begin{array}{c|cccccc}
        & 1 & 2 & 3 & \dots & n & \dots \\ \hline
