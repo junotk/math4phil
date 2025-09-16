@@ -1,11 +1,12 @@
-\documentclass[11pt,a4paper]{jsarticle} %,uplatex
+%\documentclass[11pt,a4paper]{jsarticle} %,uplatex
+\documentclass[11pt,a4paper]{bxjsarticle}
 \input{m4p_preamble.tex}
 
 \begin{document}
 
 
 \title{2. 関係と関数}
-\author{2022秋期「哲学者のための数学」授業資料（大塚淳）}
+\author{2025秋期「哲学者のための数学」授業資料（大塚淳）}
 \date{ver. \today}
 \maketitle
 
@@ -46,7 +47,7 @@
 \]
 で表すことができる．例えば$(2, 5) \in L, (100, 84) \not\in L$である．
 
-同様の仕方で，三項以上の関係も定義できる．一般に$n$関係は($n$-ary relatiohship)は$n$項積$S_1 \times \cdots \times S_n$の部分集合である．
+同様の仕方で，三項以上の関係も定義できる．一般に$n$関係は($n$-ary relationship)は$n$項積$S_1 \times \cdots \times S_n$の部分集合である．
 
 \begin{renshu}{}{}
 \begin{enumerate}
@@ -69,7 +70,7 @@
        これは$X \times X$の表で考えると，対角線上にすべてチェックマークがついているということである．
  \item $R$が\emph{非反射的}(irreflexive)であるとは，逆に
        \[ \forall x ( \neg xRx ), \]
-       つまりいかなる対象も自分自身と$R$関係にないことである．
+       つまりいかなる対象も自分自身と$R$関係にないことである．この場合上と逆に，対角線上のどのセルにもチェックマークがついていない．
  \item $R$が\emph{対称的}(symmetric)であるとは，
        \[ \forall x, y ( xRy \Rightarrow yRx ), \]
        つまり関係が相互的になっているときである．
@@ -452,7 +453,7 @@ $f$の後に$g$を適用するのに，$g \circ f$と書くのは一見逆な気
  こうした記述は合成することができる．
  生物種名の割当$g:Y \to S$を再びとりあげよう．
  種はさらに大きな分類，例えば菌類，植物，動物などの界（kingdom）に区分することができるので，これを関数$k:S \to K$で表す．
- 例えば$k(\text{homo sapience} = \text{animal}), \ k(\text{rosa} = \text{plant})$である．
+ 例えば$k(\text{homo sapience}) = \text{animal}, \ k(\text{rosa}) = \text{plant}$である．
  すると$g$と$k$を合成することで，$k \circ g(\text{Socrates}) = \text{animal}$のように生物個体に直接，界を割り当てる関数を作ることができる．
 \end{rei}
 
@@ -495,7 +496,7 @@ $f$の後に$g$を適用するのに，$g \circ f$と書くのは一見逆な気
 \]
 これは$f(x)$からなる集合なので$Y$の部分集合である．よって$f:X \to Y$は，同時に$f:\mcalP(X) \to \mcalP(Y)$，つまり$X$の部分集合から$Y$の部分集合への関数も自然に伴うことになる．
 
-その逆に，$f$によって$Y$のある部分集合$B \subset Y$に飛ばされる$X$の部分を，$f$による$B$の\emph{逆像}(invarse image)とよび，以下のように書く
+その逆に，$f$によって$Y$のある部分集合$B \subset Y$に飛ばされる$X$の部分を，$f$による$B$の\emph{逆像}(inverse image)とよび，以下のように書く
 \[
  f^{-1}(B) = \{x|f(x) \in B\} 
 \]
@@ -613,7 +614,7 @@ $f$の後に$g$を適用するのに，$g \circ f$と書くのは一見逆な気
 
 
 \begin{rei}{本質}{essence}
-$X$を個物の集合，$E$を\emph{本質}(essense)の集合とすれば，関数$e:X \to E$は各個物にその本質を対応させる．
+$X$を個物の集合，$E$を\emph{本質}(essence)の集合とすれば，関数$e:X \to E$は各個物にその本質を対応させる．
 これが個物の分類を与えることを確認せよ．
 この関数の像の逆像$e^{-1} (e(x))$は何を意味するだろうか．
 %逆に，個物を分類することは，本質を想定することと同じだろうか．
@@ -625,7 +626,7 @@ $X$を個物の集合，$E$を\emph{本質}(essense)の集合とすれば，関�
 同様に，関数にも制約を加えることで種類を考えることができる．
 これらの種別は大変重要なので，最初はこんがらがるかもしれないがぜひ頭に叩き込んでおいてほしい．
 
-関数$f:X \to Y$が\emph{全射}(surjection)であるとは，$Y$のすべての元が対応する$X$を持つということ，より正確に言えば$f(X)=Y$となることである．
+関数$f:X \to Y$が\emph{全射}(surjection)であるとは，$Y$のすべての元が対応する$X$の元を持つということ，より正確に言えば$f(X)=Y$となることである．
 つまり$X$を関数で飛ばすことで$Y$の全域をカバーすることができる．ここから全射は「上からの」(onto)写像ともいわれる．
 
 関数$f:X \to Y$が\emph{単射}(injection)であるとは，異なる$X$の元は必ず異なる$Y$の元に飛ばされる，つまり$x \neq x'$なら$f(x) \neq f(x')$が成り立つということである．
