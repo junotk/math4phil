@@ -1,0 +1,50 @@
+\documentclass[dvipdfmx]{article}
+\usepackage{tcolorbox}
+\tcbuselibrary{theorems}
+\usepackage{cleveref}
+\usepackage{tikz}
+\usepackage{pgfplots}
+
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{mytheorem}{My Theorem}
+
+\newtcolorbox[auto counter,number within=section,
+number freestyle={(Q/\noexpand\thesection/\noexpand\Alph{\tcbcounter})},
+]{phbox}[2][]{%
+colback=yellow!15!white,colframe=blue!75!black,fonttitle=\bfseries,
+title=Question~\thetcbcounter: #2,#1}
+
+\newtcbtheorem[auto counter, number within=section, number format=\thesection.\arabic]{theo}{Theorem}{
+    nobeforeafter,
+    title filled,
+    fonttitle=\bfseries,
+    coltitle=black,
+    number freestyle={(Q/\noexpand\thesection/\noexpand\Alph{\tcbcounter})}
+}{theo}
+
+\newtcbtheorem[auto counter, number within=section, number format=\thesection.\arabic]{mytheo}{My Theorem}{
+    nobeforeafter,
+    title filled,
+    fonttitle=\bfseries,
+    coltitle=black
+}{mytheo}
+
+\begin{document}
+
+\section{First Section}
+
+% \begin{theo}{Pythagorean theorem}
+% This is a theorem.
+% \end{theo}\label{thm:pythagorean}
+
+\begin{mytheo}{My custom theorem}
+This is my custom theorem.
+\end{mytheo}\label{thm:custom}
+
+In \cref{thm:pythagorean} and \cref{thm:custom}...
+
+
+
+\end{document}

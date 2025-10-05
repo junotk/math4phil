@@ -1,0 +1,236 @@
+\documentclass[11pt,a4paper]{jsarticle}
+\input{m4p_preamble.tex}
+\newtheorem*{answer}{解答例}
+
+\begin{document}
+
+
+% \title{1. 集合}
+% \author{2022秋期「哲学者のための数学」授業資料（大塚淳）}
+% \date{ver. \today}
+%\maketitle
+\noindent
+2022秋期「哲学者のための数学」
+
+\section*{課題2}
+%20点満点。
+
+\subparagraph{問題1}
+
+全順序ではない半順序の例を，数学以外からあげよ．その際，
+\begin{enumerate}
+ \item それがどのような関係か（具体的に$X \preceq Y$としたとき何を意味するか）
+ \item それが半順序の公理を満たすか
+ \item それが全順序の公理を満たさないか
+\end{enumerate}
+をそれぞれ確認すること．（\textbf{3点}）
+
+\subparagraph{回答例}
+$x \preceq y$を「$x$は$y$の部分である」という関係として読むと，これは半順序である．
+ただし「$x$が$y$の部分である」とは，$x$を構成するすべての物理的要素が$y$の物理的構成要素のうちに含まれることとする．
+
+このとき，すべての物$x$につき，$x$の構成要素は$x$に含まれるので反射性を満たす．
+またもし$x$が$y$の部分であり，$y$が$z$の部分であれば，$x$は$z$の部分であるので推移性を満たす．
+そして$x$のすべての構成要素が$y$に含まれ，逆もまたそうなら，両者の構成要素は同一であるから，$x=y$であり反対称性を満たす．
+よってこれは半順序である．
+
+次に，$x=$私の右手，$y=$私の左手とすると，両者は互いの部分ではない，つまり$x \not\preceq y$かつ$y \not\preceq x$．
+よってこれは全順序ではない．
+
+
+
+
+\subparagraph{問題2}
+$X$を有限集合としたとき，その部分集合の間の包含関係 $\langle \mcalP(X), \subset \rangle$はブール代数になることを示せ．
+ただし$\langle \mcalP(X), \subset \rangle$が結び$\vee$を集合和$\cup$，交わり$\wedge$を共通部分$\cap$，0元を$\emptyset$，1元を$X$とする束であることは仮定してよい．（\textbf{3点}）
+
+
+\subparagraph{回答例}
+$\langle \mcalP(X), \subset \rangle$を束とする．
+任意の部分集合$A, B, C \subset X$につき，分配則
+\begin{align*}
+ A \cup (B \cap C) = (A \cup B) \cap (A \cup C) \\
+ A \cap (B \cup C) = (A \cap B) \cup (A \cap C) 
+\end{align*}
+が成立するため（1章5節），これはハイティング代数である．
+
+部分集合$A \subset X$の擬補元$\neg A = A \Rightarrow \emptyset$は，$B \cap A \subset \emptyset$を満たす$B$の中で最も大きいもの，つまり$A$と「被らない」$X$の部分集合の中で最大のものである．
+これは$A$の補集合$A^c:= X \setminus A$にほかならない．
+補集合の性質より，
+\begin{align*}
+ A \cup A^c &= X \\
+ A \cap A^c &= \emptyset 
+\end{align*}
+が成立する．よって$\langle \mcalP(X), \subset \rangle$は$A^c$を補元とするブール代数である．
+
+
+% 事例3.1に従い，$C$を概念の有限集合，$a, b \in C$に対し$a \preseq b$を「$a$は$b$の事例である」という関係とせよ．
+% このとき$\langle C, \preseq \rangle$は
+% \begin{enumerate}
+%  \item 半順序だろうか．その条件を確認せよ．
+%  \item 束だろうか．そうだとしたら任意元の結びと交わりが何に対応するかを述べよ．そうでないとしたら反例をあげよ．
+%  \item ハイティング代数だろうか．そうだとしたら任意元の含意と擬補元が何に対応するかを述べよ．そうでないとしたら反例をあげよ．
+% \end{enumerate}
+
+
+
+
+\subparagraph{問題3（4章練習問題4.2）}
+$T':=\{a, b, c, d\}$とする．
+\begin{enumerate}
+ \item 密着位相でも離散位相でもないような$T'$上の位相$\mcalO$を一つ例示せよ（ただし問2も参照せよ）．（\textbf{1点}）
+ \item 1よりも粗い位相／細かい位相をそれぞれ一つづつ例示せよ．ただし密着位相と離散位相は除く．（\textbf{2点}）
+\end{enumerate}
+
+
+\subparagraph{回答例}
+\begin{enumerate}
+ \item $\mcalO = \{ \emptyset, \{a\}, \{a,b\}, \{c,d\}, \{a, c, d\}, T\}$とすると，これは$T$の位相を与える．
+ \item 上の位相から$\{a\}$を抜くことを考える．このとき同時に$\{a,b\}$あるいは$\{a, c, d\}$の少なくとも一方も同時に抜かなければならない．というのも，$\{a,b\} \cap \{a, c, d\} = \{a\}$であるため，この両者が開集合である限り$\{a\}$も開集合でなければならないからである．よって例えば$\mcalO' = \{ \emptyset, \{c,d\}, \{a, c, d\}, T\}$は$\mcalO$より粗い位相の一例である．\\
+       次に，$\mcalO$に$\{c\}$を加えることを考える．このとき同時に$\{a,c\}$および$\{a, b, c\}$も加えねばならない．というのも位相の公理より，$\{c\} \cup \{a\}$および$\{c\} \cup \{a,b\}$が開集合でなければならないからだ．よって例えば$\mcalO'' = \{ \emptyset, \{a\}, \{c\}, \{a,b\}, \{a,c\}, \{c,d\}, \{a, b, c\}, \{a, c, d\}, T\}$は$\mcalO$より細かい位相の一例である．
+\end{enumerate}
+
+
+
+
+\subparagraph{問題4}
+$T := \{a, b, c, d\}, T' := \{x, y, z\}$に次のような位相構造が入っているとする．
+\begin{itemize}
+ \item $\mcalO(T) = \{ \emptyset, \{a \}, \{a, b\}, \{c, d\}, \{a, c, d\}, T \}$
+ \item $\mcalO(T') = \{ \emptyset, \{y \}, \{x, y\}, \{y, z\}, T' \}$
+\end{itemize}
+このとき，$f:T \to T'$を全射とすると，$f$がそれぞれ(1)連続写像，(2)開写像であるためには$f$はどんな写像でなければならないか．実際に$f(a), f(b), f(c), f(d)$を明示することで答えよ．
+（\textbf{2点}）
+
+
+
+\subparagraph{回答例}
+\begin{enumerate}
+ \item $f(a)=y, f(b)=x, f(c)=f(d)=z$．\\
+       このとき$f^{-1}(\{y\}) = \{a\}, f^{-1}(\{x,y\} = \{a,b\}, f^{-1}(\{y,z\})=\{a,c,d\})$で，$f$は連続写像になっている．
+       （$f(b)=z$, $f(c)=f(d)=x$でも可）
+ \item $f(a)=y, f(b)=x, f(c)=y, f(d)=z$.\\
+       このとき$f(\{a\}) = \{y\}, f(\{a, b\})=\{x,y\}, f(\{c, d\})=\{y,z\}, f(\{a, c, d\})=\{y,z\}$で，$f$は開写像になっている．
+       （$f(b)=z, f(d)=x$でも可）
+\end{enumerate}
+
+
+% $X$を個物の集合，$E$を\emph{本質}(essense)の集合とすれば，関数$e:X \to E$は各個物にその本質を対応させる．
+% これが個物の分類を与えることを確認せよ．
+% 逆に，個物を分類することは，本質を想定することと同じだろうか．（\textbf{3点}）
+%2点でも良いかも
+
+
+
+
+\subparagraph{問題5}
+4つ以上元をもつようなモノイド作用の例（創作でも良い）をあげ，その積表を書け．
+その際，モノイド元と状態集合を明示すること．（\textbf{4点}）
+
+%．（\textbf{3点}）
+
+
+%\subparagraph{回答例}
+
+\fixme{この問題については，テキストの該当箇所（モノイド作用）自体に誤りがありましたので全員正解とします（すいません・・・）．以下誤りを解説します．}
+
+5章事例3.1では，3つの状態$X=\{S, C, H\}$に対するモノイド$M=\{m_0, m_1, m_2\}$の作用を考えた（簡便のため$m_0$を「放置」，$m_1$を「ほめる」，$m_2$を「しかる」とする）．
+ここまでは良い．しかし$M$がモノイド作用であるためには，任意の$x$および$0 \leq i,j \leq 2$に対し$m_i (m_j x) = (m_i m_j) x$が成り立つように$M$の元同士の演算（積表）を定めなければならない．
+これは上の$\{m_0, m_1, m_2\}$だけでは成り立たない．
+例えば$m_1 m_1 = m_1$と定めたとすると，$m_1 (m_1 S) = m_1 C = H$であるのに対し，$(m_1 m_1) S = m_1 S = C$となり，両辺が一致しない（同じようにこれを$m_0$として$m_2$としてもダメ）．
+
+何が問題かというと，「二回ほめる」ということはまた別の作用であるべきなのだが，これがもとのモノイド$M$に入っていないのだ．
+このためには，$M$は3つだけでなく，それらを任意に組み合わせた作用$m_i m_j m_k...$も含んでいなければならない．
+このようにすべての組み合わせを持つものを，$M$から生成されたモノイドないし\emph{自由モノイド(free monoid)}という．
+なので正しくは，$X$への自由モノイド$M^*$の作用とするべきであった\footnote{なおこの点に感づいたのか，自由モノイドの積表の作成を試みていた回答案もありました．すばらしい．}．
+しかしそうなると元は無限に増えていくので積表を作るのは不可能になる．
+というわけで，事例も間違っているし問題も悪い．すいません．
+
+
+
+\subparagraph{問題6}
+\begin{enumerate}
+ \item 正方形の対象変換を確定し，積表を書け （\textbf{3点}）
+ \item 長方形の対象変換を確定し，積表を書け （\textbf{1点}）
+ \item (1)から(2)への群同型写像を構成せよ（\textbf{2点}）
+\end{enumerate}
+
+
+\subparagraph{回答例}
+
+\begin{enumerate}
+ \item 正方形の対象変換：以下の8つ
+       \begin{itemize} 
+	\item \{0, 90, 180, 270\}度の4つの回転：$c_{0}(=i)$, $c_{90}$, $c_{180}$, $c_{270}$.
+	\item 下図点線を軸とする4つの鏡映：$\sigma_A$, $\sigma_B$, $\sigma_C$, $\sigma_D$.
+\begin{center}
+\begin{tikzpicture}
+    \draw(0,0)--(2,0)--(2,2)--(0,2)--(0,0);
+    \draw[dashed](-0.3,-0.3)--(2.3,2.3);
+    \draw[dashed](-0.3,1)--(2.3,1);
+    \draw[dashed](2.3,-0.3)--(-0.3,2.3);
+    \draw[dashed](1,-0.3)--(1,2.3);
+
+    \node[left](A) at (1,2.4){$\sigma_A$};
+    \node[left](B) at (-0.4,1){$\sigma_B$};
+    \node[left](C) at (-0.4,2.4){$\sigma_C$};
+    \node[left](D) at (-0.4,-0.4){$\sigma_D$};
+\end{tikzpicture}
+\end{center}
+
+	\item 積表
+\[
+\begin{array}{c|cccccccc}
+             & i & c_{90} & c_{180} & c_{270} & \sigma_A & \sigma_B & \sigma_C & \sigma_D \\ \hline
+       i & i & c_{90} & c_{180} & c_{270} & \sigma_A & \sigma_B & \sigma_C & \sigma_D \\ 
+       c_{90} & c_{90} & c_{180} & c_{270} & i & \sigma_D & \sigma_C & \sigma_A & \sigma_B \\ 
+       c_{180} & c_{180} & c_{270} & i & c_{90} & \sigma_B & \sigma_A & \sigma_D & \sigma_C \\ 
+       c_{270} & c_{270} & i & c_{90} & c_{180} & \sigma_C & \sigma_D & \sigma_B & \sigma_A \\ 
+       \sigma_A & \sigma_A & \sigma_C & \sigma_B & \sigma_D & i     & c_{180} & c_{90} & c_{270}\\ 
+       \sigma_B & \sigma_B & \sigma_D & \sigma_A & \sigma_C & c_{180} &  i    & c_{270} & c_{90} \\ 
+       \sigma_C & \sigma_C & \sigma_B & \sigma_D & \sigma_A & c_{270} & c_{90} & i     & c_{180}\\ 
+       \sigma_D & \sigma_D & \sigma_A & \sigma_C & \sigma_B & c_{90} & c_{270} & c_{180} & i \\      
+\end{array}
+\]
+       \end{itemize} 
+
+ \item 長方形の対象変換：以下の4つ
+       \begin{itemize} 
+	\item \{0, 180\}度の2つの回転：$c_{0}(=i), c_{180}$.
+	\item 下図点線を軸とする2つの鏡映：$\sigma_A$, $\sigma_B$.
+\begin{center}
+\begin{tikzpicture}
+    \draw(0,0)--(3,0)--(3,2)--(0,2)--(0,0);
+    \draw[dashed](-0.3,1)--(3.3,1);
+    \draw[dashed](1.5,-0.3)--(1.5,2.3);
+
+    \node[left](A) at (1.5,2.4){$\sigma_A$};
+    \node[left](B) at (-0.4,1){$\sigma_B$};
+\end{tikzpicture}
+\end{center}
+
+	\item 積表
+\[
+\begin{array}{c|cccccc}
+             & i & c_{180} & \sigma_A & \sigma_B & \\ \hline
+       i & i  & c_{180} & \sigma_A & \sigma_B  \\ 
+       c_{180} & c_{180} & i &  \sigma_B & \sigma_A  \\ 
+       \sigma_A & \sigma_A & \sigma_B & i     & c_{180} \\ 
+       \sigma_B & \sigma_B & \sigma_A & c_{180} &  i    \\ 
+\end{array}
+\]
+       \end{itemize} 
+
+ \item (1)から(2)への群同型写像を構成せよ
+
+\fixme{実はこれも問題が誤っており，「準」同型写像のつもりでした．同型写像は全単射でなければならないので存在しません．ただ準同型としてもこの場合はすべてを$i$に移すことになるのでいずれにせよ問題としてイマイチ．出題ミスです．なお精一杯好意的に解釈して，(2)から(1)への埋め込みを示してくれた人もいました（この場合は確かに準同型になりますね）．}
+
+\end{enumerate}
+
+
+
+
+
+
+
+\end{document}

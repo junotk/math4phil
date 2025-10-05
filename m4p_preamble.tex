@@ -1,0 +1,334 @@
+\usepackage{amsmath,amssymb}
+\usepackage{amsthm}
+\usepackage{ascmac}
+\usepackage{bm}
+\usepackage[dvipdfmx]{graphicx}	% required for `\includegraphics' (yatex added)
+\usepackage{setspace}           % required for `\doublespace'
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{angles, positioning, shapes, arrows.meta, decorations.pathmorphing}
+%\usetikzlibrary{intersections, calc, arrows, positioning, arrows.meta}
+\usepackage{tcolorbox}  % 定理環境の装飾
+\tcbuselibrary{skins, breakable, theorems}
+\usepackage{xcolor}
+\usepackage{natbib}
+\usepackage{pxrubrica}
+\usepackage[margin=30truemm, left=40truemm, right=40truemm]{geometry}
+\usepackage{thmbox}     % required for theorem environment with side bar
+%
+\setlength{\parskip}{3mm} %段落間にスペースを入れる
+
+
+% \pagestyle{myheadings}
+% \markright{\footnotesize \sf 2022秋期「哲学者のための数学」授業資料（大塚淳） \ \ 配布禁止}
+
+
+\theoremstyle{definition}
+\newtheorem[S]{exercise}{練習問題}[section]
+\newtheorem[S]{example}{事例}[section]
+\newtheorem[S]{fact}{事実}[section]
+\newtheorem[S]{attn}{注意}[section]
+\newtheorem[S]{develop}{発展}[section]
+\renewcommand{\theattn}{}
+
+\newtcbtheorem[auto counter, number within=section]{rei}{事例}{
+    breakable,
+    coltitle=black,
+    fonttitle=\bfseries,
+    enhanced, colback=white, frame hidden, borderline west = {0.5pt}{5pt}{black},
+%    number freestyle={\noexpand\thesection.\noexpand\arabic{\tcbcounter}}
+}{rei}
+
+\newtcbtheorem[auto counter, number within=section]{prop}{命題}{
+    breakable,
+    coltitle=black,
+    fonttitle=\bfseries,
+    enhanced, colback=white, frame hidden, borderline west = {0.5pt}{5pt}{black},
+%    number freestyle={\noexpand\thesection.\noexpand\arabic{\tcbcounter}}
+}{prop}
+
+\newtcbtheorem[number within=section]{renshu}{練習問題}{
+    breakable,
+    coltitle=black,
+    fonttitle=\bfseries,
+    enhanced, colback=white, frame hidden, borderline west = {0.5pt}{5pt}{black}
+}{renshu}
+
+
+\newtcbtheorem[number within=section]{hatten}{発展}{
+    breakable,
+    coltitle=black,
+    fonttitle=\bfseries,
+    enhanced, colback=white, frame hidden, borderline west = {0.5pt}{5pt}{black}
+}{renshu}
+
+
+\newtcbtheorem[number within=section]{dfn}{定義}{
+    fonttitle=\bfseries,
+    enhanced, colback=white
+}{dfn}
+
+
+% Bold face capital letters:
+\newcommand{\bfzero}{\boldsymbol{0}}
+\newcommand{\bfone}{\boldsymbol{1}}
+\newcommand{\bfA}{\boldsymbol{A}}
+\newcommand{\bfB}{\boldsymbol{B}}
+\newcommand{\bfC}{\boldsymbol{C}}
+\newcommand{\bfD}{\boldsymbol{D}}
+\newcommand{\bfE}{\boldsymbol{E}}
+\newcommand{\bfF}{\boldsymbol{F}}
+\newcommand{\bfG}{\boldsymbol{G}}
+\newcommand{\bfH}{\boldsymbol{H}}
+\newcommand{\bfI}{\boldsymbol{I}}
+\newcommand{\bfJ}{\boldsymbol{J}}
+\newcommand{\bfK}{\boldsymbol{K}}
+\newcommand{\bfL}{\boldsymbol{L}}
+\newcommand{\bfM}{\boldsymbol{M}}
+\newcommand{\bfN}{\boldsymbol{N}}
+\newcommand{\bfO}{\boldsymbol{O}}
+\newcommand{\bfP}{\boldsymbol{P}}
+\newcommand{\bfQ}{\boldsymbol{Q}}
+\newcommand{\bfR}{\boldsymbol{R}}
+\newcommand{\bfS}{\boldsymbol{S}}
+\newcommand{\bfT}{\boldsymbol{T}}
+\newcommand{\bfU}{\boldsymbol{U}}
+\newcommand{\bfV}{\boldsymbol{V}}
+\newcommand{\bfW}{\boldsymbol{W}}
+\newcommand{\bfX}{\boldsymbol{X}}
+\newcommand{\bfY}{\boldsymbol{Y}}
+\newcommand{\bfZ}{\boldsymbol{Z}}
+
+\newcommand{\bfa}{\boldsymbol{a}}
+\newcommand{\bfb}{\boldsymbol{b}}
+\newcommand{\bfc}{\boldsymbol{c}}
+\newcommand{\bfd}{\boldsymbol{d}}
+\newcommand{\bfe}{\boldsymbol{e}}
+\newcommand{\bff}{\boldsymbol{f}}
+\newcommand{\bfk}{\boldsymbol{k}}
+\newcommand{\bfm}{\boldsymbol{m}}
+\newcommand{\bfn}{\boldsymbol{n}}
+\newcommand{\bfo}{\boldsymbol{o}}
+\newcommand{\bfp}{\boldsymbol{p}}
+\newcommand{\bfq}{\boldsymbol{q}}
+\newcommand{\bfr}{\boldsymbol{r}}
+\newcommand{\bfs}{\boldsymbol{s}}
+\newcommand{\bft}{\boldsymbol{t}}
+\newcommand{\bfu}{\boldsymbol{u}}
+\newcommand{\bfv}{\boldsymbol{v}}
+\newcommand{\bfw}{\boldsymbol{w}}
+\newcommand{\bfx}{\boldsymbol{x}}
+\newcommand{\bfy}{\boldsymbol{y}}
+\newcommand{\bfz}{\boldsymbol{z}}
+
+
+
+% BB (???) capital letters:
+\newcommand{\bbA}{\mathbb{A}}
+\newcommand{\bbB}{\mathbb{B}}
+\newcommand{\bbC}{\mathbb{C}}
+\newcommand{\bbD}{\mathbb{D}}
+\newcommand{\bbE}{\mathbb{E}}
+\newcommand{\bbF}{\mathbb{F}}
+\newcommand{\bbG}{\mathbb{G}}
+\newcommand{\bbI}{\mathbb{I}}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbP}{\mathbb{P}}
+\newcommand{\bbQ}{\mathbb{Q}}
+\newcommand{\bbR}{\mathbb{R}}
+\newcommand{\bbU}{\mathbb{U}}
+\newcommand{\bbV}{\mathbb{V}}
+\newcommand{\bbX}{\mathbb{X}}
+\newcommand{\bbY}{\mathbb{Y}}
+\newcommand{\bbZ}{\mathbb{Z}}
+\newcommand{\bbone}{{\ifmmode\mathrm{1\!l}\else\mbox{\(\mathrm{1\!l}\)}\fi}}
+
+
+% Caligraphic math capital letters:
+\newcommand{\mcalA}{\mathcal{A}}
+\newcommand{\mcalB}{\mathcal{B}}
+\newcommand{\mcalC}{\mathcal{C}}
+\newcommand{\mcalD}{\mathcal{D}}
+\newcommand{\mcalE}{\mathcal{E}}
+\newcommand{\mcalF}{\mathcal{F}}
+\newcommand{\mcalG}{\mathcal{G}}
+\newcommand{\mcalH}{\mathcal{H}}
+\newcommand{\mcalI}{\mathcal{I}}
+\newcommand{\mcalJ}{\mathcal{J}}
+\newcommand{\mcalK}{\mathcal{K}}
+\newcommand{\mcalL}{\mathcal{L}}
+\newcommand{\mcalM}{\mathcal{M}}
+\newcommand{\mcalN}{\mathcal{N}}
+\newcommand{\mcalO}{\mathcal{O}}
+\newcommand{\mcalP}{\mathcal{P}}
+\newcommand{\mcalQ}{\mathcal{Q}}
+\newcommand{\mcalS}{\mathcal{S}}
+\newcommand{\mcalT}{\mathcal{T}}
+\newcommand{\mcalU}{\mathcal{U}}
+\newcommand{\mcalV}{\mathcal{V}}
+\newcommand{\mcalX}{\mathcal{X}}
+\newcommand{\mcalY}{\mathcal{Y}}
+\newcommand{\mcalZ}{\mathcal{Z}}
+
+% Graph nodes notations:
+\newcommand{\PA}{\mathit{PA}}
+\newcommand{\bfPA}{\mathbf{PA}}
+\newcommand{\CH}{\mathit{CH}}
+\newcommand{\bfCH}{\mathbf{CH}}
+\newcommand{\DS}{\mathit{DS}}
+\newcommand{\bfDS}{\mathbf{DS}}
+\newcommand{\ND}{\mathit{ND}}
+\newcommand{\bfND}{\mathbf{ND}}
+\newcommand{\AN}{\mathit{an}}
+\newcommand{\bfAN}{\mathbf{an}}
+\newcommand{\pa}{\mathit{pa}}
+\newcommand{\bfpa}{\mathbf{pa}}
+\newcommand{\ch}{\mathit{ch}}
+\newcommand{\bfch}{\mathbf{ch}}
+\newcommand{\ds}{\mathit{ds}}
+\newcommand{\bfds}{\mathbf{ds}}
+\newcommand{\nd}{\mathit{nd}}
+\newcommand{\bfnd}{\mathbf{nd}}
+\newcommand{\an}{\mathit{an}}
+\newcommand{\bfan}{\mathbf{an}}
+
+
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argsup}{arg\,sup}
+\DeclareMathOperator*{\arginf}{arg\,inf}
+\DeclareMathOperator{\erfc}{erfc}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\cum}{cum}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\spn}{span}
+\DeclareMathOperator{\adj}{adj}
+\DeclareMathOperator{\E}{\mathbb{E}}
+\DeclareMathOperator{\var}{Var}
+\DeclareMathOperator{\cov}{Cov}
+\DeclareMathOperator{\corr}{corr}
+\DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\sinc}{sinc}
+\DeclareMathOperator*{\lms}{l.i.m.\,}
+\newcommand{\varop}[1]{\var\left[{#1}\right]}
+\newcommand{\covop}[2]{\cov\left({#1},{#2}\right)}
+\newcommand{\T}{^\textrm{T}}
+\newcommand\indep{\protect\mathpalette{\protect\independenT}{\perp}}
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
+
+\newcommand{\bfalpha}{\boldsymbol{\alpha}}
+\newcommand{\bfbeta} {\boldsymbol{\beta}}
+\newcommand{\bfgamma}{\boldsymbol{\gamma}}
+\newcommand{\bfeta}  {\boldsymbol{\eta}}
+\newcommand{\bftheta}{\boldsymbol{\theta}}
+\newcommand{\bflambda}   {\boldsymbol{\lambda}}
+\newcommand{\bfmu}   {\boldsymbol{\mu}}
+\newcommand{\bfnu}   {\boldsymbol{\nu}}
+\newcommand{\bfxi}   {\boldsymbol{\xi}}
+\newcommand{\bfpsi}  {\boldsymbol{\psi}}
+\newcommand{\bfphi}   {\boldsymbol{\phi}}
+\newcommand{\bfrho}   {\boldsymbol{\rho}}
+\newcommand{\bfvarepsilon}{\boldsymbol{\varepsilon}}
+%\newcommand{\qed}{{qed}}
+%\newcommand{\eqalignno}[1]{\begin{array}{ccccccc}#1\end{array}}
+
+\newcommand{\bfGamma}{\boldsymbol{\Gamma}}
+\newcommand{\bfTheta}{\boldsymbol{\Theta}}
+\newcommand{\bfLambda}   {\boldsymbol{\Lambda}}
+\newcommand{\bfPsi}  {\boldsymbol{\Psi}}
+\newcommand{\bfPhi}   {\boldsymbol{\Phi}}
+\newcommand{\bfSigma}  {\boldsymbol{\Sigma}}
+\newcommand{\bfOmega}  {\boldsymbol{\Omega}}
+
+
+% DISTRIBUTIOoNS: 
+\newcommand{\normal}{\mathcal{N}}
+\newcommand{\binomial}{\mathcal{B}}
+\newcommand{\multinomial}{\mathcal{M}}
+\newcommand{\exponential}{\mathcal{E}}
+\newcommand{\geometric}{\mathcal{G}}
+\newcommand{\poisson}{\mbox{Poisson}}
+\newcommand{\uniform}{\mbox{Uniform}}
+
+% Logic
+\newcommand{\true}{\texttt{true}}
+\newcommand{\false}{\texttt{false}}
+
+
+%PSTricks (commande for latent nodes)
+\newcommand{\lnode}[4]{ \cnode(#1){#2}{#3}\rput(#1){\footnotesize#4} }
+
+% KEEPING TRACK OF WORK
+\newcommand{\todo}[1]
+{
+{\color{red}{
+[TODO: #1]}}
+\addcontentsline{toc}{subsection}{TO DO: #1}
+}
+
+\newcommand{\fixme}[1]{{\color{red}{#1}}}
+
+\newenvironment{answer}[1]
+{\par \color{blue}{#1}}
+{}
+
+
+\newcommand{\note}[2]
+{
+{\color{red}{
+[#1: #2]}}
+}
+
+
+
+
+\makeatletter
+% define \citepos for posesive citation (e.g. Otsuka's (2015))
+\DeclareRobustCommand\citepos
+  {\begingroup
+   \let\NAT@nmfmt\NAT@posfmt% ...except with a different name format
+   \NAT@swafalse\let\NAT@ctype\z@\NAT@partrue
+   \@ifstar{\NAT@fulltrue\NAT@citetp}{\NAT@fullfalse\NAT@citetp}}
+
+\let\NAT@orig@nmfmt\NAT@nmfmt
+\def\NAT@posfmt#1{\NAT@orig@nmfmt{#1's}}
+\makeatother
+
+
+
+
+% Code for drawing color circle used in topology (pathconnectedness)
+\usepackage{xparse}
+\ExplSyntaxOn
+
+\keys_define:nn { colour_transition_circle } {
+    inner   .fp_set:N   = \l__inner_radius,
+    inner   .initial:n  = {2},
+    outer   .fp_set:N   = \l__outer_radius,
+    outer   .initial:n  = {3},
+    angle   .fp_set:N   = \l__start_angle,
+    angle   .initial:n  = {0}
+}
+
+\NewDocumentCommand \ColourTransitionCircle { O{} m } {
+\group_begin:
+    \keys_set:nn { colour_transition_circle } {#1}
+    \clist_clear:N \l_tmpa_clist
+    \clist_map_inline:nn {#2} {
+        \clist_put_right:Nn \l_tmpa_clist {##1}
+        %\clist_put_right:Nn \l_tmpa_clist {##1}
+    }
+    \exp_args:Nx \col_trans_circ:n \l_tmpa_clist
+\group_end:
+}
+
+\cs_new_protected:Npn \col_trans_circ:n #1 {
+    \int_step_inline:nnnn {1} {1} {\clist_count:n {#1} - 1} {
+        \path[top~color=\clist_item:nn {#1} {##1}, bottom~color=\clist_item:nn {#1} {##1+1}, shading~angle={270-(180-360/\clist_count:n {#1})/2+(##1-1)*360/\clist_count:n {#1}+\fp_use:N \l__start_angle}] ({\fp_use:N \l__inner_radius*cos((##1-1)*360/\clist_count:n {#1}+\fp_use:N \l__start_angle)},{\fp_use:N \l__inner_radius*sin((##1-1)*360/\clist_count:n {#1}+\fp_use:N \l__start_angle)}) arc[radius = \fp_use:N \l__inner_radius, start~angle={(##1-1)*360/\clist_count:n {#1}+\fp_use:N \l__start_angle}, delta~angle=360/\clist_count:n {#1}] -- ({\fp_use:N \l__outer_radius*cos(##1*360/\clist_count:n {#1}+\fp_use:N \l__start_angle)},{\fp_use:N \l__outer_radius*sin(##1*360/\clist_count:n {#1}+\fp_use:N \l__start_angle)}) arc[radius = \fp_use:N \l__outer_radius, start~angle={##1*360/\clist_count:n {#1}+\fp_use:N \l__start_angle}, delta~angle=-360/\clist_count:n {#1}] -- cycle;
+    }
+    \path[top~color=\clist_item:nn {#1} {\clist_count:n {#1}}, bottom~color=\clist_item:nn {#1} {1}, shading~angle={180-180/\clist_count:n {#1}+\fp_use:N \l__start_angle}]({\fp_use:N \l__inner_radius*cos((\clist_count:n {#1}-1)*360/\clist_count:n {#1}+\fp_use:N \l__start_angle)},{\fp_use:N \l__inner_radius*sin((\clist_count:n {#1}-1)*360/\clist_count:n {#1}+\fp_use:N \l__start_angle)}) arc[radius = \fp_use:N \l__inner_radius, start~angle={(\clist_count:n {#1}-1)*360/\clist_count:n {#1}+\fp_use:N \l__start_angle}, delta~angle=360/\clist_count:n {#1}] -- ({\fp_use:N \l__outer_radius*cos(\clist_count:n {#1}*360/\clist_count:n {#1}+\fp_use:N \l__start_angle)},{\fp_use:N \l__outer_radius*sin(\clist_count:n {#1}*360/\clist_count:n {#1}+\fp_use:N \l__start_angle)}) arc[radius = \fp_use:N \l__outer_radius, start~angle={\clist_count:n {#1}*360/\clist_count:n {#1}+\fp_use:N \l__start_angle}, delta~angle=-360/\clist_count:n {#1}] -- cycle;
+}
+
+\ExplSyntaxOff
