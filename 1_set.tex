@@ -125,14 +125,16 @@
 \text{Michael} \subset \{ \text{Jackie, Tito, Jermaine, Marlon, Michael}\}  
 \]
 という式は文法的に正しい形ではない（左辺が集合ではないから）．
-では次の式はどうだろうか，
-\begin{align*}
-\{ \text{Michael} \} &\subset \{ \text{Jackie, Tito, Jermaine, Marlon, Michael}\}  \\
-\{ \text{Michael} \} &\in \{ \text{Jackie, Tito, Jermaine, Marlon, Michael}\}  \\
-\{ \text{Michael} \} &\subset \{ \text{Michael}\}   
-\end{align*}
-それぞれ真／偽／文法的に不正かどうか考えてみよう．
 \end{attn}
+
+\begin{renshu}{}{}
+上をふまえ，次のそれぞれが真／偽／文法的に不正かどうか考えてみよう．
+\begin{enumerate}
+  \item $ \{ \text{Michael} \} \subset \{ \text{Jackie, Tito, Jermaine, Marlon, Michael}\}  $
+  \item $ \{ \text{Michael} \} \in \{ \text{Jackie, Tito, Jermaine, Marlon, Michael}\}  $
+  \item $ \{ \text{Michael} \} \subset \{ \text{Michael}\}  $ 
+\end{enumerate}
+\end{renshu}
 
 
 2つの集合$A,B$が\emph{等しい}とは，両者が互いの部分集合であるとき，つまり
@@ -284,7 +286,7 @@ $A$の元であるが$B$の元ではないもの全体の集合を$A$と$B$の\e
 \]
 特に全体集合からの差を$\Omega \setminus B$を\emph{補集合}(complement)といい，$B^c$と書く．つまり
 \[
- B^c := \{ x | x \not\in B\}
+ B^c := \{ x | x \not\in B\} = \{ x | \neg (x \in B) \} 
 \]
 であり，これは全体から$B$のところを「くり抜いた」残りになる．
 
