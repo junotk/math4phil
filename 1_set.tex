@@ -282,8 +282,11 @@ $A$の元であるが$B$の元ではないもの全体の集合を$A$と$B$の\e
 \[
  A \setminus B = \{ x | x \in A \wedge x \not\in B\}.
 \]
-特に全体集合からの差を$\Omega \setminus B$を\emph{補集合}(complement)といい，$B^c$と書く．
-$B$の補集合とは，全体から$B$のところを「くり抜いた」残りだと考えても良いかもしれない．
+特に全体集合からの差を$\Omega \setminus B$を\emph{補集合}(complement)といい，$B^c$と書く．つまり
+\[
+ B^c := \{ x | x \not\in B\}
+\]
+であり，これは全体から$B$のところを「くり抜いた」残りになる．
 
 足し算や掛け算同様，和と交わりを繰り返し適用することで，3つ以上の集合の合併や共通部分をとることができる．
 その結果は順序に依存しないし，また前後を入れ替えてもよい．
@@ -305,15 +308,22 @@ A \cup (B \cap C) &= (A \cup B) \cap (A \cup C) \\
 \end{align}
 (1)，(2)を分配則，(3)，(4)をド・モルガン則とよぶ．
 これらを証明するためには，上の定義に立ち返って一歩一歩式変形を行っていけばよい．
-例として，(1)の分配則を証明してみると
+例として，(1)の分配則を証明してみよう．
+これは左辺$(A \cup B) \cap C$と右辺$(A \cap C) \cup (B \cap C)$が集合として等しいことを主張している．
+3節より，集合が等しいとは，両者が同じ元を持つことであった．なので任意の元$x$について
+\[
+x \text{が左の集合に含まれている}　\iff x \text{が右の集合に含まれている}
+\]
+ということを示せばよい．証明は基本的に，上の定義にしたがって式変形を繰り返すことで，この間を埋めていくことでなされる．実際にやってみると：
 \begin{align*}
-x \in (A \cup B) \cap C &\iff x \in (A \cup B) \wedge x \in C \\
-&\iff  (x \in A \vee x \in B) \wedge x \in C \\
-&\iff  (x \in A \wedge x \in C) \vee (x \in B \wedge x \in C) \\
-&\iff  (x \in A \cap C) \vee (x \in B \cap C) \\
-&\iff  x \in (A \cap C) \cup (B \cap C) 
+x \in (A \cup B) \cap C &\iff x \in (A \cup B) \wedge x \in C  & \because \cap\text{の定義より}\\
+&\iff  (x \in A \vee x \in B) \wedge x \in C & \because \cup\text{の定義より} \\
+&\iff  (x \in A \wedge x \in C) \vee (x \in B \wedge x \in C) & \because \wedge \text{の分配則より}\\
+&\iff  (x \in A \cap C) \vee (x \in B \cap C) & \because \cap\text{の定義より}\\
+&\iff  x \in (A \cap C) \cup (B \cap C) & \because \cup\text{の定義より}
 \end{align*}
-となり，これが任意の$x$について成立するので集合の等しさの定義（3節）より等号が成立する．他も同様．
+となり，これにて証明は完了である．
+%これが任意の$x$について成立するので集合の等しさの定義（3節）より等号が成立する．他も同様．
 
 以上から，集合演算と論理結合子との類似性が見て取れたかもしれない．
 実際$\cup$は$\vee$に，$\cap$は$\wedge$に，そして補集合演算子$^C$は否定$\neg$に対応している．
@@ -335,7 +345,7 @@ x \in (A \cup B) \cap C &\iff x \in (A \cup B) \wedge x \in C \\
 これを示すためには，何らか一つの反例，つまりこうした等号関係を満たさない集合の例を与えれば十分である．
 例えば$A = \{1, 2 \}, B = \{1 \}, C = \{2 \}$とすると，
 \begin{align*}
-(A \setminus B) \setminus C &= \{ 2 \} \setminus \{2, 3\} = \emptyset \\
+(A \setminus B) \setminus C &= \{ 2 \} \setminus \{2 \} = \emptyset \\
 A \setminus (B \setminus C) &= \{ 1, 2 \} \setminus \{1 \} = \{ 2 \}
 \end{align*}
 となり両者は一致しない（同様に可換律の反例を挙げよ）．
