@@ -81,8 +81,7 @@
 \end{rei}
 
 ユークリッド距離以外にも，様々な距離，すなわち定義\ref{dfn:distance}で見た正定値性・対称性・三角不等式を満たす関数が考えられる．
-例えばユークリッド距離では差の二乗を用いたが，これを絶対値に置き換えたもの $d_M(a,b) = \sum_i^n|a_i - b_i|$は，マンハッタン距離と呼ばれる．
-また自然言語処理では，2つの単語ベクトルがなす角度$\theta$によって類似度を測るコサイン類似度$cos\theta$が一般的である（図\ref{fig:distances}）．
+例えばユークリッド距離では差の二乗を用いたが，これを絶対値に置き換えたもの $d_M(a,b) = \sum_i^n|a_i - b_i|$は，マンハッタン距離と呼ばれる（図\ref{fig:distances}）．
 よって距離や類似性を考えるときは，どのような距離空間／関数を考えるのか，またそれが対象のモデリングにとって適切なのかどうかをよく考える必要がある．
 
 \begin{figure}[h]
@@ -111,26 +110,12 @@
     \draw [color=red](a)--(2.4,2.3)--(b);
     \end{tikzpicture}
   \end{minipage}
-  \begin{minipage}[b]{0.31\linewidth}
-    \centering
-    \begin{tikzpicture}
-    \draw [-stealth](0,0)--(3,0) node [below right]{$x$};
-    \draw [-stealth](0,0)--(0,3) node [above left]{$y$};
-    
-    \coordinate(o)at(0,0);%点Aの定義
-    \coordinate[label=above:a](a)at(.5,2.3);%点Aの定義
-    \coordinate[label=right:b](b)at(2.4,.8);%点Bの定義
-    \foreach\P in{a,b}\fill[black](\P)circle(0.06);
-    \draw [color=black](a)--(o)--(b);
-    \draw pic[color=red, "$\theta$", draw, <->, angle eccentricity=1.2,angle radius=.8cm] {angle=b--o--a};%
-    \end{tikzpicture}
-  \end{minipage}
-  \caption{様々な距離関数．（左）ユークリッド距離は，2点$(a,b)$を結ぶ直線の長さである．（中）マンハッタン距離は，2点間の$x$座標，$y$座標の違いを足したものになる（マンハッタンの街のように碁盤の目状に敷かれた道を移動している感覚．京都距離と呼んでも良いかも？）．（右）コサイン距離は，2つの点がなすベクトルの間の角度のコサイン$\cos\theta$をとったもの．長さは関係なく，角度の開きだけが効いてくる．}
+    \caption{（左）ユークリッド距離は，2点$(a,b)$を結ぶ直線の長さである．（右）マンハッタン距離は，2点間の$x$座標，$y$座標の違いを足したものになる（マンハッタンの街のように碁盤の目状に敷かれた道を移動している感覚．京都距離と呼んでも良いかも？）．}
   \label{fig:distances}
 \end{figure}
 
 \begin{renshu}{}{}
-座標軸上に一点をとり（上の点$a$でも良い），そこから(1)ユークリッド距離，(2)マンハッタン距離，(3)コサイン距離が等しい点の集合をそれぞれ座標上に書き入れよ．
+座標軸上に一点をとり（上の点$a$でも良い），そこから(1)ユークリッド距離，(2)マンハッタン距離が等しい点の集合をそれぞれ座標上に書き入れよ．
 \end{renshu}
 
 % \begin{rei}{モード}{modes}
