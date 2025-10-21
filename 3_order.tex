@@ -165,6 +165,32 @@
 \label{fig:porphyrian} 
 \end{figure}
 
+\begin{rei}{数学の階層}{}
+この章の冒頭で以下のように述べた：「語弊を恐れずにいえば，数学の理論とは，何らかの構造を持った集合\emph{である}」．
+だとすれば，様々な数学的存在物は，上述のis-a relationshipによって半順序を構成するはずだ．
+実際，本授業で扱う内容を並べると，図\ref{fig:math_hierarchy}のようになる．
+ここから例えば，束は順序であり，よって集合であること，また群はモノイドであり，そしてまた集合であること・・・などがわかる．
+もちろんこれで終わりではなく，この下（および横）には他の様々な数学的構造が控えている．
+例えば実数体$\mathbb{R}$は，束であり，群であり，また位相空間でもあるので，これらすべての下にくる，実はかなりリッチな構造なのだ．
+\end{rei}
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+  \node (set) at (2,4.5) {集合};
+  \node (odr) at (0,3) {順序};
+  \node (mnd) at (2,3) {モノイド};
+  \node (top) at (4,3) {位相空間};
+  \node (ltc) at (0,1.5) {束};
+  \node (grp) at (2,1.5) {群};
+  %\node (r)   at (2,0) {実数$\mathbb{R}$};
+  \draw(set)--(odr)--(ltc);
+  \draw(set)--(mnd)--(grp);
+  \draw(set)--(top);
+\end{tikzpicture}
+\caption{本授業であつかう数学理論たち}
+\label{fig:math_hierarchy} 
+\end{figure}
+
 
 \begin{rei}{人格的同一性}{identity}
 私たちは，昨日の自分と今の自分が同一の人間であると信じている．しかしそれらを同じ「人格」とする基準は一体なんだろうか．ジョン・ロックによれば，それは意識の同一性である．つまり「AとBが同一人格なのは，AがBの行為と経験を意識しているとき，そのときに限る」と主張する．
