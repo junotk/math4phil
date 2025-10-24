@@ -533,6 +533,40 @@ $\langle X, \preceq \rangle$をなんらかの物の集合$X$の間の何らか�
  順序尺度の例をあげ，それが単調性を満たしていることを確認せよ．
 \end{renshu}
 
+\begin{rei}{外延と内包の双対性}{duality}
+  2章事例4.1では，モノに対してそれが持つ性質のリストを割り当てる記述が，モノの集合$X$から性質の集合$Y$の部分集合への関数$f: X \to \mcalP(Y)$として与えられることを見た．
+  この関数の定義域を拡張して，任意のモノの集合$A \subset X$に対して，それらが共通して持つ性質を返すようにすよう．つまり
+  \begin{align*}
+    f^\ast &: \mcalP(X) \to \mcalP(Y) \\
+     & A \mapsto \bigcap_{x \in A} f(x)
+  \end{align*}
+  と新たな関数$f^\ast$定義する．例えば$A := \{\text{サザエ}, \text{カツオ}\}$であれば$f^\ast(A) = \{ \text{人間}, \text{磯野家在住}, \dots \}$, 
+  $B := \{\text{サザエ}, \text{タマ}\}$であれば$f^\ast(B) = \{ \text{磯野家在住}, \dots \}$である．
+
+  さて，本章2.2節で見たように，べき集合$\mcalP(X), \mcalP(Y)$は包含関係$\subset$によってそれぞれ半順序となっている．
+  $f^\ast$はこの二つの半順序の構造を保つ写像になっているだろうか？
+  実は，以下のような「逆向き」の関係がなりたつことが示せる：
+  \begin{equation}
+  \label{eqn:dual}
+   A \subset B \Longrightarrow f^\ast(B) \subset f^\ast(A)  \tag{*}
+  \end{equation}
+  これを示すため，$y \in f^\ast(B)$だとしよう．
+  これは$f^\ast$の定義より，すべての$b \in B$がその性質$y$を持っているということ（つまり$y \in f(b)$）を意味する．
+  しかるに$A \subset B$である，つまりすべての$a \in A$は同時に$B$にも入っているので，やはりその性質$y$を持っているということ（つまり$y \in f(a)$）が帰結する．
+  したがって$y \in f^\ast(A)$となり，これが任意の$y \in f^\ast(B)$について成立するので，$f^\ast(B) \subset f^\ast(A)$である．
+
+  上の式(\ref{eqn:dual})は，写像$f^\ast : \mcalP(X) \to \mcalP(Y)$が，順序を反転させる，つまり$\mcalP(X)$においてより大きな集合は$\mcalP(X)$におけるより小さな集合への飛ばされることを示している．
+  こうした写像を，特に順序反転(order-reversing)写像といったり，単調減少(monotonically decreasing)写像といったりする．
+  これらは，「$A$は$B$に含まれる」ではなく「$A$は$B$を含む」という逆向きの順序$\supset$を使って$\mcalP(Y)$を順序付ければ，普通の単調写像
+  \begin{equation}
+   A \subset B \Longrightarrow f^\ast(A) \supset f^\ast(B)  \notag
+  \end{equation}
+  に一致する． 
+
+  ここで構成した関数$f^\ast$は，外延（ある性質が当てはまるモノの集合）と内包（モノが持つ性質の集合）の間の関係性を示している．
+  そしてその単調減少性は，「外延が増えるほど，内包は小さくなる」という外延と内包の間のよく知られた事実，すなわちその\emph{双対性}(duality)を示している．
+\end{rei}
+
 単調写像は極めて単純な道具立てに思える（単に順序を別の順序にうつしているだけじゃないか！）．
 しかしここにはすでに，複数の重要な哲学的含意がある．
 
