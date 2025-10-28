@@ -671,17 +671,137 @@ $f: P \to M$を，脳状態に心的状態を対応させる関数だとする�
 \section{ガロア接続*}
 
 最後に少し進んだ話題を一つ．
-同型写像は行って戻ってきたときにちょうど元のところに帰る，という意味でなかなかに強い条件である．
-これを緩めて，行って戻ったきたら元の要素より必ず大きくなっている，つまり任意の$x \in X, y \in Y$に対し
-\[
- x \preceq_X g(f(x)) \ \ \ \ \ \ y \preceq_Y f(g(y))
-\]
-という条件を考えることもできる．
-こうした単調写像の対$f:X \to Y, g:Y \to X$は，\emph{ガロア接続}(Galois connection)と呼ばれる．
+本章ではこれまで，二つの順序間の対応として単調写像と同型写像を見てきた．
+単調写像$f: X \to Y$は，一方の順序$X$を他の順序$Y$へと対応づけるが，逆向きの対応（つまり$Y$が$X$にどう対応するか）については何も言わない．
+これが同型写像になるとき，逆向きの対応$g: Y \to X$が存在するが，このとき$X$と$Y$は同型，つまり順序としては全く同じになってしまう．
+同型よりもうちょっと緩い双方向の対応関係，つまり$X, Y$は順序として同一ではないものの，単調写像によってお互いに対応付けられている，というような状況はないのだろうか．
+以下に紹介するガロア接続は，そのような状況を捉えるものである．
 
+\begin{dfn}{ガロア接続}{}
+$\langle X, \preceq_X \rangle, \langle Y, \preceq_Y \rangle$を順序とする．
+単調写像（減少であってもよい）の組$f:X \to Y, g:Y \to X$が存在し，任意の$x \in X, y \in Y$に対し，
+\begin{equation}
+   x \preceq_X g(y)  \ \ \iff \ \ f(x) \preceq_Y y \tag{G1} 
+   \label{eqn:galois1}
+\end{equation}
+が満たされているとき，$f$と$g$を$X$と$Y$の間の\emph{ガロア接続}(Galois connection)と呼ぶ．
+\end{dfn}
+
+つまり任意の$x$について，それが$g$で飛ばされてきた$g(y)$よりも小さいのは，$x$を$f$で$Y$に飛ばした$f(x)$が，$y$より小さくなるとき，その時に限る．これは言葉で考えるより，図\ref{fig:galois}（左）で見たほうが理解しやすいかもしれない．
+
+\begin{figure}[h]
+  \begin{minipage}[t]{0.32\textwidth}
+  \[\begin{tikzpicture}
+      \node (x) at (0, 1) {$x$};
+      \node (fx) at (2.5,1) {$f(x)$};
+      \node (y) at (2.5, 2.5) {$y$};
+      \node (gy) at (0,2.5) {$g(y)$};
+  
+      \draw (x) -- (gy) node[midway, above, rotate=90]{$\preceq_X$};
+      \draw (fx) -- (y) node[midway, below, rotate=90]{$\preceq_Y$};
+      %s2
+      \draw[->, bend right=15] (x) to node[midway, below]{$f$}(fx);
+      \draw[->, bend right=15] (y) to node[midway, above]{$g$} (gy);
+
+      \draw[dashed] (x) -- ++(0,-1);
+      \draw[dashed] (fx) -- ++(0,-1);
+      \draw[dashed] (y) -- ++(0,1);
+      \draw[dashed] (gy) -- ++(0,1);
+  \end{tikzpicture}\]
+  \hfill
+  \end{minipage}
+  \begin{minipage}[t]{0.32\textwidth}
+  \[\begin{tikzpicture}
+      \node (x) at (0, 3) {$x$};
+      \node (fx) at (2.5,3.5) {$f(x)$};
+      \node (gfx) at (0,4) {$g(f(x))$};
+      \node (y) at (2.5, 1.5) {$y$};
+      \node (gy) at (0,1) {$g(y)$};
+      \node (fgy) at (2.5,0.5) {$f(g(y))$};
+  
+      \draw (x) -- (gfx);
+      \draw (y) -- (fgy);
+      %s2
+      \draw[->, bend right=15] (x) to node[midway, below]{$f$}(fx);
+      \draw[->, bend right=15] (fx) to node[midway, above]{$g$} (gfx);
+      \draw[->, bend right=15] (y) to node[midway, above]{$g$} (gy);
+      \draw[->, bend right=15] (gy) to node[midway, below]{$f$} (fgy);
+
+      \draw[dashed] (x) -- ++(0,-0.5);
+      \draw[dashed] (gfx) -- ++(0,0.5);
+      \draw[dashed] (fx) -- ++(0,-1);
+      \draw[dashed] (fx) -- ++(0,1);
+
+      \draw[dashed] (y) -- ++(0,0.5);
+      \draw[dashed] (fgy) -- ++(0,-0.5);
+      \draw[dashed] (gy) -- ++(0,-1);
+      \draw[dashed] (gy) -- ++(0,1);
+  \end{tikzpicture}\]
+  \hfill
+  \end{minipage}
+  \begin{minipage}[t]{0.32\textwidth}
+      \[\begin{tikzpicture}
+      \node (x) at (0, 4) {$x$};
+      \node (fx) at (2.5, 4) {$f(x)$};
+      \draw[dashed] (x) -- ++(0,-1);
+      \draw[dashed] (fx) -- ++(0,-1);
+      \draw[dashed] (x) -- ++(0,1);
+      \draw[dashed] (fx) -- ++(0,1);
+      \draw[->, bend right=15] (x) to node[midway, below]{$f$} (fx);
+      \draw[->, bend right=15] (fx) to node[midway, above]{$g$} (x);
+
+      \node (y) at (2.5, 1.5) {$y$};
+      \node (gy) at (0, 1.5) {$g(y)$};
+      \draw[dashed] (y) -- ++(0,-1);
+      \draw[dashed] (gy) -- ++(0,-1);
+      \draw[dashed] (y) -- ++(0,1);
+      \draw[dashed] (gy) -- ++(0,1);
+      \draw[->, bend right=15] (y) to node[midway, above]{$g$} (gy);
+      \draw[->, bend right=15] (gy) to node[midway, below]{$f$} (y);
+
+  \end{tikzpicture}\]
+  \hfill
+  \end{minipage}
+  \label{fig:galois}
+  \caption{左と中央：ガロア接続の二つの等価な定義．右：順序同型．各コラムとも，左側が順序$X$，右側が順序$Y$を示す．}
+\end{figure}
+
+ところでガロア接続は，次のように定義することもできる：
+\begin{dfn}{ガロア接続のもう一つの定義}{}
+単調写像の組$f:X \to Y, g:Y \to X$が，任意の$x \in X, y \in Y$に対し，
+\begin{equation}
+  x \preceq_X g(f(x)), \ \ \ \ \ \ f(g(y)) \preceq_Y y  \tag{G2}
+  \label{eqn:galois2}
+\end{equation}
+を満たす．
+\end{dfn}
+
+$f:X \to Y$と$g:Y \to X$を合成した$g \circ f$は，$X$から$Y$を経由して$X$に戻ってくる写像である．
+上の定義\ref{eqn:galois2}は，任意の$x$は，このように$g \circ f$で行って戻ってくると出発点以上になっている（同じでも良い），ということを言っている．
+また逆に，任意の$y$は，$f \circ g$で行って戻すと出発点以下になる（同じく，同じでも良い）．
+これはちょうど，図\ref{fig:galois}（中央）のような状況である．
+一方，図\ref{fig:galois}（右）は，順序同型を表している．順序同型では，行って戻ったら出発点にぴったり一致しなければならないが，ガロア接続は$X$側ではそれが「上ブレ」することを許し，$Y$側では「下ブレ」することを許す，という意味でより緩い対応関係になっている．
+
+% 定義の同値性
+式(\ref{eqn:galois1})と(\ref{eqn:galois2})は同値であるので，これらの定義は実質的に同じである．
+まず(\ref{eqn:galois1})$\Rightarrow$(\ref{eqn:galois2})を示そう．
+任意の$x \in X$について，$y := f(x)$と置いてみる．
+すると$\preceq_Y$の反射性より，$f(x) \preceq_Y y$である．
+(\ref{eqn:galois1})の条件より，これは$x \preceq g(y)$と同値，すなわち$x \preceq g(f(x))$である．
+$f(g(y)) \preceq_Y y$についても同様に示せる．
+
+次に(\ref{eqn:galois2})$\Rightarrow$(\ref{eqn:galois1})を示す．
+そのために(\ref{eqn:galois2})を仮定して，まず$x \preceq_X g(y) \Rightarrow f(x) \preceq_Y y$を示す．
+そのため$x \preceq_X g(y)$と仮定すると，$f$は単調写像なので$f(x) \preceq_Y f(g(y))$．
+(\ref{eqn:galois2})より$f(g(y)) \preceq_Y y$なので，$f(x) \preceq_Y y$が従う．
+逆向き$f(x) \preceq_Y y \Rightarrow x \preceq_X g(y)$も全く同様である．
+
+ガロア接続のような構造は，数学では非常に多く出てくる（実際これは，圏論でいう「随伴」の顕著な一事例となっている）．
+しかしそれだけでなく，ガロア接続は哲学的にも非常に大きな含意と，広い応用の可能性を持っている．
+というのはそれは，ある一つの体系と，他の体系を，自然な仕方で接合してくれるからである．
 
 \begin{rei}{外延と内包の双対性再訪}{duality_again}
-  事例\label{rei:duality}では，モノの集合$A \subset X$から，それらのモノが共有する性質の集合への写像
+  事例\ref{rei:duality}では，モノの集合$A \subset X$から，それらのモノが共有する性質の集合への写像
   \begin{align*}
     %f^\ast &: \mcalP(X) \to \mcalP(Y) \\
      f^\ast : A \mapsto \bigcap_{x \in A} f(x)
@@ -701,7 +821,7 @@ $f: P \to M$を，脳状態に心的状態を対応させる関数だとする�
   更に興味深いのは，単調減少写像の対$f^\ast, g^\ast$がガロア接続となっている，ということだ．
   つまり任意のモノ集合$A \subset X$および性質集合$P \subset Y$に対し，
   \[
-    A \subset g^\ast(f^\ast(A)) \ \ \ \ \ \ P \subset f^\ast(g\ast(P))
+    A \subset g^\ast(f^\ast(A)) \ \ \ \ \ \ f^\ast(g^\ast(P))　\subset P 　
   \]
   がなりたつ．
   ここでは右側の$A \subset g^\ast(f^\ast(A))$だけ証明しよう．
