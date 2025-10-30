@@ -1,0 +1,160 @@
+\documentclass[11pt,a4paper]{jsarticle}
+\input{m4p_preamble.tex}
+
+
+\begin{document}
+
+
+\title{「哲学者のための数学」練習問題の解答}
+\date{ver. \today}
+\maketitle
+
+
+\section{集合}
+
+\subparagraph{3.1}
+1 真. 2 偽. 3 真.
+
+\subparagraph{4.1}
+1 偽. 2 真. 3 真. 4 真.
+
+\subparagraph{4.2}
+$\Omega := \{ x | x=x \}, \emptyset := \{ x | x \neq x \}$.他にも色々ありうる．$\Omega$は条件が恒真式（トートロジー），$\emptyset$は矛盾式になればよい．
+
+\subparagraph{4.3}
+$[a] := \{ x | x=a \}$.
+
+\subparagraph{5.1}
+2は本文同様なので省略する．3については以下の通り（4は3と同様なので略）．
+\begin{align*}
+x \in (A \cup B)^c &\iff \neg (x \in (A \cup B))  & \because \text{補集合の定義より}\\
+&\iff  \neg (x \in A \vee x \in B)                & \because \cup\text{の定義より} \\
+&\iff  \neg (x \in A) \wedge  \neg (x \in B)      & \because \text{ド・モルガン則より}\\
+&\iff  (x \in A^c) \wedge (x \in B^c)             & \because \text{補集合の定義より}\\
+&\iff  x \in (A^c \cap B^c)                       & \because \cap\text{の定義より}
+\end{align*}
+
+\subparagraph{5.2}
+結合律については本文通り．可換律については，本文同様$A= \{1,2\}, B=\{1\}$とすれば，$A \setminus B = \{2\}$であるのに対し$B \setminus A = \emptyset$となり等しくならないことがわかる．
+
+\subparagraph{8.1}
+等しくない．例えば本文同様$A = \{a_1, a_2, a_3\}, B = \{b_1, b_2\}$とすると，$A \times B$の元はすべて$(a_i, b_j)$となるが，$B \times A$の元は$(b_i, a_j)$となり順序が異なる．
+
+
+\section{関係と関数}
+
+
+\subparagraph{1.1}
+\begin{enumerate}
+    \item $\{ (n, m) \in \bbN \times \bbN | \exists a \in \bbN (n = a \cdot m )\}$
+    \item $\{ (x, y, z) \in X \times X \times X | y \text{ and } z \text{ are biological parents of } x \}$
+\end{enumerate}
+
+
+\subparagraph{2.1} 
+「$=$」は反射的，対称的かつ推移的．「$<$」は推移的．「$\leq$」は反射的かつ推移的．
+
+
+\subparagraph{2.2}
+(1) 名前を知っている (2) 親類である (3) 母である (4) 子孫である．
+
+\subparagraph{3.2}
+5つ （北海道，本州，四国，九州，沖縄）．
+
+\subparagraph{3.3}
+推移的でないため不可能．例：山口／岡山／福岡
+
+
+\subparagraph{事例3.1}
+同値類は一つひとつの可能世界である．
+
+\subparagraph{事例3.2}
+推移性を満たさない．
+ 
+\subparagraph{4.1}
+\begin{enumerate}
+    \item $I_{Np}(t) = \emptyset$ for $t < t_0, t_1 < t$.
+    \item 時空的連続性の問題．空間的に離れた部分集合，時間的に連続していない集合が「個物」として認められてしまう．
+\end{enumerate}
+	 
+
+\subparagraph{5.1}
+$f \circ f (x) = f(f(x)) = f(x^3 - 2x) = (x^3 - 2x)^3 - 2(x^3 -2x) = x^9 -6x^7 + 12x^5 - 8x^3$
+ 
+
+\subparagraph{6.1}
+日本：Bob ／ アメリカ：Alice, Dave ／ フランス：Chris
+ 
+
+
+\subparagraph{6.2}
+$[a] = f^{-1}(y) = \{x \in X | f(x) =　f(a) \}$.
+反射性・対称性・推移性は「$=$」より従う（練習問題2.1）．つまり
+[反射性]：明らかに$f(a) = f(a)$．
+[対称性]：$f(a) = f(b)$ならば$f(b) = f(a)$.
+[推移性]：$f(a) = f(b), f(b) = f(c)$ならば$f(a) = f(c)$.
+
+ 
+
+\subparagraph{6.3}
+この関数に入力する部分集合$A$として単元集合$\{x'\}$をとると，$f(\{x'\}) = \{f(x)|x \in \{x'\} \}$となるが，$\{x'\}$に含まれる要素は$x'$だけなので，これは結局$f(x')$だけからなる単元集合$\{f(x')\}$になる．
+よって単元集合の像は単元集合となり，これは元の関数$f:x' \mapsto f(x')$と同一視できる． 
+
+
+\subparagraph{6.4}
+$x' \in \{x'\}$であり，それ以外に$\{x'\}$の要素はないので，$x' \in f^{-1}(f(\{x'\})) = \{ x | f(x) \in f(\{x'\}) \}$を示せばよい．
+上の問題より$f(\{x'\}) = \{f (x')\}$なので，$f(x') \in f(\{x'\})$．よって上の条件が満たされ$x' \in f^{-1}(f(\{x'\}))$となる．
+
+%\subparagraph{事例6.3}
+ 
+
+\subparagraph{7.1}
+全射でない，つまりある$y \in Y$に対し$f(x) = y$となる$x$が存在しないとする．すると$f^{-1}(y) = \emptyset$となり，$f^{-1}$が$Y$から$X$への関数にならない（関数は$X$の要素をあてがわねばならない）．
+ 
+
+\subparagraph{7.2}
+全射である．任意の$[x] \in X/R$は，そこに含まれる元$x \in [x]$に対して$f(x) = [x]$．
+しかし単射ではない．例えば異なる$x \neq y$に対し$xRy$であれば，$x, y \in [x]$となり，よって$f(x) = f(y)$．
+単射であるためには，$R$が自分自身のみと成立するとき，つまり$\forall x, y (x \neq y \Rightarrow \neg x R y)$でなければならない．
+ 
+
+
+\section{順序}
+
+\subparagraph{2.1}
+\begin{enumerate}
+    \item 任意の部分集合$A \subset X$に対し，$A \subset A$．また$A, B, C$をそれぞれ$X$の部分集合とし，$A \subset B, B \subset C$を仮定すると，部分集合の定義上，$\forall x(x \in A \Rightarrow x \in C)$がなりたつ．よって$A \subset C$. 
+    \item 任意の$n \in \mathbb{B}$について$n=n$であり, また$m, l \in \mathbb{B}$について$n=m$, $m=l$ならば$n=l$なので，前順序である．
+    \item 略
+    \item どのような人も，「自分自身の祖先である」とは言われないので，反射性が満たされず，前順序ではない．
+    \item 「$x$は$y$の部分である（ないし$y$に含まれる）」という関係は前順序である．どのようなもの$x$も，自分自身の部分であるといえる．また$x$が$y$の部分であり，$y$が$z$の部分であれば，$x$は$z$の部分である．
+\end{enumerate}
+
+
+\subparagraph{2.2}
+\begin{enumerate}
+    \item もし，全く同じ完全性を有する二つの異なる個体が存在するのであれば，それは半順序ではない．
+    \item 半順序ではない．たとえば$X = \{x_1, x_2\}, Y = \{y_1, y_2\}$とし，二つの性質関数$f, g: X \to Y$を$f(x_1) = g(x_2) = y_1$かつ$f(x_2) = g(x_1) = y_2$となるように定める．$f$は単射なので，任意の$x, x'\in X$について$f(x) = f(x')$であれば$x=x'$であり，よって$g(x) = g(x')$．この対偶より$g$は$f$に付随する．$g$も同じく単射なので，同様にして$f$は$g$に付随する．しかし$f,g$は$X$の各要素に違う$Y$を割り当てるので$f \neq g$である．よって反対称性を満たさない．
+    \item 「$x$が$y$を割り切る」を$x|y$と書くことにする．これは「ある自然数$a$があって$y=ax$」を意味する．$a=1$とすれば，明らかに$x|x$であり反射的．また$x|y$かつ$y|z$ならば， ある自然数$a,b$があって$y = ax$かつ$z = by$であるから，$z = abx$となり$x|z$である，つまり推移的．最後に$y = ax$かつ$x = by$と仮定すると，$y = aby$となり，よって$a=b=1$．したがって$x=y$となり反対称性も満たされる．したがってこの関係は半順序である．
+    \item 2.1に前順序としてあげた「$x$は$y$の部分である（ないし$y$に含まれる）」という関係は半順序でもある．というのも，もし$x$が$y$の部分であり，また逆もそうならば，$x$と$y$は同じものだろうからだ．
+\end{enumerate}
+
+
+\subparagraph{3.1}
+\begin{enumerate}
+    \item $A$: 存在しない．$B: \{x, y\}$．$C$: 存在しない．
+    \item $A: \{x,y\}, \{x, y, z\}$. $B: \{x,y\}, \{x, y, z\}$．$C: \{x, y, z\}$．
+    \item $A: \{x,y\}$. $B: \{x,y\}$. $C: \{x, y, z\}$.
+\end{enumerate}
+
+\subparagraph{3.2}
+\begin{enumerate}
+    \item 最大元：存在しない．上界：$a$と$b$の公倍数．上限：$a$と$b$の最小公倍数.
+    \item 生命の始まりがあるなら，下に有界．いかなる生物もいずれ絶滅すると考えれば，上にも有界．上限は存在しない．下限は$A$の共通祖先．
+\end{enumerate}
+
+\subparagraph{4.2}
+$x \preceq_X x'$とする．$f$単調より，$f(x) \preceq_Y f(x')$．一方$g$単調より，任意の$y, y'$について$y \preceq_Y y'$ならば$g(y) \preceq_Z g(y')$，よって特に$g\circ f(x) = g(f(x)) \preceq_Z g(f(x')) = g\circ f(x')$．以上より$g \circ f$は単調写像．
+
+
+\end{document}
