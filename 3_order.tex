@@ -208,17 +208,19 @@ Derek Parfit (1984)は，こうした「心理的連続性 psychological continu
 このアイデアは，以下のように新しい関係$\leftarrow^{+}$を定義することで実現できる．
 \begin{align*}
  x \leftarrow^{+} y 
- &:= X \text{の要素からなる有限列} (x_0, \dots, x_n) \text{が存在し，} \\
+ & \iff X \text{の要素からなる有限列} (x_0, \dots, x_n) \text{が存在し，} \\
  & (1) x = x_0 \text{ かつ } y = x_n, \\
  & (2) x_0 \leftarrow x_1, x_1 \leftarrow x_2, \dots, x_{n-1} \leftarrow x_n
 \end{align*}
-つまり，$x \leftarrow^{+} y$となるのは，$x$から$y$の間が，$\leftarrow$という関係の連鎖で結ばれているときである．このように定義された新しい関係$\leftarrow^{+}$を，関係$\leftarrow$の\emph{推移閉包}(transitive closure)という．
+つまり，$x \leftarrow^{+} y$となるのは両者の間に，(1)両端が$x, y$であって，(2)その間の項が「$\leftarrow$」関係で結ばれている連鎖$x = x_0 \leftarrow x_1 \leftarrow \cdots \leftarrow x_n = y$が存在するときである．このように定義された新しい関係$\leftarrow^{+}$を，関係$\leftarrow$の\emph{推移閉包}(transitive closure)という．
 推移閉包を取った$\leftarrow^{+}$は推移的なので，これは半順序となる．
 \end{rei}  
 
 \begin{renshu}{}{}
 \begin{enumerate}
- \item $\leftarrow^{+}$は人格の同一性（の候補）にはまだ一歩たりない．というのも，同一性関係というからにはそれは同値関係（2章3節）であってほしいが，半順序は対称性を満たさないからだ．しかし，推移閉包を作ったのと同様，$\leftarrow^{+}$から対称閉包をとることによって，対称性を満たすような新たな関係を作ることができる．そのような関係を定義してみよ．
+ \item $\leftarrow^{+}$は人格の同一性（の候補）にはまだ一歩たりない．というのも，同一性関係というからにはそれは同値関係（2章3節）であってほしいが，半順序は対称性を満たさないからだ．しかし，推移閉包を作ったのと同様，$\leftarrow^{+}$から対称閉包をとることによって，対称性を満たすような新たな関係（これを$\leftrightarrow^+$としよう）を作ることができる．それは以下のように定義できるだろう：
+ \[ x \leftrightarrow^+ y \iff x, y \text{と} \leftarrow^{+} \text{を用いた条件} \]
+ どのような条件を設定すればよいだろうか，考えてみよう．
  \item このように作られた関係は，人格の同一性の良いモデルになっているだろうか．その問題点があれば考えてみよう．
 \end{enumerate}
 \end{renshu}
@@ -489,6 +491,34 @@ $x \preceq y$であるときに$x \to y$と矢印を引いた図を，\emph{ハ�
 \label{fig:taxonomy} 
 \end{figure}
 単調写像とは，このように二つの順序を横に並べて描いたとき，写像の対応を示す線（図\ref{fig:taxonomy}の点線矢印）が互いにクロスしない，という条件だと理解できる．
+
+\begin{renshu}{}{}
+  下図のような二つの順序集合$X = \{x_1, x_2, x_3\}, Y = \{y_1, y_2\}$を考える．
+  \[
+  \begin{tikzpicture}
+  \node (x1) at (1,0) {$x_1$};
+  \node (x2) at (0,1.5) {$x_2$};
+  \node (x3) at (2,1.5) {$x_3$};
+  \draw (x1)--(x2);
+  \draw (x1)--(x3);
+
+  \node (y1) at (7,0) {$y_1$};
+  \node (y2) at (7,1.5) {$y_2$};
+  \draw[-](y1)--(y2);
+\end{tikzpicture}
+\]
+  このとき以下の関数$f: X \to Y$が単調写像であるか否かを答えよ．
+  \begin{enumerate}
+    \item $f(x_1) = y_1, f(x_2) = y_2, f(x_3) = y_2$
+    \item $f(x_1) = y_1, f(x_2) = y_1, f(x_3) = y_2$
+    \item $f(x_1) = y_1, f(x_2) = y_1, f(x_3) = y_1$
+    \item $f(x_1) = y_2, f(x_2) = y_2, f(x_3) = y_1$
+    \item $f(x_1) = y_2, f(x_2) = y_2, f(x_3) = y_2$
+  \end{enumerate}
+\end{renshu}  
+単調写像でないのは4番だけである．というのもこのとき，$x_1 \preceq_X x_3$であるのに$f(x_1) = y_2 \not\preceq_Y y_1 = f(x_3)$だからだ．一方その他はみな単調写像である．
+特に3番や5番はすべての点を1点（3は$y_1$, 5は$y_2$）につぶしてしまうが，順序は反射性$y_i \preceq y_i$を満たすので問題ない．
+また2番では，$X$においては$x_2 \preceq_X x_3$ではないが，$Y$に飛ばした先では$f(x_2) = y_1 \preceq_Y f_2 = f(x_3)$と順序がついている．しかしこれも問題ない．単調写像の要件は，もし定義域$X$で二つが順序関係にあるならば，飛ばした先でそれらの間に順序関係がなければならない，ということだけである．定義域でもともと順序関係にないものが，値域で新しい順序関係を得てもその要件には反さないことに注意しよう．
 
 
 \begin{rei}{功利主義}{utilitalianism}
