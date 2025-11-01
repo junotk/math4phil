@@ -380,37 +380,6 @@
 
 
 
-\begin{rei}{チェス盤上の動き}{chess}
- チェスの駒であるビショップは，下図のように斜めにだけ動かすことができる．右上・右下に一桝進む動きをそれぞれ$g, h$で表すと，可能な動きは$\{ g, h, g^{-1}, h^{-1} \}$を組み合わせたものになる．これに「動かない」という選択肢$i$を加えると，ビショップの動き全体は群になる．
-
-% \begin{center}
-% \newchessgame
-% \chessboard[setfen=8/8/8/8/3B4/8/8/8 w - - 0 0,
-%   boardfontsize=14pt,
-%   pgfstyle=color,
-%   opacity=0.5,
-%   color=blue,
-  
-%   showmover=false] 
-% \end{center}
-
-この群（$B$と呼ぼう）は，$8 \times 8$マスのチェス盤への作用だと考えることができる．
-ビショップの盤上の位置を$(i,j)$で表すと，$B$の各元の作用は
-\begin{align*}
- g (i,j) &= (\min(i+1, 8), \min(j+1,8)) \\ 
- g^{-1} (i,j) &= (\max(i-1,1), \max(j-1,1)) \\ 
- h (i,j) &= (\min(i+1, 8), \max(j-1,1)) \\
- h^{-1} (i,j) &= (\max(i-1,1), \min(j+1, 8)) 
-\end{align*}
-となる．ここで$\min, \max$は駒の座標が$1$から$8$の範囲にとどまらなければならない，という制約を表している．
-\end{rei}
-
-\begin{renshu}{}{}
-\begin{enumerate}
- \item 上図のように盤上$d4$にいるビショップを$h4$に移すような群作用を一つ挙げよ．
- \item $B$は可換だろうか．
-\end{enumerate}
-\end{renshu}
 
 % 軌道
 チェスのゲームでは，上で見た群$B$を適用することにより，ビショップを動かしていく．
