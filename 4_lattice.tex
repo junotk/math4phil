@@ -86,17 +86,63 @@ $x, y$の上限を\emph{結び}(join)といい，$x \vee y$で表す．またそ
     \label{fig:lattice}
 \end{figure}
 
-
+束の例を一つあげよう．
+前章では，ある集合$X$があったとき，そのべき集合$\mcalP(X)$は包含関係$\subset$によって半順序$\langle \mcalP(X), \subset \rangle$になることを確認した．
+さらに練習問題3.2では，任意の部分集合$A, B \subset X$の上限はその合併$A \cup B$，下限はその共通部分$A \cap B$で与えられることを見た（3章図4のハッセ図も参照せよ）．
+したがってべき集合の半順序は束である．
+べき集合の束は，本章でも繰り返し登場するので慣れておいてほしい．
+が，それはあくまで一例であり，すべての束がべき集合の束のような形をしているわけではないので，そのイメージに引っ張られすぎないようにすることも重要である．
 
 \begin{renshu}{}{}
 \begin{enumerate}
+ \item 以下の(1)-(4)のハッセ図で示された半順序を，束であるかどうか判断せよ．束でない場合，なぜかも説明せよ．
+   \[
+  \begin{tikzpicture}[node distance=1.5cm, scale=0.8]
+    \begin{scope}
+        \node (a) at (1,0.5) {$a$};
+        \node (b) at (1,1.5) {$b$};
+        \node (c) at (0,2.5) {$c$};
+        \node (d) at (2,2.5) {$d$};
+        \draw (a)--(b)--(c); 
+        \draw (b)--(d); 
+        \node at (1,4) {$(1)$};
+    \end{scope}
+    \begin{scope}[xshift=4cm]
+        \node (a) at (1,0) {$a$};
+        \node (b) at (0,1) {$b$};
+        \node (c) at (2,1) {$c$};
+        \node (d) at (0,2) {$d$};
+        \node (e) at (2,2) {$e$};
+        \node (f) at (1,3) {$f$};
+        \draw (a)--(b)--(d)--(f); 
+        \draw (a)--(c)--(e)--(f); 
+        \node at (1,4) {$(2)$};
+    \end{scope}
+    \begin{scope}[xshift=8cm]
+        \node (a) at (0,0.5) {$a$};
+        \node (b) at (2,0.5) {$b$};
+        \node (c) at (0,2.5) {$c$};
+        \node (d) at (2,2.5) {$d$};
+        \draw (a)--(c)--(b)--(d)--(a); 
+        \node at (1,4) {$(3)$};
+    \end{scope}
+    \begin{scope}[xshift=12cm]
+        \node (a) at (0,0) {$a$};
+        \node (b) at (0,1) {$b$};
+        \node (c) at (0,2) {$c$};
+        \node (d) at (0,3) {$d$};
+        \draw (a)--(b)--(c)--(d);
+        \node at (0,4) {$(4)$};
+    \end{scope}
+  \end{tikzpicture}
+  \]
+
  \item 数の順序集合，例えば$\langle \bbR, \leq \rangle$は束である．任意の$x, y \in \bbR$の結び$x \vee y$と交わり$x \wedge y$は何だろうか．
  \item 2値順序$\bbB = \{ \texttt{false, true} \}$は束である．その結びおよび交わりを$( \texttt{false, false}), (\texttt{false, true}), (\texttt{true, false}), (\texttt{true, true})$のそれぞれについて計算せよ．
- \item べき集合の半順序 $\langle \mcalP(X), \subset \rangle$は束であるか．（ヒント：束であることを示すには，$X$の任意の2つの部分集合$A, B \in \mcalP(X)$が結びと交わりを持つか，それが何であるかを示せばよい．）
  \item $x, y \in \bbN^+$, $x \preceq y$を「$x$は$y$を割り切る」という関係だとしたとき，$\langle \bbN^+, \preceq \rangle$は束であるか．
- \item 因果関係を半順序だとすると，それは束となるだろうか．
 \end{enumerate}
- \end{renshu}
+\end{renshu}
+
 
 我々は上で，結びと交わりを演算として捉え直した．
 こうした演算子は，足し算や掛け算同様，一定のルールに従う．
