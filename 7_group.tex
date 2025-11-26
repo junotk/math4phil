@@ -1,6 +1,5 @@
 \documentclass[11pt,a4paper, dvipdfmx]{jsarticle}
 \input{m4p_preamble.tex}
-\usepackage{xskak} % chessboard
 
 
 \begin{document}
@@ -49,15 +48,15 @@
 \begin{enumerate}
     \item 任意の元$g \in G$に対し，その逆元は一意的に定まる．
     \item 逆元の逆元はもとに戻る：$(g^{-1})^{-1}=g$.
-    \item 任意の$g,h \in G$に対し，$(gh)^{-1}=h^{-1}g^{-1}$.
+    \item 任意の$g,h \in G$に対し，$(g\circ h)^{-1}=h^{-1}\circ g^{-1}$.
 \end{enumerate}
 \end{prop}
 証明は次の通り：
 \begin{enumerate}
     \item 仮に$g$の逆元として$h, h'$があるとしてみよう．
-    すると$(h'g)=(gh)=i$より，$h = ih = (h'g)h = h'(gh) = h'i = h'$となり，$h$と$h'$が等しいことが示される．
-    \item $g^{-1}g=i$であるが，これは$g^{-1}$の逆元（すなわち$(g^{-1})^{-1}$）が$g$であると述べていることに等しい．
-    \item $h^{-1}g^{-1}$を$gh$の左ないし右からかけると$i$になることで確かめられる．例として左からかけると$h^{-1}g^{-1}gh = h^{-1} i h = h^{-1}h = i$.
+    すると$(h' \circ g)=(g \circ h)=i$より，$h = i \circ h = (h'\circ g)\circ h = h'\circ (g \circ h) = h' \circ i = h'$となり，$h$と$h'$が等しいことが示される．
+    \item $g^{-1} \circ g=i$であるが，これは$g^{-1}$の逆元（すなわち$(g^{-1})^{-1}$）が$g$であると述べていることに等しい．
+    \item $h^{-1} \circ g^{-1}$を$g \circ h$の左ないし右からかけると$i$になることで確かめられる．例として左からかけると$h^{-1} \circ g^{-1} \circ g \circ h = h^{-1} \circ i \circ h = h^{-1} \circ h = i$.
 \end{enumerate}
 
 群の性質を一通り見たので，その事例を見ていこう．
@@ -68,7 +67,12 @@
 \end{rei}
 
 \begin{renshu}{}{}
-    掛け算の場合の逆元はなんだろうか．$(\bbZ, \times, 1)$は二項演算$\times$について群となるだろうか．有理数$\bbQ$や実数$\bbR$だったらどうだろうか．
+    掛け算の場合はどうだろうか．任意の数$n$について，$n \times 1 = 1 \times n = n$なので，1が単位元として機能しそうだ．では逆元どうだろうか．以下について，掛け算$\times$を群演算とした群になるかどうかどうかを判定せよ．ならない場合，その理由も述べよ． 
+    \begin{enumerate}
+        \item $\bbZ$，つまり整数全体．
+        \item $\bbR+$，つまり正の実数$\{ r \in \bbR | r > 0\}$．
+        \item $\bbQ$，つまり有理数全体．
+    \end{enumerate}
 \end{renshu}
 
 \begin{rei}{対称群}{symmetric_group}
@@ -168,7 +172,7 @@
     \end{tikzpicture}\] 
 
 
-    これらの演算を積表の形で表すと以下のようになる（リマインド：積表の各セルではその上の要素にその左の要素をかける，なので$a$列$b$行にある要素は$ba$である）．空白部分は自分で埋めてみよう．
+    これらの演算を積表の形で表すと以下のようになる（リマインド：積表の各セルではその上の要素にその左の要素をかける，なので$a$列$b$行にある要素は$b \circ a$である）．空白部分は自分で埋めてみよう．
     \[
         \begin{array}{c|cccccc}
                & i & s_1 & s_2 & s_3 & s_4 & s_5 \\ \hline
@@ -203,7 +207,7 @@
     \begin{enumerate}
         \item \emph{並進群}$T$：実数の組$(x, y) \in  \mathbb{R} \times \mathbb{R}$によって，任意の図形を右に$x$センチ，上に$y$センチ動かすような変換（これを並進と呼ぶ）が与えられる．二つの並進$(x_1, y_1), (x_2, y_2)$の合成は$(x_1+x_2, y_1 + y_2)$となる．これは和の性質より結合律を満たし，単位元は$(0,0)$である．並進$(x, y)$の逆元は$(-x, -y)$である．
         \item \emph{回転群}$R$： 実数$r \in \mathbb{R}$によって，原点に対する時計回り$r$度回転を表す．二つの回転$r_1, r_2$の合成は$r_1 + r_2$度回転で，これは結合律を満たす．単位元は$0$度回転，$r$の逆元は$-r$度回転である．
-        \item \emph{スケーリング群}$S$： 正の実数$s \in \mathbb{R}^+$によって，図形の$s$倍拡大を表す．二つの拡大$s_1, s_2$の合成は積$s_1 \cdot s_2$で，これは掛け算の性質より結合律を満たす．単位元は$1$倍拡大，$s$の逆元は$1/s$倍拡大である．
+        \item \emph{スケーリング群}$S$： 正の実数$s \in \mathbb{R}^+$によって，図形の$s$倍拡大を表す．二つの拡大$s_1, s_2$の合成は積$s_1 \circ s_2$で，これは掛け算の性質より結合律を満たす．単位元は$1$倍拡大，$s$の逆元は$1/s$倍拡大である．
     \end{enumerate}
     さらに，これらを全部合わせた群$T \cup R \cup S$も群をなし，それは相似変換群(similarity group)と呼ばれる．つまり，図形を自由に動かし，回転させ，拡大縮小させるような変換すべてからなる変換群である．
 \end{rei}  
@@ -222,62 +226,29 @@
     もちろん，「何もしない」恒等変換は図形をそのままに保つ．
     他にも，いまあなたが目を閉じている間に，私が三角形を$120\times n$度（ただし$n$は整数）時計回りに回転させても，目を開けたあなたは以前との違いに何も気が付かないだろう．
     その意味で，$120\times n$度回転は正三角形をそのままに保つ変換＝対称性である．
-    また，それぞれの頂点から対辺の中間地点へとおろした軸に沿って線対称をとっても，図形は変わらない．
-    これらの変換，つまり恒等変換$i$，120度，240度の時計回り回転$c_1, c_2$，および点$A, B, C$を通る軸に沿った鏡映反転$\sigma_A, \sigma_B, \sigma_C$は，以下のように頂点を移すが形はそのままに保つ，この正三角形の対称性である．
+    また，それぞれの頂点から対辺の中間地点へとおろした軸（下図①，②，③）に沿って線対称をとっても，図形は変わらない．
+    これらの変換，つまり恒等変換$i$，120度，240度の時計回り回転$c_1, c_2$，および軸①，②，③に沿った鏡映反転$\sigma_1, \sigma_2, \sigma_3$は，以下のように頂点を移すが形はそのままに保つ，この正三角形の対称性である．
     \begin{center}
-        \begin{tikzpicture}[every node/.style={font=\small}]
-            \foreach \x in {0,2,4,6,8,10} {
-                \draw (\x,0) -- (\x+1.4,0) -- (\x+.7, 1.212) -- cycle;
-            }        
-            \node at (.7,.5) {$i$};
-            \node at (.7,1.5) {$A$};
-            \node at (1.4,-.3) {$B$};
-            \node at (0,-.3) {$C$};
-
-            \node at (2.7,.5) {$c_1$};
-            \node at (2.7,1.5) {$C$};
-            \node at (3.4,-.3) {$A$};
-            \node at (2,-.3) {$B$};
-
-            \node at (4.7,.5) {$c_2$};
-            \node at (4.7,1.5) {$B$};
-            \node at (5.4,-.3) {$C$};
-            \node at (4,-.3) {$A$};
-
-            \node at (6.7,.5) {$\sigma_A$};
-            \node at (6.7,1.5) {$A$};
-            \node at (7.4,-.3) {$C$};
-            \node at (6,-.3) {$B$};
-
-            \node at (8.7,.5) {$\sigma_B$};
-            \node at (8.7,1.5) {$C$};
-            \node at (9.4,-.3) {$B$};
-            \node at (8,-.3) {$A$};
-
-            \node at (10.7,.5) {$\sigma_C$};
-            \node at (10.7,1.5) {$B$};
-            \node at (11.4,-.3) {$A$};
-            \node at (10,-.3) {$C$};
-        \end{tikzpicture}
+        \includegraphics[width=12cm]{figs/triangle.pdf}
     \end{center}
-    
-    これらの対称性を$D_3 = \{i, c_1, c_2, \sigma_A, \sigma_B, \sigma_C\}$とまとめると，$D_3$は$i$を単位元とした群をなす．
+
+    これらの対称性を$D_3 = \{i, c_1, c_2, \sigma_1, \sigma_2, \sigma_3\}$とまとめると，$D_3$は$i$を単位元とした群をなす．
     まず対称変換を続けて行っても，当然それは対称変換になる，つまりそれは積で閉じており，また積は結合的である．
-    $c_1, c_2$が互いを「キャンセル」する逆元であり，また$\sigma_A, \sigma_B, \sigma_C$のそれぞれがそれ自身の逆元になっていることも容易に分かる．
+    $c_1, c_2$が互いを「キャンセル」する逆元であり，また$\sigma_1, \sigma_2, \sigma_3$のそれぞれがそれ自身の逆元になっていることも容易に分かる．
     他の演算の結果については，以下の積表の通りになる．実際に正三角形を回したりひっくり返したりして確認してみよう：
     \[\begin{array}{c|cccccc}
-        & i & c_1 & c_2 & \sigma_A & \sigma_B & \sigma_C \\ \hline
-        i & i & c_1 & c_2 & \sigma_A & \sigma_B & \sigma_C \\ 
-        c_1 & c_1 & c_2 & i &  \sigma_C & \sigma_A & \sigma_B  \\ 
-        c_2 & c_2 & i & c_1 &  \sigma_B & \sigma_C & \sigma_A \\ 
-        \sigma_A & \sigma_A & \sigma_C & \sigma_B &  i  &  c_1 & c_2 \\ 
-        \sigma_B & \sigma_B & \sigma_A & \sigma_C &  c_2 &  i  & c_1\\ 
-        \sigma_C & \sigma_C & \sigma_B & \sigma_A &  c_1 & c_2 &  i \\ 
+        & i & c_1 & c_2 & \sigma_1 & \sigma_2 & \sigma_3 \\ \hline
+        i & i & c_1 & c_2 & \sigma_1 & \sigma_2 & \sigma_3 \\ 
+        c_1 & c_1 & c_2 & i &  \sigma_3 & \sigma_1 & \sigma_2  \\ 
+        c_2 & c_2 & i & c_1 &  \sigma_2 & \sigma_3 & \sigma_1 \\ 
+        \sigma_1 & \sigma_1 & \sigma_3 & \sigma_2 &  i  &  c_1 & c_2 \\ 
+        \sigma_2 & \sigma_2 & \sigma_1 & \sigma_3 &  c_2 &  i  & c_1\\ 
+        \sigma_3 & \sigma_3 & \sigma_2 & \sigma_1 &  c_1 & c_2 &  i \\ 
  \end{array}\]
     
     一般に，与えられた図形に対し，その図形をそのままに保つ対称変換の全体は，群を成す．
     そしてこの群は，図形によって変わってくる．
-    例えば以下左のような二等辺三角形が持つ対称変換は$\{i, \sigma_A\}$の2つである．
+    例えば以下左のような二等辺三角形が持つ対称変換は$\{i, \sigma_1\}$の2つである．
     \begin{center}
         \begin{tikzpicture}
             \node[above](a) at (.5,1.5){$A$};
@@ -388,7 +359,7 @@
 \section{可換性}
 前章では，モノイドにおける重要な区別として可換性を見た．
 同様の区分は群においてもそのままで成り立つ．
-つまり群$G$が可換であるとは，任意の2つの元$g,h \in G$について$h \circ g = h \circ g$がなりたつことをいう．
+つまり群$G$が可換であるとは，任意の2つの元$g,h \in G$について$h \circ g = g \circ h$がなりたつことをいう．
 これは積表で見ると，表が対角線を中心に対称になっているということだ．
 これまでの例で見ると，クラインの四元群は可換だが，3次対称群$S_3$および正三角形の対称性$D_3$は可換ではない．
 
@@ -724,31 +695,31 @@
 \begin{rei}{$D_3$と二等辺三角形対称変換の準同型性}{}
     例えば上の正三角形と二等辺三角形の対象変換の間に，以下のような写像を構築すると，これは両群の間の準同型写像になっている：
     \[
-    f(i)=f(c_1)=f(c_2)=i, \ \ \ f(\sigma_1) = f(\sigma_2) = f(\sigma_3) = \sigma_A.    
+    f(i)=f(c_1)=f(c_2)=i, \ \ \ f(\sigma_1) = f(\sigma_2) = f(\sigma_3) = \sigma_1.    
     \]
     この様子は，2つの群の積表を比べて見るとわかりやすい．
     下の表において，$f$は左側の緑／青のブロックに入っている元を，それぞれ右側の緑／青のブロックの元へと移す．
-    $f$が準同型であるとは，左の積表で計算してから（例えば$c_1 \circ \sigma_A = \sigma_C$）それを右に飛ばしても（$f(\sigma_C)=\sigma_A$），右に飛ばしてから（$f(\sigma_B) = \sigma_A, f(c_1)=i$）それを計算しても（$i \circ \sigma_A = \sigma_A$），結果が変わらないということだ．
+    $f$が準同型であるとは，左の積表で計算してから（例えば$c_1 \circ \sigma_1 = \sigma_3$）それを右に飛ばしても（$f(\sigma_3)=\sigma_1$），右に飛ばしてから（$f(\sigma_2) = \sigma_1, f(c_1)=i$）それを計算しても（$i \circ \sigma_1 = \sigma_1$），結果が変わらないということだ．
     このように元を適切に並べてやれば，準同型で送られた先の群の積表は，送る先の積表がギュッと縮んだような形になる（柄物のシャツが洗濯で縮んでしまったイメージ）．
     \begin{center}
     \begin{tikzpicture}
         \node at (0,0) {$\begin{array}{c|cccccc}
-               & i & c_1 & c_2 & \sigma_A & \sigma_B & \sigma_C \\ \hline
-               i & i & c_1 & c_2 & \sigma_A & \sigma_B & \sigma_C \\ 
-               c_1 & c_1 & c_2 & i &  \sigma_C & \sigma_A & \sigma_B  \\ 
-               c_2 & c_2 & i & c_1 &  \sigma_B & \sigma_C & \sigma_A \\ 
-               \sigma_A & \sigma_A & \sigma_C & \sigma_B &  i  &  c_1 & c_2 \\ 
-               \sigma_B & \sigma_B & \sigma_A & \sigma_C &  c_2 &  i  & c_1\\ 
-               \sigma_C & \sigma_C & \sigma_B & \sigma_A &  c_1 & c_2 &  i \\ 
+               & i & c_1 & c_2 & \sigma_1 & \sigma_2 & \sigma_3 \\ \hline
+               i & i & c_1 & c_2 & \sigma_1 & \sigma_2 & \sigma_3 \\ 
+               c_1 & c_1 & c_2 & i &  \sigma_3 & \sigma_1 & \sigma_2  \\ 
+               c_2 & c_2 & i & c_1 &  \sigma_2 & \sigma_3 & \sigma_1 \\ 
+               \sigma_1 & \sigma_1 & \sigma_3 & \sigma_2 &  i  &  c_1 & c_2 \\ 
+               \sigma_2 & \sigma_2 & \sigma_1 & \sigma_3 &  c_2 &  i  & c_1\\ 
+               \sigma_3 & \sigma_3 & \sigma_2 & \sigma_1 &  c_1 & c_2 &  i \\ 
         \end{array}$};
         \fill[rounded corners=5pt, fill=green!30, opacity=0.3] (-1.9,-0.3) rectangle (0.3,1.4);
         \fill[rounded corners=5pt, fill=green!30, opacity=0.3] (0.5,-2.1) rectangle (2.7,-0.4);
         \fill[rounded corners=5pt, fill=blue!30, opacity=0.3] (-1.9,-2.1) rectangle (0.3,-0.4);
         \fill[rounded corners=5pt, fill=blue!30, opacity=0.3] (0.5,-0.3) rectangle (2.7,1.4);
         \node at (5,0) {$\begin{array}{c|cc}
-                 & i & \sigma_A  \\ \hline
-               i & i & \sigma_A  \\
-               \sigma_A & \sigma_A & i \\
+                 & i & \sigma_1  \\ \hline
+               i & i & \sigma_1  \\
+               \sigma_1 & \sigma_1 & i \\
         \end{array}$};
         \fill[rounded corners=5pt, fill=green!30, opacity=0.3] (4.7,-0.3) rectangle (5.3,0.3);
         \fill[rounded corners=5pt, fill=green!30, opacity=0.3] (5.5,-0.9) rectangle (6.1,-0.3);
@@ -766,7 +737,7 @@
     実はこれらの群は，互いに同型である．
     というのも，$D_3$のそれぞれの元は，三角形の頂点を$\{A, B, C\}$並び替える変換と見ることもできるからだ．
     例えば右120度回転$c_1$は，頂点を$A \mapsto B, B \mapsto C, C \mapsto A$へと移す写像だと見れば，これは$s_1$と全く同じことをやっている．ここから，$f(c_1) = s_1$という対応が考えられる．
-    同様にして，$f(c_2) = s_2, f(\sigma_A)=s_3, f(\sigma_B) = s_4, f(\sigma_C) = s_5, f(i)=i$のように移してやると，$f$は$S_3$と$D_3$の間の準同型写像になっている（元のペアを複数とって実際に確認してみよう）．
+    同様にして，$f(c_2) = s_2, f(\sigma_1)=s_3, f(\sigma_2) = s_4, f(\sigma_3) = s_5, f(i)=i$のように移してやると，$f$は$S_3$と$D_3$の間の準同型写像になっている（元のペアを複数とって実際に確認してみよう）．
     そしてこれは全単射なので，同型写像であり，$S_3$と$D_3$は（一方はカードのシャッフル，他方は図形の回転・鏡映という全く違う作業であるのにも関わらず）群としては同型である．
 \end{rei}    
 
