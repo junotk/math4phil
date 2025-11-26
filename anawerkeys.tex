@@ -157,4 +157,47 @@ $x' \in \{x'\}$であり，それ以外に$\{x'\}$の要素はないので，$x'
 $x \preceq_X x'$とする．$f$単調より，$f(x) \preceq_Y f(x')$．一方$g$単調より，任意の$y, y'$について$y \preceq_Y y'$ならば$g(y) \preceq_Z g(y')$，よって特に$g\circ f(x) = g(f(x)) \preceq_Z g(f(x')) = g\circ f(x')$．以上より$g \circ f$は単調写像．
 
 
+
+\section{束}
+
+
+\section{位相}
+\subparagraph{2.1}
+下図のように，一点$a$から等しいユークリッド距離を持つ点は円（赤）に，等しいマンハッタン距離を持つ点は正方形（青）になる．
+\[\begin{tikzpicture}
+    \draw [-stealth](0,0)--(3,0) node [below right]{$x$};
+    \draw [-stealth](0,0)--(0,3) node [above left]{$y$};  
+    \fill (1.5,1.5) circle (1pt);  
+    \node[below] at (1.5,1.5) {$a$};
+    \draw [red,thick](1.5,1.5)circle[radius=1];
+    \draw [blue, thick, rotate around={45:(1.5,1.5)}] (0.79,0.79) rectangle (2.19,2.19);
+\end{tikzpicture}\]
+
+\subparagraph{2.2}
+各世界間の距離は以下の通り．正定値性は対角がゼロであること，対称性は行列が対角を軸に対称な対称行列であることから明らか．三角不等式も，それぞれ計算すると成り立っている．
+\begin{table}[htbp]
+ \begin{tabular}[tb]{ccccc}
+      & $w_1$ & $w_2$ & $w_3$ & $w_4$ \\ \hline
+$w_1$ &  0  &  $\sqrt{3}$  &  $\sqrt{2}$  &  1  \\
+$w_2$ &  $\sqrt{3}$  &  0  &  $\sqrt{3}$  &  $\sqrt{2}$  \\
+$w_3$ &  $\sqrt{2}$  &  $\sqrt{3}$  &  0  &  $\sqrt{3}$  \\
+$w_4$ &  1  &  $\sqrt{2}$  &  $\sqrt{3}$  &  0  
+ \end{tabular}
+ \label{tb:possible_worlds}
+\end{table}
+
+\subparagraph{2.3}
+解答なし．
+
+\subparagraph{4.1}
+(1) 位相になっている．
+(2) 位相になっている．
+(3) $\{a,c\}$が必要．
+(4) $\{a \}$が必要．
+(5) $\{a,c\}$が必要．
+
+\subparagraph{4.2}
+$\{ \emptyset, \{w_1\}, \{w_2\}, \{w_1, w_2\}, \{w_1, w_3\}, \{w_1, w_4\},\{w_1, w_2, w_3\}, \{w_1, w_2, w_4\}, \{w_1, w_2, w_3\}$, \\
+$\{w_1, w_3, w_4\}, \{w_1, w_2, w_3, w_4 \}  \}$
+
 \end{document}
